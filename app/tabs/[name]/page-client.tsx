@@ -2,7 +2,7 @@
 
 import { use } from 'react'
 import { TABS } from '@/app/utils/constants'
-import { TabViewTransition } from './view-transition'
+import { SlideTransition } from '@/components/transition/slide-transition'
 
 function Content({ activeTab }: { activeTab: string }) {
   return (
@@ -18,8 +18,8 @@ export default function Page(props: { params: Promise<{ name: string }> }) {
   const { name } = use(props.params)
 
   return (
-    <TabViewTransition>
+    <SlideTransition>
       <Content activeTab={name} />
-    </TabViewTransition>
+    </SlideTransition>
   )
 }
