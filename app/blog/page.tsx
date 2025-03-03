@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { cx } from '@/app/utils/cx'
 import { POSTS } from '../utils/constants'
 
-export default async function NewsPage() {
+export default function NewsPage() {
   return (
     <ViewTransition>
       <div className="container mx-auto px-4 py-8 mt-8">
