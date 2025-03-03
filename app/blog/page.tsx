@@ -4,10 +4,9 @@ import { Avatar } from '@/components/ui/avatar'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { cx } from '@/app/utils/cx'
-import { SlideTransition } from '@/components/transition/slide-transition'
 import { POSTS } from '../utils/constants'
 
-export default function NewsPage() {
+export default async function NewsPage() {
   return (
     <ViewTransition>
       <div className="container mx-auto px-4 py-8 mt-8">
@@ -40,11 +39,6 @@ export default function NewsPage() {
                   
                   <p className={'text-gray-600'}>{item.description}</p>
 
-                  <SlideTransition name={`features-${item.slug}`} direction="vertical">
-                    {/* a place holder for the features content, not displayed */}
-                    <div className="overflow-hidden h-0" />
-                  </SlideTransition>
-
                   {/* actually displayed features */}
                   <div className="space-y-2">
                     {item.features?.map((feature) => (
@@ -56,16 +50,6 @@ export default function NewsPage() {
                     ))}
                   </div>
                 </div>
-
-                <SlideTransition name={`content-${item.slug}`} direction="vertical">
-                  {/* a place holder for the features content, not displayed */}
-                  <div className="h-0 w-full absolute left-0" />
-                </SlideTransition>
-
-                <SlideTransition name={`image-${item.slug}`} direction="vertical">
-                  {/* a place holder for the features content, not displayed */}
-                  <div className="h-0 w-full absolute left-0" />
-                </SlideTransition>
 
               </CardContent>
 

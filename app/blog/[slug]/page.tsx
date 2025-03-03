@@ -2,16 +2,14 @@
 
 import { use, unstable_ViewTransition as ViewTransition } from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { cx } from '@/app/utils/cx'
 import { Avatar } from '@/components/ui/avatar'
-import { SlideTransition } from '@/components/transition/slide-transition'
 import { POSTS, AUTHORS } from '@/app/utils/constants'
 
 export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
   const post = POSTS.find((item) => item.slug === slug)!
-
-  console.log('post', post)
 
   return (
     <ViewTransition>
@@ -55,40 +53,38 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
             </ViewTransition>
           </div>
 
-          <div className="space-y-6">
-            <SlideTransition name={`features-${slug}`} direction="vertical">
-              <div>
-                <ul className="space-y-4">
-                  {post.features &&
-                    post.features.map((feature) => (
-                      <li key={feature.title}>
-                        <Link href="#" className="text-blue-500 hover:underline">
-                          {feature.title}
-                        </Link>
-                        : {feature.description}
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            </SlideTransition>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="space-y-6"
+          >
+            <ul className="space-y-4">
+              {post.features &&
+                post.features.map((feature) => (
+                  <li key={feature.title}>
+                    <Link href="#" className="text-blue-500 hover:underline">
+                      {feature.title}
+                    </Link>
+                    : {feature.description}
+                  </li>
+                ))}
+            </ul>
 
-            <SlideTransition name={`content-${slug}`} direction="vertical">
-              {/* post.content: string */}
-              <div className="prose max-w-none mt-8 whitespace-pre-wrap line-he text-md/1.75">{post.content}</div>
+            <div className="prose max-w-none mt-8 whitespace-pre-wrap line-he text-md/1.75">
+              {post.content}
+            </div>
 
-            </SlideTransition>
-
-            <SlideTransition name={`image-${slug}`} direction="vertical">
-              {/* post.image: string */}
+            <>
               {'image' in post && post.image ? (
                 <div className="mt-8">
                   {/* @ts-ignore */}
                   <img src={post.image} className="w-full" />
                 </div>
               ) : null}
-            </SlideTransition>
-
-          </div>
+            </>
+          </motion.div>
         </div>
       </article>
     </ViewTransition>

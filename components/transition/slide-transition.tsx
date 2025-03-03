@@ -7,8 +7,8 @@ export function SlideTransition({
   name,
   children,
   direction = 'horizontal',
-  distance = 150,
-  duration = 400,
+  distance = 100,
+  duration = 200,
 }: {
   name: string
   children: React.ReactNode
@@ -39,12 +39,8 @@ export function SlideTransition({
 
           @keyframes ${name}-exit-slide-${endName} {
             0% {
-              opacity: 0.5;
+              opacity: 1;
               translate: 0 0;
-            }
-            50% {
-              opacity: 0;
-              translate: ${endPosition};
             }
             100% {
               opacity: 0;
