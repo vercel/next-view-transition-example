@@ -9,7 +9,15 @@ import { POSTS } from '../utils/constants'
 export default function NewsPage() {
   return (
     <ViewTransition>
-      <div className="container mx-auto px-4 py-8 mt-8">
+      <div className="container mx-auto px-4 py-8 mt-8 max-w-[1200px]">
+        {/* Go to home page */}
+        <div className="flex justify-between items-center mb-8">
+          <Link href="/" className="text-blue-gray-500 hover:underline">
+            ← Back
+          </Link>
+        </div>
+
+
         <h1 className="text-4xl font-bold mb-8">The latest Next.js news</h1>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

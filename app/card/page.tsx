@@ -31,6 +31,13 @@ function LeftSideMenu({
           </div>
         </h1>
       </div>
+
+      {/* Go to home page */}
+      <div className="flex justify-between items-center">
+        <Link href="/" className="text-blue-gray-500 hover:underline">
+          ← Back
+        </Link>
+      </div>
     </div>
   )
 }
