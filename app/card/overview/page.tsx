@@ -1,0 +1,82 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { unstable_ViewTransition as ViewTransition } from 'react'
+import { PLACES } from '../../utils/constants'
+import { cx } from '../../utils/cx'
+
+// Thin bar
+function LeftSideBar({
+  isArrowOpen,
+  ...props
+}: {
+  isArrowOpen: boolean
+} & React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className="w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center" {...props}>
+      <div className={cx('flex items-center gap-2 text-gray-800')}>
+        <div className={cx('flex items-center gap-2 text-gray-800')}>
+          {/* sticker icon */}
+          <ViewTransition
+            name="sticker-icon"
+          >
+            <Link href="/card">
+              <span
+                className={cx(
+                  'w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center',
+                )}
+              />
+            </Link>
+          </ViewTransition>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Page() {
+  return (
+    <div className="flex min-h-screen">
+      {/* Left Section */}
+      <ViewTransition
+        name="left-side-bar"
+      >
+        <LeftSideBar isArrowOpen={true} />
+      </ViewTransition>
+
+      {/* Right Section */}
+      <ViewTransition name="right-side-bar">
+        <div className="w-4/5 p-8">
+          <h2 className="text-xl font-medium mb-6">Spots</h2>
+          <div className="space-y-4">
+            {PLACES.map((place) => (
+              <Link
+                key={place.id}
+                href={`/card/${place.slug}`}
+                className="flex gap-4 p-2 hover:bg-gray-50 transition-colors"
+              >
+                <ViewTransition name={`place-image-${place.slug}`}>
+                  <div className="relative w-30 h-30 overflow-hidden rounded-lg flex-shrink-0">
+                    <Image
+                      src={place.image || '/placeholder.svg'}
+                      alt={place.name}
+                      fill
+                      className="object-cover transition-transform hover:scale-110"
+                    />
+                  </div>
+                </ViewTransition>
+                <div>
+                  <ViewTransition name={`place-name-${place.slug}`}>
+                    <h3 className="font-medium">{place.name}</h3>
+                  </ViewTransition>
+                  <span className="text-gray-500 text-sm hover:text-gray-700">{place.description}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </ViewTransition>
+    </div>
+  )
+}
