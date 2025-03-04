@@ -10,7 +10,7 @@ function LeftSideMenu() {
   return (
     <div className="w-full md:w-1/2 bg-emerald-200 p-8 flex flex-col">
       {/* sticker icon */}
-      <div className={cx('flex items-center gap-2 text-gray-800')}>
+      <div className='flex items-center gap-2 text-gray-800 mb-4'>
         <ViewTransition name="sticker-icon">
           <Link href="/card/overview">
             <span className={cx('w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center')} />
@@ -28,7 +28,7 @@ function LeftSideMenu() {
       </div>
 
       {/* Go to home page */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mt-4">
         <Link href="/" className="text-blue-gray-500 hover:underline">
           ← Back
         </Link>
@@ -53,7 +53,7 @@ export default function Page() {
           <div className="space-y-4 flex gap-8 p-2 flex-wrap">
             {PLACES.map((place) => (
               <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors">
-                <div className="relative min-w-[300px] min-h-[300px] w-full sm:w-[48%] flex-shrink-0 overflow-clip rounded-lg">
+                <div className="relative min-w-[300px] min-h-[300px] w-full sm:w-[48%] flex-shrink-0 overflow-clip rounded-lg group">
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
                       loading="eager"
@@ -61,17 +61,17 @@ export default function Page() {
                       src={place.image || '/placeholder.svg'}
                       alt={place.name}
                       fill
-                      className="object-cover transition-transform hover:scale-110 overflow-clip rounded-lg"
+                      className="object-cover transition-transform  overflow-clip rounded-lg group-hover:scale-110"
                     />
                   </ViewTransition>
                   {/* name label */}
-                  <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] hover:transparent hover:backdrop-blur-none transition-all duration-150 flex items-center justify-center">
-                    <ViewTransition name={`place-name-${place.slug}`}>
+                  <ViewTransition name={`place-name-${place.slug}`}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/50 transition-all duration-250 flex items-center justify-center">
                       <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl drop-shadow-xs">
                         {place.name}
                       </div>
-                    </ViewTransition>
-                  </div>
+                    </div>
+                  </ViewTransition>
                 </div>
               </Link>
             ))}

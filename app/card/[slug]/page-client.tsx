@@ -9,7 +9,7 @@ export default function Place({ place, places }: { place: Place; places: Place[]
   return (
     <div className="flex flex-col md:flex-row items-center justify-center">
       <div className="min-h-screen flex items-center justify-center flex-col md:flex-row w-full px-0 md:px-8">
-        <div className="relative w-full sm:w-auto">
+        <div className="relative w-full sm:w-auto group">
           <ViewTransition name="back-button">
             <Link
               href="/card"
@@ -28,23 +28,23 @@ export default function Place({ place, places }: { place: Place; places: Place[]
           </ViewTransition>
 
           <ViewTransition name={`place-image-main`}>
-            <div
-              className={`relative overflow-clip md:rounded-lg transition-all duration-300 ease-in-out cursor-pointer w-full y-full md:w-[70vw] h-[70vh]`}
-            >
+            <div className="relative md:rounded-lg overflow-clip transition-all duration-300 ease-in-out cursor-pointer w-full y-full md:w-[70vw] h-[70vh]">
               <Image
                 loading="eager"
                 decoding="sync"
                 src={place.image}
                 alt={place.name}
                 fill
-                className="object-cover overflow-clip md:rounded-lg transition-transform duration-300 ease-in-out"
+                className="object-cover overflow-clip md:rounded-lg transition-all duration-300 ease-in-out group-hover:scale-105"
               />
             </div>
           </ViewTransition>
 
-          <ViewTransition name={`place-name`}>
-            <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl drop-shadow-xs">
-              {place.name}
+          <ViewTransition name="place-name">
+            <div className="absolute w-full h-full inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30 md:rounded-lg overflow-clip transition-all duration-300 ease-out">
+              <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl drop-shadow-xs">
+                {place.name}
+              </div>
             </div>
           </ViewTransition>
         </div>
