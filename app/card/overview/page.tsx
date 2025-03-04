@@ -3,18 +3,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { unstable_ViewTransition as ViewTransition } from 'react'
-import { PLACES } from '../../utils/constants'
-import { cx } from '../../utils/cx'
+import { PLACES } from '@/app/utils/constants'
+import { cx } from '@/app/utils/cx'
 
-// Thin bar
-function LeftSideBar({
-  isArrowOpen,
-  ...props
-}: {
-  isArrowOpen: boolean
-} & React.HTMLAttributes<HTMLDivElement>) {
+function LeftSideBar() {
   return (
-    <div className="w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center" {...props}>
+    <div className="w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center">
       <div className={cx('flex items-center gap-2 text-gray-800')}>
         <div className={cx('flex items-center gap-2 text-gray-800')}>
           {/* sticker icon */}
@@ -39,10 +33,8 @@ export default function Page() {
   return (
     <div className="flex min-h-screen">
       {/* Left Section */}
-      <ViewTransition
-        name="left-side-bar"
-      >
-        <LeftSideBar isArrowOpen={true} />
+      <ViewTransition name="left-side-bar">
+        <LeftSideBar />
       </ViewTransition>
 
       {/* Right Section */}

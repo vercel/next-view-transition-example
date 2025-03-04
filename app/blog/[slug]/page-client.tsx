@@ -3,11 +3,10 @@
 import { unstable_ViewTransition as ViewTransition } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { cx } from '@/app/utils/cx'
 import { Avatar } from '@/components/ui/avatar'
-import { POSTS, AUTHORS } from '@/app/utils/constants'
+import { type Post } from '@/app/utils/constants'
 
-export default function BlogPost({ post }: { post: typeof POSTS[0] }) {
+export default function BlogPost({ post }: { post: Post }) {
   const { slug } = post
   return (
     <ViewTransition>
@@ -20,10 +19,10 @@ export default function BlogPost({ post }: { post: typeof POSTS[0] }) {
         <div className="space-y-8">
           <div className="space-y-4">
             <ViewTransition name={`date-${slug}`}>
-              <time className={cx('text-gray-600')}>{post.date}</time>
+              <time className='text-gray-600'>{post.date}</time>
             </ViewTransition>
             <ViewTransition name={'title-' + slug}>
-              <h1 className={cx('text-5xl font-bold tracking-tight')}>{post.title}</h1>
+              <h1 className='text-5xl font-bold tracking-tight mt-8 mb-16'>{post.title}</h1>
             </ViewTransition>
           </div>
 
@@ -31,11 +30,10 @@ export default function BlogPost({ post }: { post: typeof POSTS[0] }) {
             <h2 className="text-gray-600">Posted by</h2>
             <ViewTransition name={`authors-${slug}`}>
               <div className="flex flex-wrap gap-4">
-                {post?.authors.map((authorSlug, i) => {
-                  const author = AUTHORS[authorSlug]
+                {post?.authors.map((author, i) => {
                   return (
-                    <div key={authorSlug} className="flex items-center gap-2">
-                      <ViewTransition key={i} name={`avatar-${slug}-${authorSlug}`}>
+                    <div key={author.handle} className="flex items-center gap-2">
+                      <ViewTransition key={i} name={`avatar-${slug}-${author.handle}`}>
                         <Avatar className="h-8 w-8">
                           <img src={author.avatar} />
                         </Avatar>

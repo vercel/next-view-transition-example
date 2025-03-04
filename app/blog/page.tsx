@@ -26,9 +26,9 @@ export default function NewsPage() {
               <CardContent className="pt-6">
                 <div className="absolute top-6 right-6 flex -space-x-2">
                   {item.authors.map((author, i) => (
-                    <ViewTransition key={i} name={`avatar-${item.slug}-${author}`}>
+                    <ViewTransition key={i} name={`avatar-${item.slug}-${author.handle}`}>
                       <Avatar className="border-2 border-white">
-                        <img src={`/avatars/${author}.jpg`} />
+                        <img src={`/avatars/${author.handle}.jpg`} />
                       </Avatar>
                     </ViewTransition>
                   ))}

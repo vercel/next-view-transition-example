@@ -3,9 +3,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { unstable_ViewTransition as ViewTransition } from 'react'
-import { PLACES } from '@/app/utils/constants'
+import { type Place } from '@/app/utils/constants'
 
-export default function Place({ place }: { place: typeof PLACES[0] }) {
+export default function Place({
+  place,
+  places,
+}: {
+  place: Place,
+  places: Place[]
+}) {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="relative">
@@ -52,7 +58,7 @@ export default function Place({ place }: { place: typeof PLACES[0] }) {
         <div className="w-auto ml-8 p-8">
           <h3 className="text-xl font-medium mb-6">Spots</h3>
           <div className="space-y-4">
-            {PLACES.map((place) => (
+            {places.map((place) => (
               <Link
                 key={place.id}
                 href={`/card/${place.slug}`}

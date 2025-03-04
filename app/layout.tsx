@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'View Transition Examples',
+  title: 'Next.js View Transition',
+  description: 'Next.js View Transition Examples',
 }
 
 export default function RootLayout({

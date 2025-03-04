@@ -8,7 +8,7 @@ export default async function Page(
   const params = await props.params
   const place = PLACES.find((p) => p.slug === params.slug)!
 
-  return <PageClient place={place} />
+  return <PageClient place={place} places={PLACES} />
 }
 
 export async function generateStaticParams() {
