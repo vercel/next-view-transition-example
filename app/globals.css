@@ -69,3 +69,26 @@
   }
 }
 
+[data-support-yes],
+[data-support-no] {
+  display: none;
+}
+
+
+@supports (view-transition-name: test) {
+  [data-support] [data-support-yes] {
+      display: inline;
+  }
+  [data-support] [data-support-no] {
+    display: none;
+  }
+}
+
+@supports not (view-transition-name: test) {
+  [data-support] [data-support-no] {
+      display: none;
+  }
+  [data-support] [data-support-no] {
+    display: inline;
+  }
+}
