@@ -6,14 +6,9 @@ import { unstable_ViewTransition as ViewTransition } from 'react'
 import { PLACES } from '../utils/constants'
 import { cx } from '../utils/cx'
 
-function LeftSideMenu({
-  isArrowOpen,
-  ...props
-}: {
-  isArrowOpen: boolean
-} & React.HTMLAttributes<HTMLDivElement>) {
+function LeftSideMenu() {
   return (
-    <div className="w-1/2 bg-emerald-200 p-8 flex flex-col" {...props}>
+    <div className="w-full md:w-1/2 bg-emerald-200 p-8 flex flex-col">
       {/* sticker icon */}
       <div className={cx('flex items-center gap-2 text-gray-800')}>
         <ViewTransition name="sticker-icon">
@@ -43,28 +38,26 @@ function LeftSideMenu({
 }
 
 export default function Page() {
-  const isArrowOpen = false
-
   return (
-    <div className="flex min-h-screen">
+    // make this locate on top of the page when it's on mobile
+    <div className="flex flex-col md:flex-row min-h-screen ">
       {/* Left Section */}
       <ViewTransition name="left-side-bar">
-        <LeftSideMenu isArrowOpen={isArrowOpen} />
+        <LeftSideMenu />
       </ViewTransition>
 
       {/* Right Section */}
       <ViewTransition name="right-side-bar">
-        <div className="w-1/2 p-8">
+        <div className="w-full md:w-1/2 p-8">
           <h2 className="text-xl font-medium mb-6">Spots</h2>
           <div className="space-y-4 flex gap-8 p-2 flex-wrap">
             {PLACES.map((place) => (
               <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors">
                 <div className="relative min-w-[300px] min-h-[300px] w-full sm:w-[48%] flex-shrink-0 overflow-clip rounded-lg">
-                
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
-                      loading='eager'
-                      decoding='sync'
+                      loading="eager"
+                      decoding="sync"
                       src={place.image || '/placeholder.svg'}
                       alt={place.name}
                       fill
