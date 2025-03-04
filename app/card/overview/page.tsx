@@ -8,7 +8,7 @@ import { cx } from '@/app/utils/cx'
 
 function LeftSideBar() {
   return (
-    <div className="w-full md:w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center">
+    <div className="w-full md:w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center relative">
       <div className={cx('flex items-center gap-2 text-gray-800')}>
         <div className={cx('flex items-center gap-2 text-gray-800')}>
           {/* sticker icon */}
@@ -55,9 +55,7 @@ export default function Page() {
                   </div>
                 </ViewTransition>
                 <div>
-                  <ViewTransition name={`place-name-${place.slug}`}>
-                    <h3 className="font-medium">{place.name}</h3>
-                  </ViewTransition>
+                  <h3 className="font-medium">{place.name}</h3>
                   <span className="text-gray-500 text-sm hover:text-gray-700">{place.description}</span>
                 </div>
               </Link>

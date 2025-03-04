@@ -5,12 +5,14 @@ import Link from 'next/link'
 import { unstable_ViewTransition as ViewTransition } from 'react'
 import { PLACES } from '../utils/constants'
 import { cx } from '../utils/cx'
+import { DynamicBackground } from '@/components/ui/dynamic-background'
 
 function LeftSideMenu() {
   return (
-    <div className="w-full md:w-1/2 bg-emerald-200 p-8 flex flex-col">
+    <div className="w-full md:w-1/2 bg-emerald-200 p-8 flex flex-col overflow-hidden relative">
+      <DynamicBackground />
       {/* sticker icon */}
-      <div className='flex items-center gap-2 text-gray-800 mb-4'>
+      <div className="flex items-center gap-2 text-gray-800 mb-4">
         <ViewTransition name="sticker-icon">
           <Link href="/card/overview">
             <span className={cx('w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center')} />
@@ -48,12 +50,12 @@ export default function Page() {
 
       {/* Right Section */}
       <ViewTransition name="right-side-bar">
-        <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-xl font-medium mb-6">Spots</h2>
+        <div className="w-full md:w-1/2 p-2 md:p-8">
+          <h2 className="text-xl font-medium px-2">Spots</h2>
           <div className="space-y-4 flex gap-8 p-2 flex-wrap">
             {PLACES.map((place) => (
-              <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors">
-                <div className="relative min-w-[300px] min-h-[300px] w-full sm:w-[48%] flex-shrink-0 overflow-clip rounded-lg group">
+              <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors w-full">
+                <div className="relative w-full md:w-[300px] min-h-[300px] flex-shrink-0 overflow-clip rounded-lg group">
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
                       loading="eager"

@@ -72,9 +72,7 @@ export default function Place({ place, places }: { place: Place; places: Place[]
                       {/* name label */}
                     </ViewTransition>
                   </div>
-                  <ViewTransition name={`place-name-${place.slug}`}>
-                    <div className="text-gray-700 bg-opacity-50 rounded-xl text-sm">{place.name}</div>
-                  </ViewTransition>
+                  <div className="text-gray-700 bg-opacity-50 rounded-xl text-sm">{place.name}</div>
                 </Link>
               ))}
             </div>
