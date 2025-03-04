@@ -59,7 +59,9 @@ export default function Page() {
                 <ViewTransition name={`place-image-${place.slug}`}>
                   <div className="relative w-30 h-30 overflow-hidden rounded-lg flex-shrink-0">
                     <Image
-                      src={place.image || '/placeholder.svg'}
+                      loading='eager'
+                      decoding='sync'
+                      src={place.image}
                       alt={place.name}
                       fill
                       className="object-cover transition-transform hover:scale-110"

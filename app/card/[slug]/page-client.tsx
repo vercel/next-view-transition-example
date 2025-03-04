@@ -31,7 +31,9 @@ export default function Place({ place }: { place: typeof PLACES[0] }) {
             className={`relative overflow-clip rounded-lg transition-all duration-300 ease-in-out cursor-pointer ${'w-[70vw] h-[70vh]'}`}
           >
             <Image
-              src={place.image || '/placeholder.svg'}
+              loading='eager'
+              decoding='sync'
+              src={place.image}
               alt={place.name}
               fill
               className="object-cover overflow-clip rounded-lg transition-transform duration-300 ease-in-out"
@@ -59,7 +61,9 @@ export default function Place({ place }: { place: typeof PLACES[0] }) {
                 <div className="relative w-20 h-20">
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
-                      src={place.image || '/placeholder.svg'}
+                      loading='eager'
+                      decoding='sync'
+                      src={place.image}
                       alt={place.name}
                       fill
                       className="object-cover transition-transform hover:scale-110 overflow-hidden rounded-lg"

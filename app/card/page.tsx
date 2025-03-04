@@ -60,8 +60,11 @@ export default function Page() {
             {PLACES.map((place) => (
               <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors">
                 <div className="relative min-w-[300px] min-h-[300px] w-full sm:w-[48%] flex-shrink-0 overflow-clip rounded-lg">
+                
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
+                      loading='eager'
+                      decoding='sync'
                       src={place.image || '/placeholder.svg'}
                       alt={place.name}
                       fill
@@ -69,11 +72,13 @@ export default function Page() {
                     />
                   </ViewTransition>
                   {/* name label */}
-                  <ViewTransition name={`place-name-${place.slug}`}>
-                    <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl drop-shadow-xs">
-                      {place.name}
-                    </div>
-                  </ViewTransition>
+                  <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] hover:transparent hover:backdrop-blur-none transition-all duration-150 flex items-center justify-center">
+                    <ViewTransition name={`place-name-${place.slug}`}>
+                      <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl drop-shadow-xs">
+                        {place.name}
+                      </div>
+                    </ViewTransition>
+                  </div>
                 </div>
               </Link>
             ))}
