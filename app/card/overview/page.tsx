@@ -4,17 +4,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { unstable_ViewTransition as ViewTransition } from 'react'
 import { PLACES } from '@/app/utils/constants'
-import { cx } from '@/app/utils/cx'
+import { DynamicBackground } from '@/components/ui/dynamic-background'
 
 function LeftSideBar() {
   return (
-    <div className="w-full md:w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center relative">
-      <div className={cx('flex items-center gap-2 text-gray-800')}>
-        <div className={cx('flex items-center gap-2 text-gray-800')}>
+    <div className="w-full md:w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center relative overflow-hidden">
+      <DynamicBackground className='transform -translate-y-[250px] md:translate-y-[100px]' />
+      <div className='flex items-center gap-2 text-gray-800 z-0'>
+        <div className='flex items-center gap-2 text-gray-800'>
           {/* sticker icon */}
           <ViewTransition name="sticker-icon">
             <Link href="/card">
-              <span className={cx('w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center')} />
+              <span className='w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120' />
             </Link>
           </ViewTransition>
         </div>

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { unstable_ViewTransition as ViewTransition } from 'react'
 import { PLACES } from '../utils/constants'
-import { cx } from '../utils/cx'
 import { DynamicBackground } from '@/components/ui/dynamic-background'
 
 function LeftSideMenu() {
@@ -15,7 +14,7 @@ function LeftSideMenu() {
       <div className="flex items-center gap-2 text-gray-800 mb-4">
         <ViewTransition name="sticker-icon">
           <Link href="/card/overview">
-            <span className={cx('w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center')} />
+            <span className='w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120' />
           </Link>
         </ViewTransition>
         <span className="font-medium">Las Ciudades</span>
