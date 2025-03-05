@@ -38,7 +38,8 @@ export default function NewsPage() {
                     <p className={cx('text-gray-600')}>{item.date}</p>
                   </ViewTransition>
                   <ViewTransition name={`title-${item.slug}`}>
-                    <Link href={`/blog/${item.slug}`}>
+                    {/* NOTE: inline-block is required for safari */}
+                    <Link href={`/blog/${item.slug}`} className='inline-block'>
                       <h2 className="text-2xl font-semibold mb-2">{item.title}</h2>
                     </Link>
                   </ViewTransition>

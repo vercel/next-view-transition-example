@@ -3,16 +3,16 @@ import Link from 'next/link'
 export default function Page() {
   return (
     <div className="p-4 max-w-[960px] m-auto">
-      <h1 className="text-3xl py-8">Next.js View Transition</h1>
+      <h1 className="text-3xl py-8">React View Transition in Next.js</h1>
 
       <p>
         <span className="mr-2">
-          {`Use React`} <b className="text-purple-400">Experimental</b> {`<ViewTransitions> API in Next.js.`}
+          {`Use React`} <b className="text-purple-400">Experimental</b>{`<ViewTransitions> API in Next.js.`}
         </span>
       </p>
 
       {/* supports info */}
-      <div data-support className="py-2 w-full text-sm">
+      <div data-support className="my-2 w-full text-sm">
         <p data-support-no className="bg-red-100 text-red-500 py-1 px-2 rounded-lg">
           {'🔴 <ViewTransition> might not work well on your browser'}
         </p>

@@ -20,9 +20,12 @@ export default function BlogPost({ post }: { post: Post }) {
             <ViewTransition name={`date-${slug}`}>
               <time className="text-gray-600">{post.date}</time>
             </ViewTransition>
-            <ViewTransition name={`title-${slug}`}>
-              <h1 className="text-5xl font-bold tracking-tight mt-8 mb-16">{post.title}</h1>
-            </ViewTransition>
+            {/* Add a div to hack the transition from Link to h1 on safari, where it needs to be a inline-block */}
+            <div>
+              <ViewTransition name={`title-${slug}`}>
+                <h1 className="text-5xl font-bold tracking-tight mt-8 mb-16 inline-block">{post.title}</h1>
+              </ViewTransition>
+            </div>
           </div>
 
           <div className="space-y-4">
