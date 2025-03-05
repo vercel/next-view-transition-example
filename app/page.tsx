@@ -6,13 +6,9 @@ export default function Page() {
       <h1 className="text-3xl py-8">Next.js View Transition</h1>
 
       <p>
-        <span className='mr-2'>
-          {`Use React <ViewTransitions> API in Next.js.`}
+        <span className="mr-2">
+          {`Use React`} <b className="text-purple-400">Experimental</b> {`<ViewTransitions> API in Next.js.`}
         </span>
-        {/* source code link */}
-        <a href="https://github.com/vercel/next-view-transition-example" className="text-gray-500 hover:underline">
-          Source code ↗
-        </a>
       </p>
 
       {/* supports info */}
@@ -26,19 +22,22 @@ export default function Page() {
       </div>
 
       <ul className="flex flex-col justify-center py-8 m-auto">
-        <li className='py-2'>
+        <li className="py-2">
           <h2 className="text-xl underline">
             <Link href="/blog">{`Floating Elements Transition`}</Link>
           </h2>
         </li>
 
-        <li className='py-2'>
+        <li className="py-2">
           <h2 className="text-xl underline">
             <Link href="/card">{`Transform Card Transition`}</Link>
           </h2>
         </li>
       </ul>
 
+      <a href="https://github.com/vercel/next-view-transition-example" className="text-gray-500 hover:underline">
+        Source code ↗
+      </a>
     </div>
   )
 }
