@@ -10,7 +10,9 @@ function LeftSideMenu() {
   return (
     <div className="w-full m-h-screen md:w-1/2 bg-emerald-200 overflow-hidden relative">
       <div className="md:fixed top-0 left-0 bottom-0 p-8 flex flex-col">
-        <div className="my-4">
+        <DynamicBackground />
+
+        <div className="my-4 z-10">
           <ViewTransition name="experimental-label">
             <b className="text-gray-700 inline-block">{`<ViewTransition>`}</b>
           </ViewTransition>
@@ -20,10 +22,10 @@ function LeftSideMenu() {
             </Link>
           </div>
         </div>
-        <DynamicBackground />
+        
 
         {/* sticker icon */}
-        <div className="flex items-center gap-2 text-gray-800 mb-4">
+        <div className="flex items-center gap-2 text-gray-800 mb-4 z-10">
           <ViewTransition name="sticker-icon">
             <Link href="/card/overview">
               <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120" />
@@ -32,10 +34,10 @@ function LeftSideMenu() {
           <span className="font-medium">Las Ciudades</span>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center">
+        <div className="flex-1 flex flex-col justify-center z-10">
           <h1 className="text-6xl font-serif space-y-2">
             <div>
-              Explore <span className="text-4xl font-serif">The cities.</span>
+              Explore <span className="text-4xl font-serif block md:inline-block">The cities.</span>
             </div>
           </h1>
         </div>
