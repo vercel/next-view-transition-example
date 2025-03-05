@@ -9,7 +9,7 @@ import { DynamicBackground } from '@/components/ui/dynamic-background'
 function LeftSideBar() {
   return (
     <div className="w-full m-h-screen md:w-[120px] bg-emerald-200 relative overflow-hidden">
-      <div className='md:w-[120px] fixed top-0 left-0 right-0 bottom-0 p-4 pt-[80px] flex flex-col items-center overflow-hidden'>
+      <div className='md:w-[120px] md:fixed top-0 left-0 right-0 bottom-0 p-4 pt-[80px] flex flex-col items-center overflow-hidden'>
         <DynamicBackground className='transform -translate-y-[50px] md:translate-y-[100px]' />
         <div className='flex items-center gap-2 text-gray-800 z-0 '>
           <div className='flex items-center gap-2 text-gray-800'>
@@ -37,7 +37,7 @@ export default function Page() {
       {/* Right Section */}
       <ViewTransition name="right-side-bar">
         <div className="w-full p-2 md:w-4/5 md:p-8">
-          <h2 className="text-xl font-medium mb-6">Spots</h2>
+          <h2 className="text-xl font-medium mx-2 my-4">Spots</h2>
           <div className="space-y-4">
             {PLACES.map((place) => (
               <Link

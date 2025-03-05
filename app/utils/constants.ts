@@ -140,7 +140,7 @@ export const PLACES = [
     name: 'Santa Monica',
     image: '/cards/santamonica.png',
     slug: 'santamonica',
-    description: 'A beachfront city in western Los Angeles County, California, United States. Situated on Santa Monica Bay, it is bordered on five sides by different neighborhoods of the city of Los Angeles: Pacific Palisades to the north, Brentwood on the northeast, West Los Angeles on the east, Mar Vista on the southeast, and Venice on the south',
+    description: 'A beachfront city in western Los Angeles County, California, United States. Situated on Santa Monica Bay, it is bordered on five sides by different neighborhoods of the city of Los Angeles.',
   },
 ]
 
