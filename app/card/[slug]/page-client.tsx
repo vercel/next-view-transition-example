@@ -59,7 +59,7 @@ export default function Place({ place, places }: { place: Place; places: Place[]
                   href={`/card/${place.slug}`}
                   className="flex items-center gap-4 p-2 transition-colors"
                 >
-                  <div className="relative w-20 h-20">
+                  <div className="relative w-20 h-20 shrink-0">
                     <ViewTransition name={`place-image-${place.slug}`}>
                       <Image
                         loading="eager"
@@ -67,7 +67,7 @@ export default function Place({ place, places }: { place: Place; places: Place[]
                         src={place.image}
                         alt={place.name}
                         fill
-                        className="object-cover transition-transform filter hover:scale-105 overflow-hidden rounded-lg"
+                        className="object-cover transition-transform filter hover:scale-105 overflow-hidden rounded-lg flex-1"
                       />
                       {/* name label */}
                     </ViewTransition>

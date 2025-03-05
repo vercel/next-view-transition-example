@@ -14,7 +14,7 @@ function LeftSideMenu() {
       <div className="flex items-center gap-2 text-gray-800 mb-4">
         <ViewTransition name="sticker-icon">
           <Link href="/card/overview">
-            <span className='w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120' />
+            <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120" />
           </Link>
         </ViewTransition>
         <span className="font-medium">Las Ciudades</span>
@@ -53,7 +53,11 @@ export default function Page() {
           <h2 className="text-xl font-medium px-2 text-gray-700 mt-4">Spots</h2>
           <div className="space-y-4 flex gap-8 p-2 flex-wrap">
             {PLACES.map((place) => (
-              <Link key={place.id} href={`/card/${place.slug}`} className="hover:bg-gray-50 transition-colors w-full md:w-[300px] min-h-[300px] items-stretch">
+              <Link
+                key={place.id}
+                href={`/card/${place.slug}`}
+                className="hover:bg-gray-50 transition-colors w-full md:w-[300px] min-h-[300px] items-stretch"
+              >
                 <div className="relative w-full h-full flex-shrink-0 overflow-clip rounded-lg group">
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
@@ -67,11 +71,9 @@ export default function Page() {
                   </ViewTransition>
                   {/* name label */}
                   <ViewTransition name={`place-name-${place.slug}`}>
-                      <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl filter [text-shadow:0px_0px_8px_#111]">
-                        {place.name}
-                      </div>
-                    {/* <div className="absolute inset-0  transition-all duration-250 flex items-center justify-center">
-                    </div> */}
+                    <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl filter [text-shadow:0px_0px_8px_#111]">
+                      {place.name}
+                    </div>
                   </ViewTransition>
                 </div>
               </Link>
