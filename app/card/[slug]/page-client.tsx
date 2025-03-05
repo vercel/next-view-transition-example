@@ -13,7 +13,7 @@ export default function Place({ place, places }: { place: Place; places: Place[]
           <ViewTransition name="back-button">
             <Link
               href="/card"
-              className="absolute top-4 left-4 text-gray-600 bg-opacity-50 py-1 rounded-full hover:bg-opacity-75 transition-colors z-10"
+              className="absolute top-4 left-4 text-gray-100 bg-opacity-50 py-1 rounded-full hover:bg-opacity-75 transition-colors z-10 filter drop-shadow-[2px_2px_6px_#666]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ export default function Place({ place, places }: { place: Place; places: Place[]
           </ViewTransition>
 
           <ViewTransition name="place-name">
-            <div className="absolute w-full h-full inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30 md:rounded-lg overflow-clip transition-all duration-300 ease-out">
+            <div className="absolute w-full h-full inset-0 md:rounded-lg overflow-clip transition-all duration-300 ease-out filter drop-shadow-[2px_2px_12px_#333]">
               <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl drop-shadow-xs">
                 {place.name}
               </div>
@@ -67,7 +67,7 @@ export default function Place({ place, places }: { place: Place; places: Place[]
                         src={place.image}
                         alt={place.name}
                         fill
-                        className="object-cover transition-transform hover:scale-110 overflow-hidden rounded-lg"
+                        className="object-cover transition-transform filter hover:scale-105 overflow-hidden rounded-lg"
                       />
                       {/* name label */}
                     </ViewTransition>

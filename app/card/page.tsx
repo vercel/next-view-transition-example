@@ -54,8 +54,8 @@ export default function Page() {
           <h2 className="text-xl font-medium px-2">Spots</h2>
           <div className="space-y-4 flex gap-8 p-2 flex-wrap">
             {PLACES.map((place) => (
-              <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors w-full">
-                <div className="relative w-full md:w-[300px] min-h-[300px] flex-shrink-0 overflow-clip rounded-lg group">
+              <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors">
+                <div className="relative md:w-[300px] min-h-[300px] flex-shrink-0 overflow-clip rounded-lg group">
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
                       loading="eager"
@@ -63,16 +63,16 @@ export default function Page() {
                       src={place.image || '/placeholder.svg'}
                       alt={place.name}
                       fill
-                      className="object-cover transition-transform  overflow-clip rounded-lg group-hover:scale-110"
+                      className="object-cover flex-1 transition-transform  overflow-clip rounded-lg group-hover:scale-110"
                     />
                   </ViewTransition>
                   {/* name label */}
                   <ViewTransition name={`place-name-${place.slug}`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/50 transition-all duration-250 flex items-center justify-center">
-                      <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl drop-shadow-xs">
+                      <div className="absolute bottom-4 right-4 text-gray-100 bg-opacity-50 rounded-xl text-3xl filter [text-shadow:0px_0px_8px_#111]">
                         {place.name}
                       </div>
-                    </div>
+                    {/* <div className="absolute inset-0  transition-all duration-250 flex items-center justify-center">
+                    </div> */}
                   </ViewTransition>
                 </div>
               </Link>
