@@ -12,7 +12,7 @@ export default function Page() {
           <b className="text-blue-400">{`Experimental `}</b>
 
           <ViewTransition name="experimental-label">
-            <span className='inline-block font-bold'>{`<ViewTransitions>`}</span>
+            <span className='inline-block font-bold text-gray-700'>{`<ViewTransitions>`}</span>
           </ViewTransition>
           
           {` API in Next.js.`}

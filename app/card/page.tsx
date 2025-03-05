@@ -9,11 +9,16 @@ import { DynamicBackground } from '@/components/ui/dynamic-background'
 function LeftSideMenu() {
   return (
     <div className="w-full m-h-screen md:w-1/2 bg-emerald-200 overflow-hidden relative">
-      <div className="fixed top-0 left-0 bottom-0 p-8 flex flex-col">
-        <div className='my-4'>
+      <div className="md:fixed top-0 left-0 bottom-0 p-8 flex flex-col">
+        <div className="my-4">
           <ViewTransition name="experimental-label">
             <b className="text-gray-700 inline-block">{`<ViewTransition>`}</b>
           </ViewTransition>
+          <div className="flex justify-between items-center mb-4">
+            <Link href="/" className="text-blue-gray-500 hover:underline">
+              ← Back
+            </Link>
+          </div>
         </div>
         <DynamicBackground />
 
@@ -33,13 +38,6 @@ function LeftSideMenu() {
               Explore <span className="text-4xl font-serif">The cities.</span>
             </div>
           </h1>
-        </div>
-
-        {/* Go to home page */}
-        <div className="flex justify-between items-center mt-4">
-          <Link href="/" className="text-blue-gray-500 hover:underline">
-            ← Back
-          </Link>
         </div>
       </div>
     </div>
@@ -64,7 +62,7 @@ export default function Page() {
               <Link
                 key={place.id}
                 href={`/card/${place.slug}`}
-                className="hover:bg-gray-50 transition-colors w-full md:w-[300px] min-h-[300px] items-stretch"
+                className="hover:bg-gray-50 transition-colors w-full md:w-[300px] h-[300px] items-stretch"
               >
                 <div className="relative w-full h-full flex-shrink-0 overflow-clip rounded-lg group">
                   <ViewTransition name={`place-image-${place.slug}`}>
