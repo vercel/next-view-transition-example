@@ -8,31 +8,34 @@ import { DynamicBackground } from '@/components/ui/dynamic-background'
 
 function LeftSideMenu() {
   return (
-    <div className="w-full md:w-1/2 bg-emerald-200 p-8 flex flex-col overflow-hidden relative">
-      <DynamicBackground />
-      {/* sticker icon */}
-      <div className="flex items-center gap-2 text-gray-800 mb-4">
-        <ViewTransition name="sticker-icon">
-          <Link href="/card/overview">
-            <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120" />
+    <div className="w-full m-h-screen md:w-1/2 bg-emerald-200 flex flex-col overflow-hidden relative">
+      <div className="fixed top-0 left-0 right-0 p-8">
+        <DynamicBackground />
+
+        {/* sticker icon */}
+        <div className="flex items-center gap-2 text-gray-800 mb-4">
+          <ViewTransition name="sticker-icon">
+            <Link href="/card/overview">
+              <span className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120" />
+            </Link>
+          </ViewTransition>
+          <span className="font-medium">Las Ciudades</span>
+        </div>
+
+        <div className="flex-1 flex flex-col justify-center">
+          <h1 className="text-6xl font-serif space-y-2">
+            <div>
+              Explore <span className="text-4xl font-serif">The cities.</span>
+            </div>
+          </h1>
+        </div>
+
+        {/* Go to home page */}
+        <div className="flex justify-between items-center mt-4">
+          <Link href="/" className="text-blue-gray-500 hover:underline">
+            ← Back
           </Link>
-        </ViewTransition>
-        <span className="font-medium">Las Ciudades</span>
-      </div>
-
-      <div className="flex-1 flex flex-col justify-center">
-        <h1 className="text-6xl font-serif space-y-2">
-          <div>
-            Explore <span className="text-4xl font-serif">The cities.</span>
-          </div>
-        </h1>
-      </div>
-
-      {/* Go to home page */}
-      <div className="flex justify-between items-center mt-4">
-        <Link href="/" className="text-blue-gray-500 hover:underline">
-          ← Back
-        </Link>
+        </div>
       </div>
     </div>
   )

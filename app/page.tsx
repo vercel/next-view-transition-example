@@ -14,7 +14,7 @@ export default function Page() {
       {/* supports info */}
       <div data-support className="py-2 w-full text-sm">
         <p data-support-no className="bg-red-100 text-red-500 py-1 px-2 rounded-lg">
-          🔴 Your browser doesn’t support View Transitions.
+          {'🔴 <ViewTransition> might not work well on your browser'}
         </p>
         <p data-support-yes className="bg-green-100 text-green-600 py-1 px-2 rounded-lg">
           🟢 Your browser supports View Transitions.

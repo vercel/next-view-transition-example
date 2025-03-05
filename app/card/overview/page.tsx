@@ -8,16 +8,18 @@ import { DynamicBackground } from '@/components/ui/dynamic-background'
 
 function LeftSideBar() {
   return (
-    <div className="w-full md:w-[120px] bg-emerald-200 p-4 pt-[80px] flex flex-col items-center relative overflow-hidden">
-      <DynamicBackground className='transform -translate-y-[250px] md:translate-y-[100px]' />
-      <div className='flex items-center gap-2 text-gray-800 z-0'>
-        <div className='flex items-center gap-2 text-gray-800'>
-          {/* sticker icon */}
-          <ViewTransition name="sticker-icon">
-            <Link href="/card">
-              <span className='w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120' />
-            </Link>
-          </ViewTransition>
+    <div className="w-full m-h-screen md:w-[120px] bg-emerald-200 relative overflow-hidden">
+      <div className='md:w-[120px] fixed top-0 left-0 right-0 bottom-0 p-4 pt-[80px] flex flex-col items-center overflow-hidden'>
+        <DynamicBackground className='transform -translate-y-[50px] md:translate-y-[100px]' />
+        <div className='flex items-center gap-2 text-gray-800 z-0 '>
+          <div className='flex items-center gap-2 text-gray-800'>
+            {/* sticker icon */}
+            <ViewTransition name="sticker-icon">
+              <Link href="/card">
+                <span className='w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center transition-all duration-150 hover:scale-120' />
+              </Link>
+            </ViewTransition>
+          </div>
         </div>
       </div>
     </div>

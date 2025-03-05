@@ -20,7 +20,7 @@ export default function BlogPost({ post }: { post: Post }) {
             <ViewTransition name={`date-${slug}`}>
               <time className="text-gray-600">{post.date}</time>
             </ViewTransition>
-            <ViewTransition name={'title-' + slug}>
+            <ViewTransition name={`title-${slug}`}>
               <h1 className="text-5xl font-bold tracking-tight mt-8 mb-16">{post.title}</h1>
             </ViewTransition>
           </div>
