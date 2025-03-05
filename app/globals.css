@@ -85,8 +85,18 @@
 }
 
 @supports not (view-transition-name: test) {
-  [data-support] [data-support-no] {
+  [data-support] [data-support-yes] {
       display: none;
+  }
+  [data-support] [data-support-no] {
+    display: inline;
+  }
+}
+
+/* Safari */
+@supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
+  [data-support] [data-support-yes] {
+    display: none;
   }
   [data-support] [data-support-no] {
     display: inline;
