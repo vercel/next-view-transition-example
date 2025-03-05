@@ -50,11 +50,11 @@ export default function Page() {
       {/* Right Section */}
       <ViewTransition name="right-side-bar">
         <div className="w-full md:w-1/2 p-2 md:p-8">
-          <h2 className="text-xl font-medium px-2">Spots</h2>
+          <h2 className="text-xl font-medium px-2 text-gray-700 mt-4">Spots</h2>
           <div className="space-y-4 flex gap-8 p-2 flex-wrap">
             {PLACES.map((place) => (
-              <Link key={place.id} href={`/card/${place.slug}`} className=" hover:bg-gray-50 transition-colors">
-                <div className="relative md:w-[300px] min-h-[300px] flex-shrink-0 overflow-clip rounded-lg group">
+              <Link key={place.id} href={`/card/${place.slug}`} className="hover:bg-gray-50 transition-colors w-full md:w-[300px] min-h-[300px] items-stretch">
+                <div className="relative w-full h-full flex-shrink-0 overflow-clip rounded-lg group">
                   <ViewTransition name={`place-image-${place.slug}`}>
                     <Image
                       loading="eager"
