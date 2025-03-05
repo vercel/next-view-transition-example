@@ -1,13 +1,21 @@
 import Link from 'next/link'
+import { unstable_ViewTransition as ViewTransition } from 'react'
 
 export default function Page() {
   return (
     <div className="p-4 max-w-[960px] m-auto">
-      <h1 className="text-3xl py-8">React View Transition in Next.js</h1>
+      <h1 className="text-4xl py-8 font-medium">{'View Transition Next.js Examples'}</h1>
 
       <p>
         <span className="mr-2">
-          {`Use React`} <b className="text-purple-400">Experimental</b>{`<ViewTransitions> API in Next.js.`}
+          {`Use React `}
+          <b className="text-blue-400">{`Experimental `}</b>
+
+          <ViewTransition name="experimental-label">
+            <span className='inline-block font-bold'>{`<ViewTransitions>`}</span>
+          </ViewTransition>
+          
+          {` API in Next.js.`}
         </span>
       </p>
 

@@ -6,10 +6,13 @@ import { Button } from '@/components/ui/button'
 import { cx } from '@/app/utils/cx'
 import { POSTS } from '../utils/constants'
 
-export default function NewsPage() {
+export default function Page() {
   return (
     <ViewTransition>
       <div className="container mx-auto px-4 py-8 mt-8 max-w-[1200px]">
+        <ViewTransition name="experimental-label">
+          <b className="text-gray-800 inline-block">{`<ViewTransition>`}</b>
+        </ViewTransition>
         {/* Go to home page */}
         <div className="flex justify-between items-center mb-8">
           <Link href="/" className="text-blue-gray-500 hover:underline">
@@ -39,7 +42,7 @@ export default function NewsPage() {
                   </ViewTransition>
                   <ViewTransition name={`title-${item.slug}`}>
                     {/* NOTE: inline-block is required for safari */}
-                    <Link href={`/blog/${item.slug}`} className='inline-block'>
+                    <Link href={`/blog/${item.slug}`} className="inline-block">
                       <h2 className="text-2xl font-semibold mb-2">{item.title}</h2>
                     </Link>
                   </ViewTransition>

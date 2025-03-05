@@ -8,8 +8,13 @@ import { DynamicBackground } from '@/components/ui/dynamic-background'
 
 function LeftSideMenu() {
   return (
-    <div className="w-full m-h-screen md:w-1/2 bg-emerald-200 flex flex-col overflow-hidden relative">
-      <div className="fixed top-0 left-0 right-0 p-8">
+    <div className="w-full m-h-screen md:w-1/2 bg-emerald-200 overflow-hidden relative">
+      <div className="fixed top-0 left-0 bottom-0 p-8 flex flex-col">
+        <div className='my-4'>
+          <ViewTransition name="experimental-label">
+            <b className="text-gray-700 inline-block">{`<ViewTransition>`}</b>
+          </ViewTransition>
+        </div>
         <DynamicBackground />
 
         {/* sticker icon */}
