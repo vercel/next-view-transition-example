@@ -1,6 +1,6 @@
 import { cx } from '@/app/utils/cx'
 
-export function DynamicBackground({ className }: { className: string }) {
+export function DynamicBackground({ className }: { className?: string }) {
   return (
     <div
       className={cx(
