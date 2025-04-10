@@ -44,19 +44,23 @@
 }
 
 .viewTransitionWrapper :global(::view-transition-old(code-photo)),
-.viewTransitionWrapper :global(::view-transition-new(code-photo)) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
+.viewTransitionWrapper :global(::view-transition-new(code-photo)),
+.viewTransitionWrapper :global(::view-transition-old(karaoke-photo)),
+.viewTransitionWrapper :global(::view-transition-new(karaoke-photo)),
+.viewTransitionWrapper :global(::view-transition-old(cocktails-photo)),
+.viewTransitionWrapper :global(::view-transition-new(cocktails-photo)),
 .viewTransitionWrapper :global(::view-transition-old(code-description)),
-.viewTransitionWrapper :global(::view-transition-new(code-description)) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-.viewTransitionWrapper :global(::view-transition-old(code-page)),
-.viewTransitionWrapper :global(::view-transition-new(code-page)) {
+.viewTransitionWrapper :global(::view-transition-new(code-description)),
+.viewTransitionWrapper :global(::view-transition-old(karaoke-description)),
+.viewTransitionWrapper :global(::view-transition-new(karaoke-description)),
+.viewTransitionWrapper :global(::view-transition-old(cocktails-description)),
+.viewTransitionWrapper :global(::view-transition-new(cocktails-description)),
+.viewTransitionWrapper :global(::view-transition-old(code-title)),
+.viewTransitionWrapper :global(::view-transition-new(code-title)),
+.viewTransitionWrapper :global(::view-transition-old(karaoke-title)),
+.viewTransitionWrapper :global(::view-transition-new(karaoke-title)),
+.viewTransitionWrapper :global(::view-transition-old(cocktails-title)),
+.viewTransitionWrapper :global(::view-transition-new(cocktails-title)) {
   animation: none;
   mix-blend-mode: normal;
 }
