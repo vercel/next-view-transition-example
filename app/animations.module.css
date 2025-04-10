@@ -1,0 +1,62 @@
+@keyframes open-left {
+  from {
+    transform: scaleX(0.33);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes open-middle {
+  from {
+    transform: scaleX(0.33);
+    transform-origin: center;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+}
+
+@keyframes open-right {
+  from {
+    transform: scaleX(0.33);
+    transform-origin: right;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+}
+
+.open-left {
+  animation: open-left 0.5s ease-in-out forwards;
+}
+
+.open-middle {
+  animation: open-middle 0.5s ease-in-out forwards;
+}
+
+.open-right {
+  animation: open-right 0.5s ease-in-out forwards;
+}
+
+.viewTransitionWrapper :global(::view-transition-old(code-photo)),
+.viewTransitionWrapper :global(::view-transition-new(code-photo)) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.viewTransitionWrapper :global(::view-transition-old(code-description)),
+.viewTransitionWrapper :global(::view-transition-new(code-description)) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.viewTransitionWrapper :global(::view-transition-old(code-page)),
+.viewTransitionWrapper :global(::view-transition-new(code-page)) {
+  animation: none;
+  mix-blend-mode: normal;
+}
