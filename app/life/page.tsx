@@ -23,15 +23,13 @@ export default function Page() {
                 </div>
               </div>
             </ViewTransition>
-            <ViewTransition name="code-description">
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <ViewTransition name="code-title">
-                    <h2 className="text-3xl font-bold text-white mb-4">Code</h2>
-                  </ViewTransition>
-                </div>
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <div className="text-center p-8">
+                <ViewTransition name="code-title">
+                  <h2 className="text-3xl font-bold text-white mb-4">Code</h2>
+                </ViewTransition>
               </div>
-            </ViewTransition>
+            </div>
           </Link>
         </ViewTransition>
 
@@ -52,17 +50,15 @@ export default function Page() {
                 </div>
               </div>
             </ViewTransition>
-            <ViewTransition name="karaoke-description">
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <ViewTransition name="karaoke-title">
-                    <h2 className="text-3xl font-bold text-white mb-4">
-                      Karaoke
-                    </h2>
-                  </ViewTransition>
-                </div>
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <div className="text-center p-8">
+                <ViewTransition name="karaoke-title">
+                  <h2 className="text-3xl font-bold text-white mb-4">
+                    Karaoke
+                  </h2>
+                </ViewTransition>
               </div>
-            </ViewTransition>
+            </div>
           </Link>
         </ViewTransition>
 
@@ -83,17 +79,15 @@ export default function Page() {
                 </div>
               </div>
             </ViewTransition>
-            <ViewTransition name="cocktails-description">
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <ViewTransition name="cocktails-title">
-                    <h2 className="text-3xl font-bold text-white mb-4">
-                      Cocktails
-                    </h2>
-                  </ViewTransition>
-                </div>
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <div className="text-center p-8">
+                <ViewTransition name="cocktails-title">
+                  <h2 className="text-3xl font-bold text-white mb-4">
+                    Cocktails
+                  </h2>
+                </ViewTransition>
               </div>
-            </ViewTransition>
+            </div>
           </Link>
         </ViewTransition>
       </div>

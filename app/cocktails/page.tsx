@@ -13,41 +13,35 @@ export default function CocktailsPage() {
         ← Back
       </Link>
       <div className="grid grid-cols-3 h-screen">
-        {/* Description Section */}
-        <ViewTransition name="cocktails-description">
-          <div className={`col-span-2 ${styles.viewTransitionWrapper}`}>
-            <div
-              className={`backdrop-blur-sm p-12 flex flex-col justify-center h-full ${styles["open-left"]}`}
-            >
-              <ViewTransition name="cocktails-title">
-                <h1 className="text-4xl font-bold mb-6 text-white">
-                  Cocktails
-                </h1>
-              </ViewTransition>
-              <div className="space-y-4 text-lg text-white/90">
-                <p>
-                  Crafting cocktails is where science meets artistry. Each drink
-                  is an opportunity to experiment with flavors, textures, and
-                  presentations, creating unique experiences for every glass.
-                </p>
-                <p>
-                  I love diving deep into the history of classic cocktails while
-                  also pushing the boundaries with modern techniques and
-                  unexpected ingredient combinations. The precision required in
-                  measuring, the timing of preparation, and the final garnish –
-                  every detail matters.
-                </p>
-                <p>
-                  Whether I'm perfecting a traditional Manhattan or inventing
-                  something new, the joy of sharing these creations with friends
-                  and seeing their reactions makes every experiment worthwhile.
-                </p>
-              </div>
+        <div className={`col-span-2 ${styles.viewTransitionWrapper}`}>
+          <div
+            className={`backdrop-blur-sm p-12 flex flex-col justify-center h-full ${styles["open-left"]}`}
+          >
+            <ViewTransition name="cocktails-title">
+              <h1 className="text-4xl font-bold mb-6 text-white">Cocktails</h1>
+            </ViewTransition>
+            <div className="space-y-4 text-lg text-white/90">
+              <p>
+                Crafting cocktails is where science meets artistry. Each drink
+                is an opportunity to experiment with flavors, textures, and
+                presentations, creating unique experiences for every glass.
+              </p>
+              <p>
+                I love diving deep into the history of classic cocktails while
+                also pushing the boundaries with modern techniques and
+                unexpected ingredient combinations. The precision required in
+                measuring, the timing of preparation, and the final garnish –
+                every detail matters.
+              </p>
+              <p>
+                Whether I'm perfecting a traditional Manhattan or inventing
+                something new, the joy of sharing these creations with friends
+                and seeing their reactions makes every experiment worthwhile.
+              </p>
             </div>
           </div>
-        </ViewTransition>
+        </div>
 
-        {/* Photo Section */}
         <ViewTransition name="cocktails-photo">
           <div className="relative h-full bg-[#556D43] flex items-center justify-center pb-0 pt-8 px-8">
             <div className="relative w-full h-full">
