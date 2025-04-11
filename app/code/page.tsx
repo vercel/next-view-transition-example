@@ -33,7 +33,7 @@ export default function CodePage() {
         <ViewTransition name="code-description">
           <div className={`col-span-2 ${styles.viewTransitionWrapper}`}>
             <div
-              className={`backdrop-blur-sm p-12 flex flex-col justify-center h-full ${styles["open-right"]}`}
+              className={`backdrop-blur-sm p-12 flex flex-col justify-center h-full ${styles["open-left"]}`}
             >
               <ViewTransition name="code-title">
                 <h1 className="text-4xl font-bold mb-6 text-white">Code</h1>

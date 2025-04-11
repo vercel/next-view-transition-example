@@ -32,15 +32,15 @@
 }
 
 .open-left {
-  animation: open-left 0.5s ease-in-out forwards;
+  animation: open-left 0.5s linear forwards;
 }
 
 .open-middle {
-  animation: open-middle 0.5s ease-in-out forwards;
+  animation: open-middle 0.5s linear forwards;
 }
 
 .open-right {
-  animation: open-right 0.5s ease-in-out forwards;
+  animation: open-right 0.5s linear forwards;
 }
 
 .viewTransitionWrapper :global(::view-transition-old(code-photo)),
