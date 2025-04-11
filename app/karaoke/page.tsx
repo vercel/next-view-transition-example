@@ -5,7 +5,7 @@ import styles from "../animations.module.css";
 
 export default function KaraokePage() {
   return (
-    <div className="min-h-screen bg-[#64A2BA]">
+    <div className="min-h-screen bg-[#E09E8E]">
       <Link
         href="/life"
         className="absolute top-8 left-8 text-white hover:text-white/80 flex items-center gap-2 z-10"
