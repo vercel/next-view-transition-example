@@ -49,14 +49,17 @@ export default function CocktailsPage() {
 
         {/* Photo Section */}
         <ViewTransition name="cocktails-photo">
-          <div className="relative h-full">
-            <Image
-              src="/life/cocktails.png"
-              alt="Cocktails"
-              fill
-              className="object-cover"
-              sizes="33vw"
-            />
+          <div className="relative h-full bg-[#556D43] flex items-center justify-center pb-0 pt-8 px-8">
+            <div className="relative w-full h-full">
+              <Image
+                src="/life/cocktails.png"
+                alt="Cocktails"
+                fill
+                className="object-contain"
+                sizes="33vw"
+                priority
+              />
+            </div>
           </div>
         </ViewTransition>
       </div>

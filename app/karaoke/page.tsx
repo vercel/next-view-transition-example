@@ -35,14 +35,17 @@ export default function KaraokePage() {
 
         {/* Photo Section */}
         <ViewTransition name="karaoke-photo">
-          <div className="relative h-full">
-            <Image
-              src="/life/karaoke.png"
-              alt="Karaoke"
-              fill
-              className="object-cover"
-              sizes="33vw"
-            />
+          <div className="relative h-full bg-[#E09E8E] flex items-center justify-center pb-0 pt-8 px-8">
+            <div className="relative w-full h-full">
+              <Image
+                src="/life/karaoke.png"
+                alt="Karaoke"
+                fill
+                className="object-contain"
+                sizes="33vw"
+                priority
+              />
+            </div>
           </div>
         </ViewTransition>
 

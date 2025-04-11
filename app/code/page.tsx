@@ -15,14 +15,17 @@ export default function CodePage() {
       <div className="grid grid-cols-3 h-screen">
         {/* Photo Section */}
         <ViewTransition name="code-photo">
-          <div className="relative h-full">
-            <Image
-              src="/life/code.png"
-              alt="Code"
-              fill
-              className="object-cover"
-              sizes="33vw"
-            />
+          <div className="relative h-full bg-[#64A2BA] flex items-center justify-center pb-0 pt-8 px-8">
+            <div className="relative w-full h-full">
+              <Image
+                src="/life/code.png"
+                alt="Code"
+                fill
+                className="object-contain"
+                sizes="33vw"
+                priority
+              />
+            </div>
           </div>
         </ViewTransition>
 
