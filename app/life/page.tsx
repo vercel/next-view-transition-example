@@ -10,13 +10,18 @@ export default function Page() {
         <ViewTransition name="code-page">
           <Link href="/code" className="block h-full relative">
             <ViewTransition name="code-photo">
-              <Image
-                src="/life/code.png"
-                alt="Code"
-                fill
-                className="object-cover"
-                sizes="33vw"
-              />
+              <div className="relative h-full bg-[#64A2BA] flex items-center justify-center pb-0 pt-8 px-8">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/life/code.png"
+                    alt="Code"
+                    fill
+                    className="object-contain"
+                    sizes="33vw"
+                    priority
+                  />
+                </div>
+              </div>
             </ViewTransition>
             <ViewTransition name="code-description">
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -34,13 +39,18 @@ export default function Page() {
         <ViewTransition name="karaoke-page">
           <Link href="/karaoke" className="block h-full relative">
             <ViewTransition name="karaoke-photo">
-              <Image
-                src="/life/karaoke.png"
-                alt="Karaoke"
-                fill
-                className="object-cover"
-                sizes="33vw"
-              />
+              <div className="relative h-full bg-[#E09E8E] flex items-center justify-center pb-0 pt-8 px-8">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/life/karaoke.png"
+                    alt="Karaoke"
+                    fill
+                    className="object-contain"
+                    sizes="33vw"
+                    priority
+                  />
+                </div>
+              </div>
             </ViewTransition>
             <ViewTransition name="karaoke-description">
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -60,13 +70,18 @@ export default function Page() {
         <ViewTransition name="cocktails-page">
           <Link href="/cocktails" className="block h-full relative">
             <ViewTransition name="cocktails-photo">
-              <Image
-                src="/life/cocktails.png"
-                alt="Cocktails"
-                fill
-                className="object-cover"
-                sizes="33vw"
-              />
+              <div className="relative h-full bg-[#556D43] flex items-center justify-center pb-0 pt-8 px-8">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/life/cocktails.png"
+                    alt="Cocktails"
+                    fill
+                    className="object-contain"
+                    sizes="33vw"
+                    priority
+                  />
+                </div>
+              </div>
             </ViewTransition>
             <ViewTransition name="cocktails-description">
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
