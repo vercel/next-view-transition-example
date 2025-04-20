@@ -7,7 +7,7 @@ export default function CocktailsPage() {
   return (
     <div className="min-h-screen bg-[#556D43]">
       <Link
-        href="/life"
+        href="/"
         className="absolute top-8 left-8 text-white hover:text-white/80 flex items-center gap-2 z-10"
       >
         ← Back
@@ -46,7 +46,7 @@ export default function CocktailsPage() {
           <div className="relative h-full bg-[#556D43] flex items-center justify-center pb-0 pt-8 px-8">
             <div className="relative w-full h-full">
               <Image
-                src="/life/cocktails.png"
+                src="/cocktails.png"
                 alt="Cocktails"
                 fill
                 className="object-contain"

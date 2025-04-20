@@ -7,7 +7,7 @@ export default function KaraokePage() {
   return (
     <div className="min-h-screen bg-[#E09E8E]">
       <Link
-        href="/life"
+        href="/"
         className="absolute top-8 left-8 text-white hover:text-white/80 flex items-center gap-2 z-10"
       >
         ← Back
@@ -34,7 +34,7 @@ export default function KaraokePage() {
           <div className="relative h-full bg-[#E09E8E] flex items-center justify-center pb-0 pt-8 px-8">
             <div className="relative w-full h-full">
               <Image
-                src="/life/karaoke.png"
+                src="/karaoke.png"
                 alt="Karaoke"
                 fill
                 className="object-contain"
