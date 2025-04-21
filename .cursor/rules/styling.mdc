@@ -1,0 +1,30 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Styling Guide
+
+The application uses a combination of Tailwind CSS and CSS modules for styling.
+
+## Tailwind CSS
+
+- Utility-first CSS framework configured in [tailwind.config.ts](mdc:tailwind.config.ts)
+- Used for layout, spacing, colors, and responsive design
+- Example classes:
+  - `grid grid-cols-3` for three-column layout
+  - `relative h-full` for full-height containers
+  - `object-contain` for image scaling
+
+## CSS Modules
+
+- Custom animations and transitions are defined in [app/animations.module.css](mdc:app/animations.module.css)
+- Used for complex animations that can't be achieved with Tailwind alone
+
+## Image Handling
+
+Images use Next.js's Image component with specific configurations:
+- `fill` prop for parent-relative sizing
+- `object-contain` for proper scaling
+- `sizes="33vw"` for responsive image loading
+- `priority` prop for important above-the-fold images

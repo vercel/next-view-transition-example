@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Structure Guide
+
+This is a Next.js application that demonstrates view transitions between different pages. The project uses:
+- Next.js with App Router
+- TypeScript
+- Tailwind CSS for styling
+- View Transitions API
+
+## Key Files and Directories
+
+- [app/page.tsx](mdc:app/page.tsx) - Main landing page with grid layout and view transitions
+- [app/layout.tsx](mdc:app/layout.tsx) - Root layout component
+- [app/animations.module.css](mdc:app/animations.module.css) - CSS animations and transitions
+- [tailwind.config.ts](mdc:tailwind.config.ts) - Tailwind configuration
+
+## Project Pages
+
+The application consists of three main sections:
+1. Code section (/code)
+2. Karaoke section (/karaoke)
+3. Cocktails section (/cocktails)
+
+Each section uses view transitions for smooth navigation and visual effects.

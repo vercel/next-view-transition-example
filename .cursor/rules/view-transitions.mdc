@@ -1,0 +1,35 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# View Transitions Guide
+
+The application uses the experimental View Transitions API from Next.js to create smooth transitions between pages.
+
+## Implementation Details
+
+- View transitions are implemented using the `unstable_ViewTransition` component from Next.js
+- Each section has multiple named transitions:
+  - Page transition (e.g., `code-page`)
+  - Photo transition (e.g., `code-photo`)
+  - Title transition (e.g., `code-title`)
+
+## Example Usage
+
+In [app/page.tsx](mdc:app/page.tsx), transitions are wrapped around elements that should animate:
+
+```tsx
+<ViewTransition name="code-page">
+  <Link href="/code">
+    <ViewTransition name="code-photo">
+      {/* Photo content */}
+    </ViewTransition>
+    <ViewTransition name="code-title">
+      {/* Title content */}
+    </ViewTransition>
+  </Link>
+</ViewTransition>
+```
+
+The transitions are coordinated between pages to create smooth animations when navigating between different sections.
