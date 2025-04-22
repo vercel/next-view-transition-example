@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
+import ScrollArrow from "../components/ScrollArrow";
 import CocktailsView from "./CocktailsView";
-import ScrollArrow from "./ScrollArrow";
 import { Cocktail } from "./types";
 
 export default function CocktailsPage() {
