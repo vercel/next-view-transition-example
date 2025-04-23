@@ -5,7 +5,7 @@ import "./FloatingBall.css";
 export default function FloatingBall({
   content,
   onClick,
-  size = 100,
+  size,
 }: {
   content: React.ReactNode;
   onClick: () => void;
@@ -15,7 +15,7 @@ export default function FloatingBall({
     <div
       className="ball"
       onClick={onClick}
-      style={{ width: size, height: size }}
+      style={size ? { width: size, height: size } : {}}
     >
       <div className="ball-content">{content}</div>
     </div>

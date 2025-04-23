@@ -1,4 +1,3 @@
-import { getContrastColor } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 import FloatingBall from "../components/FloatingBall";
@@ -25,8 +24,8 @@ export default function CocktailsView() {
               <Image
                 src={cocktail.fruitImage}
                 alt={cocktail.fruitImageAlt}
-                width={100}
-                height={100}
+                fill
+                loading="lazy"
               />
             }
             onClick={() => setSelectedCocktail(cocktail)}
@@ -34,10 +33,7 @@ export default function CocktailsView() {
         ))}
       </div>
 
-      <div
-        className="container mx-auto"
-        style={{ color: getContrastColor(selectedCocktail.backgroundColor) }}
-      >
+      <div className="container mx-auto" style={{ color: "#ffffff" }}>
         {/* Title and Description */}
         <div className="text-center mb-10">
           <h1 className="text-[80px] font-serif">{selectedCocktail.name}</h1>

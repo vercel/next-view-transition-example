@@ -30,7 +30,7 @@
       "Orange peel",
       "Maraschino cherry"
     ],
-    "backgroundColor": "#556D43"
+    "backgroundColor": "#F6D030"
   },
   {
     "name": "Kentucky Maid",
@@ -47,7 +47,7 @@
       "6 mint leaves",
       "Ice cubes"
     ],
-    "backgroundColor": "#556D43"
+    "backgroundColor": "#D9D77E"
   },
   {
     "name": "Amerie spritz",
@@ -63,7 +63,7 @@
       "Ice cubes",
       "Fresh wild strawberries or raspberries"
     ],
-    "backgroundColor": "#556D43"
+    "backgroundColor": "#E7818A"
   },
   {
     "name": "Whiskey Sour",
@@ -81,6 +81,6 @@
       "Lemon wedge",
       "Ice cubes"
     ],
-    "backgroundColor": "#556D43"
+    "backgroundColor": "#F4A447"
   }
 ]
