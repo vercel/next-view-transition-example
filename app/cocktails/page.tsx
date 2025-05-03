@@ -2,16 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import { unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
 import CocktailsView from "./CocktailsView";
-import { Cocktail } from "./types";
 
 export default function CocktailsPage() {
-  const [selectedCocktail, setSelectedCocktail] = useState<Cocktail | null>(
-    null
-  );
   return (
     <>
       <div className="min-h-screen bg-[#556D43]">
