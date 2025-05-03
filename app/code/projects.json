@@ -3,6 +3,7 @@
     "name": "Vertical Timeline",
     "projectImage": "/code/vertical-timeline.png",
     "projectImageAlt": "Vertical Timeline",
+    "projectLink": "https://v0-vertical-timeline.vercel.app/",
     "description": "A refreshing and light cocktail made with tequila, lime juice, and a splash of soda water, topped with a salt rim and a lime wedge.",
     "stack": [
       "React",
@@ -17,6 +18,7 @@
     "name": "Upgrade T3 App",
     "projectImage": "/code/upgrade-t3-app.png",
     "projectImageAlt": "Upgrade T3 App",
+    "projectLink": "https://t3-upgrade-web.vercel.app/",
     "description": "A timeless cocktail combining whiskey, sugar, and bitters, garnished with an orange peel and cherry for a classic finish.",
     "stack": [
       "React",
@@ -31,6 +33,7 @@
     "name": "Matryoshka Tic Tac Toe",
     "projectImage": "/code/matryoshka-tic-tac-toe.png",
     "projectImageAlt": "Matryoshka Tic Tac Toe",
+    "projectLink": "https://matryoshka-tic-tac-toe.vercel.app/",
     "description": "A refreshing blend of bourbon, lime juice, cucumber, and mint, perfect for warm evenings.",
     "stack": [
       "React",

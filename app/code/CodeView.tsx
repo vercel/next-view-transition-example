@@ -12,7 +12,7 @@ export default function CodeView() {
       className="min-h-screen px-8 py-12 transition-colors duration-500"
       style={{ backgroundColor: selectedProject?.backgroundColor }}
     >
-      {/* Floating fruits row */}
+      {/* Floating projects row */}
       <div className="flex justify-center flex-wrap gap-8 mb-4">
         {projects.map((project) => (
           <FloatingBall
@@ -42,9 +42,9 @@ export default function CodeView() {
 
         {/* Content Grid */}
         <div className="grid grid-cols-2 gap-16">
-          {/* Ingredients */}
+          {/* Stack */}
           <div className="flex flex-col gap-4 items-center justify-center">
-            <h2 className="text-4xl font-bold mb-4">INGREDIENTS</h2>
+            <h2 className="text-4xl font-bold mb-4">STACK</h2>
             <ul className="space-y-4 text-xl">
               {selectedProject.stack.map((stack) => (
                 <li key={stack}>{stack}</li>
@@ -52,18 +52,12 @@ export default function CodeView() {
             </ul>
           </div>
 
-          {/* Cocktail Image */}
+          {/* Project Preview */}
           <div className="flex items-center justify-center">
-            <div className="relative w-[300px] aspect-[2/3] rounded-3xl">
-              <Image
-                src={selectedProject.projectImage}
-                alt={selectedProject.projectImageAlt}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 300px"
-                loading="lazy"
-              />
-            </div>
+            <iframe
+              src={selectedProject.projectLink}
+              className="w-full h-full"
+            />
           </div>
         </div>
       </div>
