@@ -20,7 +20,7 @@ export default function CodeView() {
             onClick={() => setSelectedProject(project)}
           >
             <p className="text-center p-2">{project.name}</p>
-            <LaptopModel modelKey={index + 1} />
+            <LaptopModel imageSrc={project.projectImage} />
           </div>
         ))}
       </div>

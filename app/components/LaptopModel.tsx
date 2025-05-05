@@ -5,8 +5,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import * as THREE from "three";
 
-function Model({ modelKey }: { modelKey: number }) {
-  const gltf = useGLTF(`/laptop-${modelKey}.glb`);
+function Model({ imageSrc }: { imageSrc: string }) {
+  const gltf = useGLTF(imageSrc);
   const modelRef = useRef<THREE.Group>(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -31,11 +31,10 @@ function Model({ modelKey }: { modelKey: number }) {
     </mesh>
   );
 }
-export default function LaptopModel({ modelKey }: { modelKey: number }) {
+export default function LaptopModel({ imageSrc }: { imageSrc: string }) {
   return (
     <div className="w-full h-full">
       <Canvas
-        key={modelKey}
         camera={{
           fov: 45,
           near: 0.1,
@@ -45,7 +44,7 @@ export default function LaptopModel({ modelKey }: { modelKey: number }) {
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
-        <Model modelKey={modelKey} />
+        <Model imageSrc={imageSrc} />
         <OrbitControls
           enableZoom={false}
           enablePan={false}
