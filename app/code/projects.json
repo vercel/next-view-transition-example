@@ -3,13 +3,15 @@
     "name": "Vertical Timeline",
     "projectImage": "/code/vertical-timeline.glb",
     "projectLink": "https://v0-vertical-timeline.vercel.app/",
-    "description": "A refreshing and light cocktail made with tequila, lime juice, and a splash of soda water, topped with a salt rim and a lime wedge.",
+    "description": "Lately, I felt like my memory is decaying so I created this project as a way to store memories and position myself better in time",
     "stack": [
       "React",
       "Next.js",
       "Tailwind CSS",
       "TypeScript",
-      "Framer Motion"
+      "Supabase",
+      "React Query",
+      "Uploadthing"
     ],
     "backgroundColor": "#FFD3D9"
   },
@@ -17,13 +19,12 @@
     "name": "Upgrade T3 App",
     "projectImage": "/code/upgrade-t3-app.glb",
     "projectLink": "https://t3-upgrade-web.vercel.app/",
-    "description": "A timeless cocktail combining whiskey, sugar, and bitters, garnished with an orange peel and cherry for a classic finish.",
+    "description": "A framework I was using (T3) wasn't giving a clear way to upgrade from one version to another. Using basic Git diffing, I created a way to generate all diffs between versions so that upgrading can become easier",
     "stack": [
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-      "TypeScript",
-      "Framer Motion"
+      "T3 Stack",
+      "Node.js",
+      "Git",
+      "Zod"
     ],
     "backgroundColor": "#F6D030"
   },
@@ -31,13 +32,11 @@
     "name": "Matryoshka Tic Tac Toe",
     "projectImage": "/code/matryoshka-tic-tac-toe.glb",
     "projectLink": "https://matryoshka-tic-tac-toe.vercel.app/",
-    "description": "A refreshing blend of bourbon, lime juice, cucumber, and mint, perfect for warm evenings.",
+    "description": "Tic Tac Toe with an interesting twist. The goal is still to do 3 in a row on rows/columns/diagonals but the twist is that your pieces can take smaller pieces.",
     "stack": [
       "React",
-      "Next.js",
-      "Tailwind CSS",
-      "TypeScript",
-      "Framer Motion"
+      "Vite",
+      "Vitest"
     ],
     "backgroundColor": "#D9D77E"
   }
