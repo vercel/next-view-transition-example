@@ -9,7 +9,7 @@ export default function CodeView() {
   return (
     <div
       className="min-h-screen px-8 py-12 transition-colors duration-500"
-      style={{ backgroundColor: selectedProject?.backgroundColor }}
+      style={{ backgroundColor: "#0c7aa4" }}
     >
       {/* Floating projects row */}
       <div className="flex justify-center flex-wrap gap-8 mb-4">

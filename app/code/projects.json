@@ -12,8 +12,7 @@
       "Supabase",
       "React Query",
       "Uploadthing"
-    ],
-    "backgroundColor": "#FFD3D9"
+    ]
   },
   {
     "name": "Upgrade T3 App",
@@ -25,8 +24,7 @@
       "Node.js",
       "Git",
       "Zod"
-    ],
-    "backgroundColor": "#F6D030"
+    ]
   },
   {
     "name": "Matryoshka Tic Tac Toe",
@@ -37,7 +35,6 @@
       "React",
       "Vite",
       "Vitest"
-    ],
-    "backgroundColor": "#D9D77E"
+    ]
   }
 ]

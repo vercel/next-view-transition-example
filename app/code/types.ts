@@ -4,5 +4,4 @@ export type Project = {
   projectLink: string;
   description: string;
   stack: string[];
-  backgroundColor: string;
 };
