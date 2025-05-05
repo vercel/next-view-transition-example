@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Paloma",
+    "fruitImage": "/cocktails/grapefruit.png",
+    "fruitImageAlt": "Grapefruit",
+    "cocktailImage": "/cocktails/paloma.png",
+    "cocktailImageAlt": "Paloma",
+    "description": "A refreshing and light cocktail made with tequila, lime juice, and a splash of soda water, topped with a salt rim and a lime wedge.",
+    "ingredients": [
+      "Tequila",
+      "Lime juice",
+      "Soda water",
+      "Salt",
+      "Lime wedge"
+    ],
+    "backgroundColor": "#FFD3D9"
+  },
+  {
+    "name": "Old Fashioned",
+    "fruitImage": "/cocktails/orange.png",
+    "fruitImageAlt": "Orange",
+    "cocktailImage": "/cocktails/old-fashioned.png",
+    "cocktailImageAlt": "Old Fashioned",
+    "description": "A timeless cocktail combining whiskey, sugar, and bitters, garnished with an orange peel and cherry for a classic finish.",
+    "ingredients": [
+      "2 oz bourbon or rye whiskey",
+      "1 sugar cube",
+      "2-3 dashes Angostura bitters",
+      "Splash of water",
+      "Orange peel",
+      "Maraschino cherry"
+    ],
+    "backgroundColor": "#F6D030"
+  },
+  {
+    "name": "Kentucky Maid",
+    "fruitImage": "/cocktails/cucumber.png",
+    "fruitImageAlt": "Cucumber",
+    "cocktailImage": "/cocktails/kentucky-maid.png",
+    "cocktailImageAlt": "Kentucky Maid",
+    "description": "A refreshing blend of bourbon, lime juice, cucumber, and mint, perfect for warm evenings.",
+    "ingredients": [
+      "2 oz bourbon",
+      "1 oz fresh lime juice",
+      "1 oz simple syrup",
+      "4 slices cucumber",
+      "6 mint leaves",
+      "Ice cubes"
+    ],
+    "backgroundColor": "#D9D77E"
+  },
+  {
+    "name": "Amerie spritz",
+    "fruitImage": "/cocktails/fragute.png",
+    "fruitImageAlt": "Wild Strawberry",
+    "cocktailImage": "/cocktails/amerie-spritz.png",
+    "cocktailImageAlt": "Amerie spritz",
+    "description": "A refreshing and light cocktail made with Amerie, Prosecco and fresh mint.",
+    "ingredients": [
+      "Amerie",
+      "Prosecco",
+      "Fresh mint",
+      "Ice cubes",
+      "Fresh wild strawberries or raspberries"
+    ],
+    "backgroundColor": "#E7818A"
+  },
+  {
+    "name": "Whiskey Sour",
+    "fruitImage": "/cocktails/lemon.png",
+    "fruitImageAlt": "Lemon",
+    "cocktailImage": "/cocktails/whiskey-sour.png",
+    "cocktailImageAlt": "Whiskey Sour",
+    "description": "A classic cocktail featuring whiskey, fresh lemon juice, and simple syrup, shaken to perfection and garnished with a cherry and lemon wedge.",
+    "ingredients": [
+      "2 oz whiskey",
+      "1 oz fresh lemon juice",
+      "3/4 oz simple syrup",
+      "1/2 oz egg white (optional)",
+      "Maraschino cherry",
+      "Lemon wedge",
+      "Ice cubes"
+    ],
+    "backgroundColor": "#F4A447"
+  }
+]
