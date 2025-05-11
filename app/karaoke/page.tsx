@@ -11,17 +11,17 @@ export default function KaraokePage() {
       <div className="min-h-screen bg-[#E09E8E]">
         <Link
           href="/"
-          className="absolute top-8 left-8 text-white hover:text-white/80 flex items-center gap-2 z-10"
+          className="absolute top-8 left-8 z-10 flex items-center gap-2 text-white hover:text-white/80"
         >
           ← Back
         </Link>
-        <div className="grid grid-cols-3 h-screen">
+        <div className="grid h-screen grid-cols-3">
           <div className={`${styles.viewTransitionWrapper}`}>
             <div
-              className={`backdrop-blur-sm p-12 flex flex-col justify-center h-full ${styles["open-middle"]}`}
+              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
             >
               <ViewTransition name="karaoke-title">
-                <h1 className="text-4xl font-bold mb-6 text-white">Karaoke</h1>
+                <h1 className="mb-6 text-4xl font-bold text-white">Karaoke</h1>
               </ViewTransition>
               <div className="space-y-4 text-lg text-white/90">
                 <p>
@@ -34,8 +34,8 @@ export default function KaraokePage() {
           </div>
 
           <ViewTransition name="karaoke-photo">
-            <div className="relative h-full bg-[#E09E8E] flex items-center justify-center pb-0 pt-8 px-8">
-              <div className="relative w-full h-full">
+            <div className="relative flex h-full items-center justify-center bg-[#E09E8E] px-8 pt-8 pb-0">
+              <div className="relative h-full w-full">
                 <Image
                   src="/karaoke.png"
                   alt="Karaoke"
@@ -50,7 +50,7 @@ export default function KaraokePage() {
 
           <div className={`${styles.viewTransitionWrapper}`}>
             <div
-              className={`backdrop-blur-sm p-12 flex flex-col justify-center h-full ${styles["open-middle"]}`}
+              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
             >
               <div className="space-y-4 text-lg text-white/90">
                 <p>

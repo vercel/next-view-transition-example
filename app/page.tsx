@@ -5,13 +5,13 @@ import { unstable_ViewTransition as ViewTransition } from "react";
 export default function Page() {
   return (
     <div className="min-h-screen">
-      <div className="grid grid-cols-3 h-screen">
+      <div className="grid h-screen grid-cols-3">
         {/* Code Section */}
         <ViewTransition name="code-page">
-          <Link href="/code" className="block h-full relative">
+          <Link href="/code" className="relative block h-full">
             <ViewTransition name="code-photo">
-              <div className="relative h-full bg-[#64A2BA] flex items-center justify-center pb-0 pt-8 px-8">
-                <div className="relative w-full h-full">
+              <div className="relative flex h-full items-center justify-center bg-[#64A2BA] px-8 pt-8 pb-0">
+                <div className="relative h-full w-full">
                   <Image
                     src="/code.png"
                     alt="Code"
@@ -23,10 +23,10 @@ export default function Page() {
                 </div>
               </div>
             </ViewTransition>
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <div className="text-center p-8">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div className="p-8 text-center">
                 <ViewTransition name="code-title">
-                  <h2 className="text-3xl font-bold text-white mb-4">Code</h2>
+                  <h2 className="mb-4 text-3xl font-bold text-white">Code</h2>
                 </ViewTransition>
               </div>
             </div>
@@ -35,10 +35,10 @@ export default function Page() {
 
         {/* Karaoke Section */}
         <ViewTransition name="karaoke-page">
-          <Link href="/karaoke" className="block h-full relative">
+          <Link href="/karaoke" className="relative block h-full">
             <ViewTransition name="karaoke-photo">
-              <div className="relative h-full bg-[#E09E8E] flex items-center justify-center pb-0 pt-8 px-8">
-                <div className="relative w-full h-full">
+              <div className="relative flex h-full items-center justify-center bg-[#E09E8E] px-8 pt-8 pb-0">
+                <div className="relative h-full w-full">
                   <Image
                     src="/karaoke.png"
                     alt="Karaoke"
@@ -50,10 +50,10 @@ export default function Page() {
                 </div>
               </div>
             </ViewTransition>
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <div className="text-center p-8">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div className="p-8 text-center">
                 <ViewTransition name="karaoke-title">
-                  <h2 className="text-3xl font-bold text-white mb-4">
+                  <h2 className="mb-4 text-3xl font-bold text-white">
                     Karaoke
                   </h2>
                 </ViewTransition>
@@ -64,10 +64,10 @@ export default function Page() {
 
         {/* Cocktails Section */}
         <ViewTransition name="cocktails-page">
-          <Link href="/cocktails" className="block h-full relative">
+          <Link href="/cocktails" className="relative block h-full">
             <ViewTransition name="cocktails-photo">
-              <div className="relative h-full bg-[#556D43] flex items-center justify-center pb-0 pt-8 px-8">
-                <div className="relative w-full h-full">
+              <div className="relative flex h-full items-center justify-center bg-[#556D43] px-8 pt-8 pb-0">
+                <div className="relative h-full w-full">
                   <Image
                     src="/cocktails.png"
                     alt="Cocktails"
@@ -79,10 +79,10 @@ export default function Page() {
                 </div>
               </div>
             </ViewTransition>
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-              <div className="text-center p-8">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div className="p-8 text-center">
                 <ViewTransition name="cocktails-title">
-                  <h2 className="text-3xl font-bold text-white mb-4">
+                  <h2 className="mb-4 text-3xl font-bold text-white">
                     Cocktails
                   </h2>
                 </ViewTransition>

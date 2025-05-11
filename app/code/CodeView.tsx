@@ -12,14 +12,14 @@ export default function CodeView() {
       style={{ backgroundColor: "#0c7aa4" }}
     >
       {/* Floating projects row */}
-      <div className="flex justify-center flex-wrap gap-8 mb-4">
+      <div className="mb-4 flex flex-wrap justify-center gap-8">
         {projects.map((project, index) => (
           <div
             key={project.name}
-            className="w-[200px] h-[150px] cursor-pointer"
+            className="h-[150px] w-[200px] cursor-pointer"
             onClick={() => setSelectedProject(project)}
           >
-            <p className="text-center p-2">{project.name}</p>
+            <p className="p-2 text-center">{project.name}</p>
             <LaptopModel imageSrc={project.projectImage} />
           </div>
         ))}
@@ -27,9 +27,9 @@ export default function CodeView() {
 
       <div className="container mx-auto" style={{ color: "#ffffff" }}>
         {/* Title and Description */}
-        <div className="text-center mb-10">
-          <h1 className="text-[80px] font-serif">{selectedProject.name}</h1>
-          <p className="text-2xl max-w-3xl mx-auto">
+        <div className="mb-10 text-center">
+          <h1 className="font-serif text-[80px]">{selectedProject.name}</h1>
+          <p className="mx-auto max-w-3xl text-2xl">
             {selectedProject.description}
           </p>
         </div>
@@ -37,8 +37,8 @@ export default function CodeView() {
         {/* Content Grid */}
         <div className="flex justify-around gap-16">
           {/* Stack */}
-          <div className="flex flex-col gap-4 items-center justify-center">
-            <h2 className="text-4xl font-bold mb-4">STACK</h2>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <h2 className="mb-4 text-4xl font-bold">STACK</h2>
             <ul className="space-y-4 text-xl">
               {selectedProject.stack.map((stack) => (
                 <li key={stack}>{stack}</li>
@@ -47,10 +47,10 @@ export default function CodeView() {
           </div>
 
           {/* Project Preview */}
-          <div className="w-[800px] h-[460px]">
+          <div className="h-[460px] w-[800px]">
             <iframe
               src={selectedProject.projectLink}
-              className="w-full h-full rounded-lg shadow-lg"
+              className="h-full w-full rounded-lg shadow-lg"
             />
           </div>
         </div>

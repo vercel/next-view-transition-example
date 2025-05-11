@@ -33,7 +33,7 @@ function Model({ imageSrc }: { imageSrc: string }) {
 }
 export default function LaptopModel({ imageSrc }: { imageSrc: string }) {
   return (
-    <div className="w-full h-full">
+    <div className="h-full w-full">
       <Canvas
         camera={{
           fov: 45,

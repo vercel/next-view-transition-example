@@ -6,7 +6,7 @@ import { Cocktail } from "./types";
 
 export default function CocktailsView() {
   const [selectedCocktail, setSelectedCocktail] = useState<Cocktail>(
-    cocktails[0]
+    cocktails[0],
   );
 
   return (
@@ -15,7 +15,7 @@ export default function CocktailsView() {
       style={{ backgroundColor: selectedCocktail?.backgroundColor }}
     >
       {/* Floating fruits row */}
-      <div className="flex justify-center flex-wrap gap-8 mb-4">
+      <div className="mb-4 flex flex-wrap justify-center gap-8">
         {cocktails.map((cocktail) => (
           <FloatingBall
             key={cocktail.name}
@@ -35,9 +35,9 @@ export default function CocktailsView() {
 
       <div className="container mx-auto" style={{ color: "#ffffff" }}>
         {/* Title and Description */}
-        <div className="text-center mb-10">
-          <h1 className="text-[80px] font-serif">{selectedCocktail.name}</h1>
-          <p className="text-2xl max-w-3xl mx-auto">
+        <div className="mb-10 text-center">
+          <h1 className="font-serif text-[80px]">{selectedCocktail.name}</h1>
+          <p className="mx-auto max-w-3xl text-2xl">
             {selectedCocktail.description}
           </p>
         </div>
@@ -45,8 +45,8 @@ export default function CocktailsView() {
         {/* Content Grid */}
         <div className="grid grid-cols-2 gap-16">
           {/* Ingredients */}
-          <div className="flex flex-col gap-4 items-center justify-center">
-            <h2 className="text-4xl font-bold mb-4">INGREDIENTS</h2>
+          <div className="flex flex-col items-center justify-center gap-4">
+            <h2 className="mb-4 text-4xl font-bold">INGREDIENTS</h2>
             <ul className="space-y-4 text-xl">
               {selectedCocktail.ingredients.map((ingredient) => (
                 <li key={ingredient}>{ingredient}</li>
@@ -56,7 +56,7 @@ export default function CocktailsView() {
 
           {/* Cocktail Image */}
           <div className="flex items-center justify-center">
-            <div className="relative w-[300px] aspect-[2/3] rounded-3xl">
+            <div className="relative aspect-[2/3] w-[300px] rounded-3xl">
               <Image
                 src={selectedCocktail.cocktailImage}
                 alt={selectedCocktail.cocktailImageAlt}

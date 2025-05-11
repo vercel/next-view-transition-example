@@ -11,8 +11,6 @@
   }
 }
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,10 +72,9 @@
   display: none;
 }
 
-
 @supports (view-transition-name: test) {
   [data-support] [data-support-yes] {
-      display: inline;
+    display: inline;
   }
   [data-support] [data-support-no] {
     display: none;
@@ -86,7 +83,7 @@
 
 @supports not (view-transition-name: test) {
   [data-support] [data-support-yes] {
-      display: none;
+    display: none;
   }
   [data-support] [data-support-no] {
     display: inline;

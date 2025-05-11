@@ -11,7 +11,7 @@ function ScrollArrow() {
   return (
     <button
       onClick={scrollToNextSection}
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white hover:text-white/80 transition-colors"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 transform text-white transition-colors hover:text-white/80"
       aria-label="Scroll to next section"
     >
       <svg
