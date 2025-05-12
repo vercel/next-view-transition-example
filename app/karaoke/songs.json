@@ -1,18 +1,26 @@
 [
   {
     "name": "Basul si cu toba mare",
+    "artist": "Vița de Vie",
+    "album": "Fenomental",
     "songImage": "/karaoke/basul-si-cu-toba-mare.png"
   },
   {
-    "name": "L.O.V.E.",
+    "name": "L-O-V-E",
+    "artist": "Nat King Cole",
+    "album": "L-O-V-E",
     "songImage": "/karaoke/l-o-v-e.png"
   },
   {
     "name": "Sixteen Tons",
+    "artist": "Tennessee Ernie Ford",
+    "album": "Sixteen Tons",
     "songImage": "/karaoke/sixteen-tons.png"
   },
   {
     "name": "Wicked Game",
+    "artist": "Stone Sour",
+    "album": "Come What(ever) May [10th Anniversary Edition]",
     "songImage": "/karaoke/wicked-game.png"
   }
 ]
