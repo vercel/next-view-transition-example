@@ -1,11 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { useState, unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
+import Pickup from "./components/pickup";
+import useSpotify from "./hooks/useSpotify";
 import songs from "./songs.json";
+import { Song } from "./types";
 
 export default function KaraokePage() {
+  const [activeSong, setActiveSong] = useState<Song>(songs[0]);
+  const { play, pause, stop } = useSpotify(activeSong);
+
   return (
     <>
       <div className="min-h-screen bg-[#E09E8E]">
@@ -79,9 +87,19 @@ export default function KaraokePage() {
               width={200}
               height={200}
               key={song.name}
-              className="rounded-full border-40 border-black"
+              className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10"
+              onClick={() => setActiveSong(song)}
             />
           ))}
+        </div>
+        <div className="flex items-center justify-center gap-4 py-12">
+          <div className="flex flex-col items-center justify-center gap-4">
+            <p className="text-2xl font-bold">{activeSong.name}</p>
+            <p className="text-lg">{activeSong.artist}</p>
+          </div>
+          <div>
+            <Pickup onPlay={play} onPause={pause} onStop={stop} />
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,56 @@
+.scene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40em;
+  height: 40em;
+  position: relative;
+  perspective: 80em;
+  perspective-origin: top right;
+}
+
+/* The base of the pickup */
+.base {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  transform-style: preserve-3d;
+
+  /* The sides of the base, absolutely positioned */
+  .side {
+    background-color: #000c;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    border: 1px solid black;
+
+    &.front {
+      transform: translateZ(100px);
+    }
+  
+    &.back {
+      transform: translateZ(-100px);
+    }
+  
+    &.left {
+      transform: rotateY(-90deg) translateZ(100px);
+    }
+  
+    &.right {
+      transform: rotateY(90deg) translateZ(100px);
+    }
+  
+    &.top {
+      width: 200px;
+      height: 200px;
+      transform: rotateX(90deg) translateZ(100px);
+    }
+  
+    &.bottom {
+      width: 200px;
+      height: 200px;
+      transform: rotateX(-90deg) translateZ(-50px);
+    }
+  }
+}
