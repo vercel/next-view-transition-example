@@ -122,11 +122,14 @@
 .recordSupport {
   position: absolute;
   width: 140px;
-  height: 120px;
+  height: 140px;
   background-image: linear-gradient(to right, #2F2F2F, #363636 50%, #252525);
   border-radius: 50%;
-  transform: rotateX(90deg) translateX(20px) translateZ(63px);
+  transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
   mask-image: radial-gradient(circle at center, transparent 4%, black 5%);
+}
+
+.recordSupport.playing {
   animation: rotateDisc 3s linear infinite;
 }
 
@@ -142,10 +145,14 @@
 
 @keyframes rotateDisc {
   0% {
-    transform: rotateX(90deg) translateX(20px) translateZ(63px) rotateZ(0deg);
+    transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
+  }
+
+  50% {
+    transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(180deg);
   }
 
   100% {
-    transform: rotateX(90deg) translateX(20px) translateZ(63px) rotateZ(360deg);
+    transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
   }
 }
