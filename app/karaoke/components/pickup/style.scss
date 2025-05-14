@@ -7,13 +7,14 @@
   position: relative;
   perspective: 80em;
   perspective-origin: top right;
+  transform: scale(2);
 }
 
 /* The base of the pickup */
 .base {
   position: relative;
   width: 200px;
-  height: 50px;
+  height: 20px;
   transform-style: preserve-3d;
 
   /* The sides of the base, absolutely positioned */
@@ -27,6 +28,28 @@
 
     &.front {
       transform: translateZ(100px);
+      
+      .controls {
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        width: 50px;
+        height: 20px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        
+        button {
+          background-color: #000;
+          color: #fff;
+          border: none;
+          padding: 5px;
+          cursor: pointer;
+          font-size: 4px;
+        }
+      }
     }
   
     &.back {
@@ -50,7 +73,74 @@
     &.bottom {
       width: 200px;
       height: 200px;
-      transform: rotateX(-90deg) translateZ(-50px);
+      transform: rotateX(-90deg) translateZ(-80px);
     }
   }
+
+  /* The base of the pickup */
+  .lid {
+    position: absolute;
+    width: 200px;
+    height: 20px;
+    transform-style: preserve-3d;
+    top: -20px;
+
+    /* The sides of the base, absolutely positioned */
+    .side {
+      background-color: #0005;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
+      border: 1px solid black;
+
+      &.front {
+        transform: translateZ(100px);
+      }
+
+      &.back {
+        transform: translateZ(-100px);
+      }
+
+      &.left {
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+
+      &.right {
+        transform: rotateY(90deg) translateZ(100px);
+      }
+
+      &.top {
+        width: 200px;
+        height: 200px;
+        transform: rotateX(90deg) translateZ(100px);
+      }
+
+      &.bottom {
+        width: 200px;
+        height: 200px;
+        transform: rotateX(-90deg) translateZ(-80px);
+      }
+    }
+  }
+}
+
+.plate {
+  position: absolute;
+  width: 140px;
+  height: 120px;
+  background-color: #727377;
+  border-radius: 50%;
+  transform: rotateX(90deg) translateX(20px) translateZ(61px);
+  background-image: repeating-radial-gradient(circle, #727377, #727377 50%, #000000 50%);
+}
+
+.recordSupport {
+  position: absolute;
+  width: 140px;
+  height: 120px;
+  background-color: #000;
+  border-radius: 50%;
+  transform: rotateX(90deg) translateX(20px) translateZ(65px);
+  mask-image: radial-gradient(circle at center, transparent 5%, black 6%);
 }
