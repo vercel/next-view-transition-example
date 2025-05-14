@@ -142,6 +142,21 @@
   }
 }
 
+.needle {
+  position: absolute;
+  right: 0;
+  width: 150px;
+  height: 3px;
+  background-color: white;
+  border-radius: 50px;
+  transform: translate3d(70px, -25px, 75px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
+}
+
+.needle.rotated {
+  animation: rotate 1s linear forwards;
+}
+
+
 
 @keyframes spinning {
   0% {
@@ -154,5 +169,16 @@
 
   100% {
     transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate3d(70px, -25px, 75px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
+  }
+
+  100% {
+    transform: translate3d(70px, -25px, 75px) rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
+    transform-origin: 35% 50%;
   }
 }
