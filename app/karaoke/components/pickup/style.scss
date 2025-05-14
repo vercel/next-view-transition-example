@@ -83,7 +83,7 @@
     width: 200px;
     height: 20px;
     transform-style: preserve-3d;
-    top: -20px;
+    transform: rotateX(45deg) translateY(-110px) translateX(-10px) scale(1.04);
 
     /* The sides of the base, absolutely positioned */
     .side {
