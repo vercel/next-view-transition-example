@@ -18,9 +18,18 @@ export default function Pickup({
         <div className="side right" />
         <div className="side front">
           <div className="controls">
-            <button onClick={onPlay}>Play</button>
-            <button onClick={onPause}>Pause</button>
-            <button onClick={onStop}>Stop</button>
+            <div className="control">
+              <span className="label">Play</span>
+              <button onClick={onPlay} />
+            </div>
+            <div className="control">
+              <span className="label">Pause</span>
+              <button onClick={onPause} />
+            </div>
+            <div className="control">
+              <span className="label">Stop</span>
+              <button onClick={onStop} />
+            </div>
           </div>
         </div>
         <div className="side back" />

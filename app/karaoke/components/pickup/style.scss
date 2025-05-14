@@ -27,49 +27,76 @@
     border: 1px solid black;
 
     &.front {
+      background-image: linear-gradient(to right, #47494C, #36383C 50%, #1F1F1F);
       transform: translateZ(100px);
-      
+
       .controls {
         position: absolute;
         bottom: 0;
-        right: 20px;
-        width: 50px;
-        height: 20px;
-        background-color: #fff;
+        right: 5px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        
-        button {
-          background-color: #000;
-          color: #fff;
-          border: none;
-          padding: 5px;
-          cursor: pointer;
-          font-size: 4px;
+
+        .control {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2px;
+
+          .label {
+            color: #7F7F7F;
+            font-size: 3px;
+            letter-spacing: 1px;
+            font-family: monospace;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-align: center;
+            user-select: none;
+          }
+
+          button {
+            background-color: #181818;
+            width: 30px;
+            height: 6px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 1px 2px #0008;
+
+            &::after {
+              content: '';
+              display: block;
+              width: 7px;
+              height: 1px;
+              background: #515151;
+              position: absolute;
+              left: 50%;
+              bottom: 0px;
+              transform: translateX(-50%);
+              border-radius: 1px;
+            }
+          }
         }
+
       }
     }
-  
+
     &.back {
       transform: translateZ(-100px);
     }
-  
+
     &.left {
       transform: rotateY(-90deg) translateZ(100px);
     }
-  
+
     &.right {
       transform: rotateY(90deg) translateZ(100px);
     }
-  
+
     &.top {
       width: 200px;
       height: 200px;
       transform: rotateX(90deg) translateZ(100px);
     }
-  
+
     &.bottom {
       width: 200px;
       height: 200px;
