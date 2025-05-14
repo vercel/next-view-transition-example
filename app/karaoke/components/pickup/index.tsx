@@ -21,9 +21,13 @@ export default function Pickup({
   }, [onPlay]);
 
   const onPaused = useCallback(() => {
-    setNeedleLifted(true);
-    onPause();
-  }, [onPause]);
+    setNeedleLifted((prev) => !prev);
+    if (needleLifted) {
+      onPlay();
+    } else {
+      onPause();
+    }
+  }, [onPause, needleLifted]);
 
   const onStopped = useCallback(() => {
     setNeedleLifted(true);

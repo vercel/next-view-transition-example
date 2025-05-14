@@ -143,16 +143,22 @@
 
 .needle {
   position: absolute;
+  top: 0;
   right: 0;
   width: 300px;
   height: 6px;
   background-color: white;
   border-radius: 100px;
-  transform: translate3d(140px, -50px, 150px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
+  transform: translate3d(140px, -50px, 150px) rotateX(10deg) rotateY(90deg) rotateZ(170deg);
+  transition: top 1s linear;
 }
 
 .needle.rotated {
   animation: rotate 1s linear forwards;
+}
+
+.needle.lifted {
+  top: -10px;
 }
 
 @keyframes spinning {
