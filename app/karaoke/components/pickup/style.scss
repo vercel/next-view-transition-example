@@ -129,8 +129,8 @@
   mask-image: radial-gradient(circle at center, transparent 4%, black 5%);
 }
 
-.recordSupport.playing {
-  animation: rotateDisc 3s linear infinite;
+.recordSupport.spinning {
+  animation: spinning 3s linear infinite;
 }
 
 // The lid of the pickup
@@ -143,7 +143,7 @@
 }
 
 
-@keyframes rotateDisc {
+@keyframes spinning {
   0% {
     transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
   }
