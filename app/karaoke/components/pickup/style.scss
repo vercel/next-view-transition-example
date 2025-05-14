@@ -6,47 +6,46 @@
   height: 40em;
   position: relative;
   perspective: 80em;
-  perspective-origin: top right;
-  transform: scale(2);
+  perspective-origin: 110% 0;
 }
 
 // Common styles for boxes
 .box {
   position: absolute;
-  width: 200px;
-  height: 20px;
+  width: 400px;
+  height: 40px;
   transform-style: preserve-3d;
 
   .side {
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 1px solid black;
+    border: 2px solid black;
 
     &.front {
-      transform: translateZ(100px);
+      transform: translateZ(200px);
     }
 
     &.back {
-      transform: translateZ(-100px);
+      transform: translateZ(-200px);
     }
 
     &.left {
-      transform: rotateY(-90deg) translateZ(100px);
+      transform: rotateY(-90deg) translateZ(200px);
     }
 
     &.right {
-      transform: rotateY(90deg) translateZ(100px);
+      transform: rotateY(90deg) translateZ(200px);
     }
 
     &.top {
-      height: 200px !important;
-      transform: rotateX(90deg) translateZ(100px);
+      height: 400px !important;
+      transform: rotateX(90deg) translateZ(200px);
     }
 
     &.bottom {
-      height: 200px !important;
-      transform: rotateX(-90deg) translateZ(-80px);
+      height: 400px !important;
+      transform: rotateX(-90deg) translateZ(-160px);
     }
   }
 }
@@ -66,7 +65,7 @@
 .controls {
   position: absolute;
   bottom: 0;
-  right: 5px;
+  right: 10px;
   display: flex;
 
   .control {
@@ -77,8 +76,8 @@
 
     .label {
       color: #7F7F7F;
-      font-size: 3px;
-      letter-spacing: 0.5px;
+      font-size: 6px;
+      letter-spacing: 1px;
       font-family: monospace;
       text-transform: uppercase;
       font-weight: 600;
@@ -87,8 +86,8 @@
 
     button {
       background-color: #181818;
-      width: 30px;
-      height: 6px;
+      width: 60px;
+      height: 12px;
       cursor: pointer;
       position: relative;
       box-shadow: inset 1px 1px 1px #00000055;
@@ -96,8 +95,8 @@
       &::after {
         content: '';
         display: block;
-        width: 7px;
-        height: 1px;
+        width: 12px;
+        height: 2px;
         background: #444;
         position: absolute;
         left: 50%;
@@ -111,21 +110,21 @@
 
 .plate {
   position: absolute;
-  width: 140px;
-  height: 120px;
+  width: 280px;
+  height: 240px;
   background-color: #727377;
   border-radius: 50%;
-  transform: rotateX(90deg) translateX(20px) translateZ(61px);
+  transform: rotateX(90deg) translateX(40px) translateZ(122px);
   background-image: repeating-radial-gradient(circle, #727377, #727377 50%, #000000 50%);
 }
 
 .recordSupport {
   position: absolute;
-  width: 140px;
-  height: 140px;
+  width: 280px;
+  height: 280px;
   background-image: linear-gradient(to right, #2F2F2F, #363636 50%, #252525);
   border-radius: 50%;
-  transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
+  transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(90deg);
   mask-image: radial-gradient(circle at center, transparent 4%, black 5%);
 }
 
@@ -135,7 +134,7 @@
 
 // The lid of the pickup
 .lid {
-  transform: rotateX(45deg) translateY(-110px) translateX(-10px) scale(1.04);
+  transform: rotateX(45deg)translateY(-224px)translateX(-22px)scale(1.06);
 
   & > .side {
     background-color: #0005;
@@ -145,40 +144,38 @@
 .needle {
   position: absolute;
   right: 0;
-  width: 150px;
-  height: 3px;
+  width: 300px;
+  height: 6px;
   background-color: white;
-  border-radius: 50px;
-  transform: translate3d(70px, -25px, 75px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
+  border-radius: 100px;
+  transform: translate3d(140px, -50px, 150px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
 }
 
 .needle.rotated {
   animation: rotate 1s linear forwards;
 }
 
-
-
 @keyframes spinning {
   0% {
-    transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
+    transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(90deg);
   }
 
   50% {
-    transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(180deg);
+    transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(180deg);
   }
 
   100% {
-    transform: rotateX(91deg) translateX(20px) translateZ(73px) rotateZ(90deg);
+    transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(90deg);
   }
 }
 
 @keyframes rotate {
   0% {
-    transform: translate3d(70px, -25px, 75px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
+    transform: translate3d(140px, -50px, 150px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
   }
 
   100% {
-    transform: translate3d(70px, -25px, 75px) rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
+    transform: translate3d(140px, -50px, 150px) rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
     transform-origin: 35% 50%;
   }
 }
