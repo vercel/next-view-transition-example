@@ -10,73 +10,21 @@
   transform: scale(2);
 }
 
-/* The base of the pickup */
-.base {
-  position: relative;
+// Common styles for boxes
+.box {
+  position: absolute;
   width: 200px;
   height: 20px;
   transform-style: preserve-3d;
 
-  /* The sides of the base, absolutely positioned */
   .side {
-    background-color: #000c;
     position: absolute;
     width: 100%;
     height: 100%;
-    opacity: 0.9;
     border: 1px solid black;
 
     &.front {
-      background-image: linear-gradient(to right, #47494C, #36383C 50%, #1F1F1F);
       transform: translateZ(100px);
-
-      .controls {
-        position: absolute;
-        bottom: 0;
-        right: 5px;
-        display: flex;
-
-        .control {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 2px;
-
-          .label {
-            color: #7F7F7F;
-            font-size: 3px;
-            letter-spacing: 1px;
-            font-family: monospace;
-            text-transform: uppercase;
-            font-weight: 600;
-            text-align: center;
-            user-select: none;
-          }
-
-          button {
-            background-color: #181818;
-            width: 30px;
-            height: 6px;
-            cursor: pointer;
-            position: relative;
-            box-shadow: 0 1px 2px #0008;
-
-            &::after {
-              content: '';
-              display: block;
-              width: 7px;
-              height: 1px;
-              background: #515151;
-              position: absolute;
-              left: 50%;
-              bottom: 0px;
-              transform: translateX(-50%);
-              border-radius: 1px;
-            }
-          }
-        }
-
-      }
     }
 
     &.back {
@@ -92,61 +40,70 @@
     }
 
     &.top {
-      width: 200px;
-      height: 200px;
+      height: 200px !important;
       transform: rotateX(90deg) translateZ(100px);
     }
 
     &.bottom {
-      width: 200px;
-      height: 200px;
+      height: 200px !important;
       transform: rotateX(-90deg) translateZ(-80px);
     }
   }
+}
 
-  /* The base of the pickup */
-  .lid {
-    position: absolute;
-    width: 200px;
-    height: 20px;
-    transform-style: preserve-3d;
-    transform: rotateX(45deg) translateY(-110px) translateX(-10px) scale(1.04);
+// The base of the pickup
+.base {
+  & > .side {
+    background-color: #000b;
+    box-shadow: inset 0px 0px 18px 8px #00000080;
 
-    /* The sides of the base, absolutely positioned */
-    .side {
-      background-color: #0005;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0.9;
-      border: 1px solid black;
+    &.front {
+      background-image: linear-gradient(to right, #47494C, #36383C 50%, #1F1F1F);
+    }
+  }
+}
 
-      &.front {
-        transform: translateZ(100px);
-      }
+.controls {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  display: flex;
 
-      &.back {
-        transform: translateZ(-100px);
-      }
+  .control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
 
-      &.left {
-        transform: rotateY(-90deg) translateZ(100px);
-      }
+    .label {
+      color: #7F7F7F;
+      font-size: 3px;
+      letter-spacing: 0.5px;
+      font-family: monospace;
+      text-transform: uppercase;
+      font-weight: 600;
+      user-select: none;
+    }
 
-      &.right {
-        transform: rotateY(90deg) translateZ(100px);
-      }
+    button {
+      background-color: #181818;
+      width: 30px;
+      height: 6px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: inset 1px 1px 1px #00000055;
 
-      &.top {
-        width: 200px;
-        height: 200px;
-        transform: rotateX(90deg) translateZ(100px);
-      }
-
-      &.bottom {
-        width: 200px;
-        height: 200px;
-        transform: rotateX(-90deg) translateZ(-80px);
+      &::after {
+        content: '';
+        display: block;
+        width: 7px;
+        height: 1px;
+        background: #444;
+        position: absolute;
+        left: 50%;
+        bottom: 0px;
+        transform: translateX(-50%);
+        border-radius: 1px;
       }
     }
   }
@@ -166,8 +123,17 @@
   position: absolute;
   width: 140px;
   height: 120px;
-  background-color: #000;
+  background-image: linear-gradient(to right, #2F2F2F, #363636 50%, #252525);
   border-radius: 50%;
-  transform: rotateX(90deg) translateX(20px) translateZ(65px);
-  mask-image: radial-gradient(circle at center, transparent 5%, black 6%);
+  transform: rotateX(90deg) translateX(20px) translateZ(63px);
+  mask-image: radial-gradient(circle at center, transparent 4%, black 5%);
+}
+
+// The lid of the pickup
+.lid {
+  transform: rotateX(45deg) translateY(-110px) translateX(-10px) scale(1.04);
+
+  & > .side {
+    background-color: #0005;
+  }
 }

@@ -11,7 +11,7 @@ export default function Pickup({
 }) {
   return (
     <div className="scene">
-      <div className="base">
+      <div className="box base">
         <div className="side top" />
         <div className="side bottom" />
         <div className="side left" />
@@ -35,12 +35,12 @@ export default function Pickup({
         <div className="side back" />
         <div className="plate" />
         <div className="recordSupport" />
-        <div className="lid">
+        <div className="box lid">
           <div className="side top" />
-          <div className="side bottom" />
           <div className="side left" />
           <div className="side right" />
           <div className="side front" />
+          <div className="side back" />
         </div>
       </div>
       {/* <div className="record" />
