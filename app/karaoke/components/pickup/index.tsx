@@ -1,3 +1,4 @@
+import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
 import { useCallback, useState } from "react";
 import "./style.scss";
@@ -16,9 +17,16 @@ export default function Pickup({
   const [spinning, setSpinning] = useState(false);
   const [showReverseRotation, setShowReverseRotation] = useState(false);
 
-  const onPlaying = useCallback(() => {
-    setNeedleRotated(true);
+  const onPlaying = useCallback(async () => {
     setSpinning(true);
+    if (!needleLifted) {
+      setNeedleLifted(true);
+    }
+    await waitSeconds(1);
+    setNeedleRotated(true);
+    await waitSeconds(1);
+    setNeedleLifted(false);
+    await waitSeconds(1);
     onPlay();
   }, [onPlay]);
 
@@ -31,20 +39,17 @@ export default function Pickup({
     }
   }, [onPause, needleLifted]);
 
-  const onStopped = useCallback(() => {
+  const onStopped = useCallback(async () => {
     setNeedleLifted(true);
-    setTimeout(() => {
-      setNeedleRotated(false);
-      setShowReverseRotation(true);
-    }, 1000);
-    setTimeout(() => {
-      setSpinning(false);
-    }, 3000);
-    setTimeout(() => {
-      setNeedleLifted(false);
-      setShowReverseRotation(false);
-    }, 4000);
     onStop();
+    await waitSeconds(1);
+    setNeedleRotated(false);
+    setShowReverseRotation(true);
+    await waitSeconds(1);
+    setNeedleLifted(false);
+    setShowReverseRotation(false);
+    await waitSeconds(1);
+    setSpinning(false);
   }, [onStop]);
 
   return (
