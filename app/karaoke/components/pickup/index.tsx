@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useCallback, useState } from "react";
 import "./style.scss";
 
@@ -70,8 +71,8 @@ export default function Pickup({
           </div>
         </div>
         <div className="side back" />
-        <div className={`plate ${spinning ? "spinning" : ""}`} />
-        <div className={`recordSupport ${spinning ? "spinning" : ""}`} />
+        <div className={cn("plate", spinning ? "spinning" : "")} />
+        <div className={cn("recordSupport", spinning ? "spinning" : "")} />
         <div className="box lid">
           <div className="side top" />
           <div className="side left" />
@@ -80,14 +81,12 @@ export default function Pickup({
           <div className="side back" />
         </div>
         <div
-          className={[
+          className={cn(
             "needle",
             needleRotated ? "rotated" : undefined,
             needleLifted ? "lifted" : undefined,
             showReverseRotation ? "reverseRotation" : undefined,
-          ]
-            .filter(Boolean)
-            .join(" ")}
+          )}
         />
       </div>
       {/* <div className="record" /> */}
