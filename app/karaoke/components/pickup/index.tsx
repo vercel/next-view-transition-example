@@ -13,6 +13,7 @@ export default function Pickup({
   const [needleRotated, setNeedleRotated] = useState(false);
   const [needleLifted, setNeedleLifted] = useState(false);
   const [spinning, setSpinning] = useState(false);
+  const [showReverseRotation, setShowReverseRotation] = useState(false);
 
   const onPlaying = useCallback(() => {
     setNeedleRotated(true);
@@ -33,12 +34,14 @@ export default function Pickup({
     setNeedleLifted(true);
     setTimeout(() => {
       setNeedleRotated(false);
+      setShowReverseRotation(true);
     }, 1000);
     setTimeout(() => {
       setSpinning(false);
     }, 3000);
     setTimeout(() => {
       setNeedleLifted(false);
+      setShowReverseRotation(false);
     }, 4000);
     onStop();
   }, [onStop]);
@@ -77,12 +80,17 @@ export default function Pickup({
           <div className="side back" />
         </div>
         <div
-          className={`needle ${needleRotated ? "rotated" : ""} ${needleLifted ? "lifted" : ""}`}
+          className={[
+            "needle",
+            needleRotated ? "rotated" : undefined,
+            needleLifted ? "lifted" : undefined,
+            showReverseRotation ? "reverseRotation" : undefined,
+          ]
+            .filter(Boolean)
+            .join(" ")}
         />
       </div>
-      {/* <div className="record" />
-      <div className="needle" />
-      <div className="controls" /> */}
+      {/* <div className="record" /> */}
     </div>
   );
 }

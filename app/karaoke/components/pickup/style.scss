@@ -143,22 +143,28 @@
 
 .needle {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -25px;
+  right: -110px;
   width: 300px;
   height: 6px;
   background-color: white;
   border-radius: 100px;
-  transform: translate3d(140px, -50px, 150px) rotateX(10deg) rotateY(90deg) rotateZ(170deg);
-  transition: top 1s linear;
+  transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
+  transition: all 1s linear;
 }
 
 .needle.rotated {
-  animation: rotate 1s linear forwards;
+  transform: rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
+  right: -50px;
+}
+
+.needle.reverseRotation {
+  transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
+  right: -110px;
 }
 
 .needle.lifted {
-  top: -10px;
+  top: -40px;
 }
 
 @keyframes spinning {
@@ -172,16 +178,5 @@
 
   100% {
     transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(90deg);
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: translate3d(140px, -50px, 150px)rotateX(10deg)rotateY(90deg)rotateZ(170deg);
-  }
-
-  100% {
-    transform: translate3d(140px, -50px, 150px) rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
-    transform-origin: 35% 50%;
   }
 }
