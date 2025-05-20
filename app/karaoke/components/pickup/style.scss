@@ -2,18 +2,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40em;
-  height: 40em;
+  width: 25em;
+  height: 25em;
   position: relative;
   perspective: 80em;
-  perspective-origin: 110% 0;
+  perspective-origin: 140% -30%;
 }
 
 // Common styles for boxes
 .box {
   position: absolute;
-  width: 400px;
-  height: 40px;
+  width: 25em;
+  height: 2.5em;
   transform-style: preserve-3d;
 
   .side {
@@ -23,38 +23,42 @@
     border: 2px solid black;
 
     &.front {
-      transform: translateZ(200px);
+      transform: translateZ(12.5em);
     }
 
     &.back {
-      transform: translateZ(-200px);
+      transform: translateZ(-12.5em);
     }
 
     &.left {
-      transform: rotateY(-90deg) translateZ(200px);
+      transform: rotateY(-90deg) translateZ(12.5em);
     }
 
     &.right {
-      transform: rotateY(90deg) translateZ(200px);
+      transform: rotateY(90deg) translateZ(12.5em);
     }
 
     &.top {
-      height: 400px !important;
-      transform: rotateX(90deg) translateZ(200px);
+      height: 25em !important;
+      transform: rotateX(90deg) translateZ(12.5em);
     }
 
     &.bottom {
-      height: 400px !important;
-      transform: rotateX(-90deg) translateZ(-160px);
+      height: 25em !important;
+      transform: rotateX(-90deg) translateZ(-10em);
     }
   }
 }
 
 // The base of the pickup
 .base {
+  // top: 50%;
+  // transform: translateY(-50%);
+  bottom: 30%;
+
   & > .side {
     background-color: #000b;
-    box-shadow: inset 0px 0px 18px 8px #00000080;
+    box-shadow: inset 0 0 1.125em 0.5em #00000080;
 
     &.front {
       background-image: linear-gradient(to right, #47494C, #36383C 50%, #1F1F1F);
@@ -65,7 +69,7 @@
 .controls {
   position: absolute;
   bottom: 0;
-  right: 10px;
+  right: 0.625em;
   display: flex;
 
   .control {
@@ -86,8 +90,8 @@
 
     button {
       background-color: #181818;
-      width: 60px;
-      height: 12px;
+      width: 3.75em;
+      height: 0.75em;
       cursor: pointer;
       position: relative;
       box-shadow: inset 1px 1px 1px #00000055;
@@ -95,12 +99,12 @@
       &::after {
         content: '';
         display: block;
-        width: 12px;
-        height: 2px;
+        width: 0.75em;
+        height: 0.125em;
         background: #444;
         position: absolute;
         left: 50%;
-        bottom: 0px;
+        bottom: 0;
         transform: translateX(-50%);
         border-radius: 1px;
       }
@@ -110,21 +114,21 @@
 
 .plate {
   position: absolute;
-  width: 280px;
-  height: 240px;
+  width: 17.5em;
+  height: 15em;
   background-color: #727377;
   border-radius: 50%;
-  transform: rotateX(90deg) translateX(40px) translateZ(122px);
+  transform: rotateX(90deg) translateX(2.5em) translateZ(7.625em);
   background-image: repeating-radial-gradient(circle, #727377, #727377 50%, #000000 50%);
 }
 
 .recordSupport {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 17.5em;
+  height: 17.5em;
   background-image: linear-gradient(to right, #2F2F2F, #363636 50%, #252525);
   border-radius: 50%;
-  transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(90deg);
+  transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(90deg);
   mask-image: radial-gradient(circle at center, transparent 4%, black 5%);
 }
 
@@ -134,7 +138,7 @@
 
 // The lid of the pickup
 .lid {
-  transform: rotateX(45deg)translateY(-224px)translateX(-22px)scale(1.06);
+  transform: rotateX(45deg)translateY(-13.75em)translateX(-1.25em)scale(1.06);
 
   & > .side {
     background-color: #0005;
@@ -143,40 +147,40 @@
 
 .needle {
   position: absolute;
-  top: -25px;
-  right: -110px;
-  width: 300px;
-  height: 6px;
+  top: -1.5625em;
+  right: -6.875em;
+  width: 18.75em;
+  height: 0.375em;
   background-color: white;
-  border-radius: 100px;
+  border-radius: 6.25em;
   transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
   transition: all 1s linear;
 }
 
 .needle.rotated {
   transform: rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
-  right: -50px;
+  right: -3.125em;
 }
 
 .needle.reverseRotation {
   transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
-  right: -110px;
+  right: -6.875em;
 }
 
 .needle.lifted {
-  top: -40px;
+  top: -2.5em;
 }
 
 @keyframes spinning {
   0% {
-    transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(90deg);
+    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(90deg);
   }
 
   50% {
-    transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(180deg);
+    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(180deg);
   }
 
   100% {
-    transform: rotateX(91deg) translateX(40px) translateZ(146px) rotateZ(90deg);
+    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(90deg);
   }
 }

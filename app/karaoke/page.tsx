@@ -92,14 +92,12 @@ export default function KaraokePage() {
             />
           ))}
         </div>
-        <div className="flex items-center justify-center gap-4 py-12">
+        <div className="flex min-h-[calc(100vh-200px-48px-48px)] items-center justify-around gap-4">
           <div className="flex flex-col items-center justify-center gap-4">
             <p className="text-2xl font-bold">{activeSong.name}</p>
             <p className="text-lg">{activeSong.artist}</p>
           </div>
-          <div>
-            <Pickup onPlay={play} onPause={pause} onStop={stop} />
-          </div>
+          <Pickup onPlay={play} onPause={pause} onStop={stop} />
         </div>
       </div>
     </>
