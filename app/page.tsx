@@ -53,7 +53,7 @@ export default function Page() {
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <div className="p-8 text-center">
                 <ViewTransition name="karaoke-title">
-                  <h2 className="mb-4 text-3xl font-bold text-white">
+                  <h2 className="z-10 mb-4 text-3xl font-bold text-white">
                     Karaoke
                   </h2>
                 </ViewTransition>

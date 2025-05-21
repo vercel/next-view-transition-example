@@ -25,13 +25,15 @@ export default function KaraokePage() {
         </Link>
         <div className="flex flex-col lg:flex-row">
           <div
-            className={`${styles.viewTransitionWrapper} order-2 lg:order-none`}
+            className={`flex-1 ${styles.viewTransitionWrapper} order-2 lg:order-1`}
           >
             <div
               className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
             >
               <ViewTransition name="karaoke-title">
-                <h1 className="mb-6 text-4xl font-bold text-white">Karaoke</h1>
+                <h1 className="z-10 mb-6 text-4xl font-bold text-white">
+                  Karaoke
+                </h1>
               </ViewTransition>
               <div className="space-y-4 text-lg text-white/90">
                 <p>
@@ -44,8 +46,8 @@ export default function KaraokePage() {
           </div>
 
           <ViewTransition name="karaoke-photo">
-            <div className="relative order-1 flex h-[100vh] w-full items-center justify-center bg-[#E09E8E] px-8 pt-8 pb-0 lg:order-none">
-              <div className="relative h-full w-full">
+            <div className="relative order-1 flex-1 bg-[#E09E8E] px-8 pt-8 pb-0 lg:order-2">
+              <div className="relative h-[100vh] w-full">
                 <Image
                   src="/karaoke.png"
                   alt="Karaoke"
@@ -59,7 +61,7 @@ export default function KaraokePage() {
           </ViewTransition>
 
           <div
-            className={`${styles.viewTransitionWrapper} order-3 lg:order-none`}
+            className={`flex-1 ${styles.viewTransitionWrapper} order-3 lg:order-3`}
           >
             <div
               className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
