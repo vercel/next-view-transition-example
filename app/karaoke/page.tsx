@@ -93,7 +93,7 @@ export default function KaraokePage() {
               width={200}
               height={200}
               key={song.name}
-              className="mx-[-40px] rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
+              className="-mx-10 rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
               onClick={() => setActiveSong(song)}
             />
           ))}
