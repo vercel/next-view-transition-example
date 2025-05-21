@@ -23,8 +23,10 @@ export default function KaraokePage() {
         >
           ← Back
         </Link>
-        <div className="grid h-screen grid-cols-3">
-          <div className={`${styles.viewTransitionWrapper}`}>
+        <div className="flex flex-col lg:flex-row">
+          <div
+            className={`${styles.viewTransitionWrapper} order-2 lg:order-none`}
+          >
             <div
               className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
             >
@@ -42,7 +44,7 @@ export default function KaraokePage() {
           </div>
 
           <ViewTransition name="karaoke-photo">
-            <div className="relative flex h-full items-center justify-center bg-[#E09E8E] px-8 pt-8 pb-0">
+            <div className="relative order-1 flex h-[100vh] w-full items-center justify-center bg-[#E09E8E] px-8 pt-8 pb-0 lg:order-none">
               <div className="relative h-full w-full">
                 <Image
                   src="/karaoke.png"
@@ -56,7 +58,9 @@ export default function KaraokePage() {
             </div>
           </ViewTransition>
 
-          <div className={`${styles.viewTransitionWrapper}`}>
+          <div
+            className={`${styles.viewTransitionWrapper} order-3 lg:order-none`}
+          >
             <div
               className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
             >
@@ -79,7 +83,7 @@ export default function KaraokePage() {
         <ScrollArrow />
       </div>
       <div className="min-h-screen bg-[#E09E8E]">
-        <div className="flex items-center justify-center gap-4 py-12">
+        <div className="flex items-center justify-center gap-0 py-12 lg:gap-4">
           {songs.map((song) => (
             <Image
               src={song.songImage}
@@ -87,17 +91,19 @@ export default function KaraokePage() {
               width={200}
               height={200}
               key={song.name}
-              className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10"
+              className="mx-[-40px] rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
               onClick={() => setActiveSong(song)}
             />
           ))}
         </div>
-        <div className="flex min-h-[calc(100vh-200px-48px-48px)] items-center justify-around gap-4">
-          <div className="flex flex-col items-center justify-center gap-4">
+        <div className="flex min-h-[calc(100vh-200px-48px-48px)] flex-col items-center justify-around gap-4 lg:flex-row">
+          <div className="flex w-1/2 flex-col items-center justify-center gap-4">
             <p className="text-2xl font-bold">{activeSong.name}</p>
             <p className="text-lg">{activeSong.artist}</p>
           </div>
-          <Pickup onPlay={play} onPause={pause} onStop={stop} />
+          <div className="flex w-1/2 items-center justify-center">
+            <Pickup onPlay={play} onPause={pause} onStop={stop} />
+          </div>
         </div>
       </div>
     </>
