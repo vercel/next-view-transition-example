@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Next.js View Transition",
-  description: "Next.js View Transition Examples",
+  title: "Life with Filip",
+  description: "A little bit of everything",
 };
 
 export default function RootLayout({
