@@ -4,87 +4,72 @@ import { unstable_ViewTransition as ViewTransition } from "react";
 
 export default function Page() {
   return (
-    <div className="min-h-screen">
-      <div className="grid h-screen grid-cols-3">
-        {/* Code Section */}
-        <Link href="/code" className="relative block h-full">
-          <ViewTransition name="code-photo">
-            <div className="relative flex h-full items-center justify-center bg-[#64A2BA] px-8 pt-8 pb-0">
-              <div className="relative h-full w-full">
-                <Image
-                  src="/code.png"
-                  alt="Code"
-                  fill
-                  className="object-contain"
-                  sizes="33vw"
-                  priority
-                />
-              </div>
-            </div>
-          </ViewTransition>
-          <div className="absolute inset-0 flex items-center justify-center transition-colors duration-300 hover:bg-black/30">
-            <div className="p-8 text-center">
-              <ViewTransition name="code-title">
-                <h2 className="mb-4 text-3xl font-bold text-white">Code</h2>
-              </ViewTransition>
-            </div>
+    <div className="grid h-screen grid-cols-3">
+      <Link href="/code" className="relative h-full">
+        <ViewTransition name="code-photo">
+          <div className="absolute inset-0 bg-[#64A2BA]">
+            <Image
+              src="/code.png"
+              alt="Code"
+              fill
+              className="object-cover pt-8 lg:object-contain"
+              priority
+            />
           </div>
-        </Link>
+        </ViewTransition>
+        {/* Overlay */}
+        <div className="absolute inset-0 transition-colors duration-300 hover:bg-black/30" />
+        {/* Title */}
+        <div className="absolute bottom-20 w-full bg-black/50 p-8 text-center text-3xl font-bold text-white">
+          <ViewTransition name="code-title">
+            <h2>Code</h2>
+          </ViewTransition>
+        </div>
+      </Link>
 
-        {/* Karaoke Section */}
-        <Link href="/karaoke" className="relative block h-full">
-          <ViewTransition name="karaoke-photo">
-            <div className="relative flex h-full items-center justify-center bg-[#E09E8E] px-8 pt-8 pb-0">
-              <div className="relative h-full w-full">
-                <Image
-                  src="/karaoke.png"
-                  alt="Karaoke"
-                  fill
-                  className="object-contain"
-                  sizes="33vw"
-                  priority
-                />
-              </div>
-            </div>
-          </ViewTransition>
-          <div className="absolute inset-0 flex items-center justify-center transition-colors duration-300 hover:bg-black/30">
-            <div className="p-8 text-center">
-              <ViewTransition name="karaoke-title">
-                <h2 className="z-10 mb-4 text-3xl font-bold text-white">
-                  Karaoke
-                </h2>
-              </ViewTransition>
-            </div>
+      <Link href="/karaoke" className="relative h-full">
+        <ViewTransition name="karaoke-photo">
+          <div className="absolute inset-0 bg-[#E09E8E]">
+            <Image
+              src="/karaoke.png"
+              alt="Karaoke"
+              fill
+              className="object-cover pt-8 lg:object-contain"
+              priority
+            />
           </div>
-        </Link>
+        </ViewTransition>
+        {/* Overlay */}
+        <div className="absolute inset-0 transition-colors duration-300 hover:bg-black/30" />
+        {/* Title */}
+        <div className="absolute bottom-20 w-full bg-black/50 p-8 text-center text-3xl font-bold text-white">
+          <ViewTransition name="karaoke-title">
+            <h2>Karaoke</h2>
+          </ViewTransition>
+        </div>
+      </Link>
 
-        {/* Cocktails Section */}
-        <Link href="/cocktails" className="relative block h-full">
-          <ViewTransition name="cocktails-photo">
-            <div className="relative flex h-full items-center justify-center bg-[#556D43] px-8 pt-8 pb-0">
-              <div className="relative h-full w-full">
-                <Image
-                  src="/cocktails.png"
-                  alt="Cocktails"
-                  fill
-                  className="object-contain"
-                  sizes="33vw"
-                  priority
-                />
-              </div>
-            </div>
-          </ViewTransition>
-          <div className="absolute inset-0 flex items-center justify-center transition-colors duration-300 hover:bg-black/30">
-            <div className="p-8 text-center">
-              <ViewTransition name="cocktails-title">
-                <h2 className="mb-4 text-3xl font-bold text-white">
-                  Cocktails
-                </h2>
-              </ViewTransition>
-            </div>
+      <Link href="/cocktails" className="relative h-full">
+        <ViewTransition name="cocktails-photo">
+          <div className="absolute inset-0 bg-[#556D43]">
+            <Image
+              src="/cocktails.png"
+              alt="Cocktails"
+              fill
+              className="object-cover pt-8 lg:object-contain"
+              priority
+            />
           </div>
-        </Link>
-      </div>
+        </ViewTransition>
+        {/* Overlay */}
+        <div className="absolute inset-0 transition-colors duration-300 hover:bg-black/30" />
+        {/* Title */}
+        <div className="absolute bottom-20 w-full bg-black/50 p-8 text-center text-3xl font-bold text-white">
+          <ViewTransition name="cocktails-title">
+            <h2>Cocktails</h2>
+          </ViewTransition>
+        </div>
+      </Link>
     </div>
   );
 }
