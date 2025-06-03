@@ -6,11 +6,12 @@ import { useState, unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
 import Pickup from "./components/pickup";
+import { SpotifyProvider } from "./context/SpotifyContext";
 import useSpotify from "./hooks/useSpotify";
 import songs from "./songs.json";
 import { Song } from "./types";
 
-export default function KaraokePage() {
+function KaraokeContent() {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
   const { play, pause, stop } = useSpotify(activeSong);
 
@@ -109,5 +110,13 @@ export default function KaraokePage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function KaraokePage() {
+  return (
+    <SpotifyProvider>
+      <KaraokeContent />
+    </SpotifyProvider>
   );
 }
