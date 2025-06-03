@@ -14,75 +14,34 @@ export function SpotifyProvider({ children }: { children: React.ReactNode }) {
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("spotify_token");
-    if (!token) return;
-
     // Load Spotify Web Playback SDK
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
     script.async = true;
+    document.body.appendChild(script);
 
-    script.onload = () => {
-      if (!window.Spotify) {
-        console.error("Spotify SDK failed to load");
-        return;
-      }
-
+    window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: "Karaoke Player",
         getOAuthToken: (cb) => {
-          cb(token);
+          cb(localStorage.getItem("spotify_token") || "");
         },
         volume: 0.5,
       });
 
-      // Error handling
-      player.addListener("initialization_error", ({ message }) => {
-        console.error("Failed to initialize:", message);
-      });
-
-      player.addListener("authentication_error", ({ message }) => {
-        console.error("Failed to authenticate:", message);
-        logout();
-      });
-
-      player.addListener("account_error", ({ message }) => {
-        console.error("Failed to validate Spotify account:", message);
-      });
-
-      player.addListener("playback_error", ({ message }) => {
-        console.error("Failed to perform playback:", message);
-      });
-
-      // Playback status updates
-      player.addListener("player_state_changed", (state) => {
-        console.log("Player state changed:", state);
-      });
-
-      // Ready
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
         setPlayer(player);
-        setIsAuthenticated(true);
       });
 
-      // Not Ready
       player.addListener("not_ready", ({ device_id }) => {
         console.log("Device ID has gone offline", device_id);
       });
 
-      // Connect to the player
-      player.connect().catch((error) => {
-        console.error("Failed to connect to Spotify:", error);
-      });
+      player.connect();
     };
 
-    document.body.appendChild(script);
-
     return () => {
-      if (player) {
-        player.disconnect();
-      }
       document.body.removeChild(script);
     };
   }, []);
@@ -116,6 +75,13 @@ export function SpotifyProvider({ children }: { children: React.ReactNode }) {
       player.disconnect();
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("spotify_token");
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
 
   return (
     <SpotifyContext.Provider value={{ isAuthenticated, login, logout, player }}>

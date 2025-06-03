@@ -8,22 +8,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
-      <head>
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="frame-src 'self' https://sdk.scdn.co/embedded/index.html https://*.spotify.com;"
-        />
-        <meta
-          httpEquiv="Feature-Policy"
-          content="encrypted-media *; autoplay *;"
-        />
-      </head>
-      <body>{children}</body>
+      <body className={`antialiased`}>{children}</body>
     </html>
   );
 }
