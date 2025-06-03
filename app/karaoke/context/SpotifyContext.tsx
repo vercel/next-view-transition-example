@@ -48,6 +48,7 @@ export function SpotifyProvider({ children }: { children: React.ReactNode }) {
 
   const login = () => {
     const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+    console.log("clientId", clientId);
     const redirectUri = window.location.origin + "/karaoke/callback";
     const scope = "streaming user-read-email user-read-private";
 
