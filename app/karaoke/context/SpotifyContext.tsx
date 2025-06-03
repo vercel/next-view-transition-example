@@ -48,19 +48,28 @@ export function SpotifyProvider({ children }: { children: React.ReactNode }) {
 
   const login = () => {
     const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-    alert(`clientId: ${clientId}`);
+    if (!clientId) {
+      console.error("Spotify Client ID is not configured");
+      return;
+    }
+
     const redirectUri = window.location.origin + "/karaoke/callback";
     const scope = "streaming user-read-email user-read-private";
 
-    const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(
+    // Generate a random state value for security
+    const state = Math.random().toString(36).substring(7);
+    localStorage.setItem("spotify_auth_state", state);
+
+    const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(
       redirectUri,
-    )}&scope=${encodeURIComponent(scope)}`;
+    )}&scope=${encodeURIComponent(scope)}&state=${state}&show_dialog=true`;
 
     window.location.href = url;
   };
 
   const logout = () => {
     localStorage.removeItem("spotify_token");
+    localStorage.removeItem("spotify_auth_state");
     setIsAuthenticated(false);
     if (player) {
       player.disconnect();
