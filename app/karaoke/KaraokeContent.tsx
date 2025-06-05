@@ -105,13 +105,14 @@ export default function KaraokeContent({
             <button
               onClick={() => setActiveSong(song)}
               className="-mx-10 lg:mx-0"
+              key={song.name}
             >
               <Image
                 src={song.songImage}
                 alt={song.name}
+                priority
                 width={200}
                 height={200}
-                key={song.name}
                 className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10"
               />
             </button>

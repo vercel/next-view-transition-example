@@ -103,6 +103,7 @@ export default function Pickup({
             src={playingSong.songImage}
             alt={playingSong.name}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             key={playingSong.name}
             className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
           />
