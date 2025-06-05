@@ -4,18 +4,15 @@ import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import useSpotify from "../../hooks/useSpotify";
 import { Song } from "../../types";
 import "./style.scss";
 
 export default function Pickup({
-  onPlay,
-  onPauseToggle,
-  onStop,
+  spotifyToken,
   song,
 }: {
-  onPlay: () => void;
-  onPauseToggle: () => void;
-  onStop: () => void;
+  spotifyToken: string;
   song: Song;
 }) {
   const [needleRotated, setNeedleRotated] = useState(false);
@@ -23,6 +20,7 @@ export default function Pickup({
   const [spinning, setSpinning] = useState(false);
   const [showReverseRotation, setShowReverseRotation] = useState(false);
   const [playingSong, setPlayingSong] = useState(song);
+  const { play, pauseToggle, stop, login } = useSpotify(song, spotifyToken);
 
   const onPlaying = useCallback(async () => {
     setSpinning(true);
@@ -34,23 +32,23 @@ export default function Pickup({
     await waitSeconds(1);
     setNeedleLifted(false);
     await waitSeconds(1);
-    onPlay();
-  }, [onPlay]);
+    play();
+  }, [play]);
 
   const onPaused = useCallback(async () => {
     setNeedleLifted((prev) => !prev);
     // wait so the needle goes back down
     if (needleLifted) await waitSeconds(1);
-    onPauseToggle();
-  }, [onPauseToggle, needleLifted]);
+    pauseToggle();
+  }, [pauseToggle, needleLifted]);
 
   const onStopped = useCallback(async () => {
     if (!needleRotated) {
-      onStop();
+      stop();
       return;
     }
     setNeedleLifted(true);
-    onStop();
+    stop();
     await waitSeconds(1);
     setNeedleRotated(false);
     setShowReverseRotation(true);
@@ -59,17 +57,14 @@ export default function Pickup({
     setShowReverseRotation(false);
     await waitSeconds(1);
     setSpinning(false);
-  }, [onStop, needleRotated]);
+  }, [stop, needleRotated]);
 
   useEffect(() => {
-    addEventListener("pickupStop", async () => {
+    const onTrackChange = async () => {
       await onStopped();
       setPlayingSong(song);
-    });
-
-    return () => {
-      removeEventListener("pickupStop", onStopped);
     };
+    onTrackChange();
   }, [song]);
 
   return (
