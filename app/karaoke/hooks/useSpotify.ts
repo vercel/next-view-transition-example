@@ -8,7 +8,6 @@ import { Song } from "../types";
 export default function useSpotify(song: Song, spotifyToken: string) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
-  const [deviceId, setDeviceId] = useState<string>();
   const router = useRouter();
 
   const play = async () => {
@@ -24,19 +23,16 @@ export default function useSpotify(song: Song, spotifyToken: string) {
 
     try {
       // Start playback
-      await fetch(
-        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${spotifyToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            uris: [song.spotifyUri],
-          }),
+      await fetch("https://api.spotify.com/v1/me/player/play", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${spotifyToken}`,
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          uris: [song.spotifyUri],
+        }),
+      });
     } catch (error) {
       console.error("Error playing song:", error);
     }
@@ -61,6 +57,20 @@ export default function useSpotify(song: Song, spotifyToken: string) {
     }
   };
 
+  async function transferPlayback(deviceId: string, token: string) {
+    await fetch("https://api.spotify.com/v1/me/player", {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        device_ids: [deviceId],
+        play: false, // change to true if you want it to auto-play
+      }),
+    });
+  }
+
   useEffect(() => {
     // Load Spotify Web Playback SDK
     const script = document.createElement("script");
@@ -78,7 +88,7 @@ export default function useSpotify(song: Song, spotifyToken: string) {
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
         setPlayer(player);
-        setDeviceId(device_id);
+        transferPlayback(device_id, spotifyToken);
       });
 
       player.addListener("not_ready", ({ device_id }) => {
