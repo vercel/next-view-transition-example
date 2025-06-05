@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Song } from "../types";
 
-export default function useSpotify(song: Song, spotifyToken: string) {
+export default function useSpotify(
+  song: Song,
+  spotifyToken: string | undefined,
+) {
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const router = useRouter();
 
@@ -80,13 +83,13 @@ export default function useSpotify(song: Song, spotifyToken: string) {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: "Karaoke Player",
-        getOAuthToken: (cb) => cb(spotifyToken),
+        getOAuthToken: (cb) => cb(spotifyToken ?? ""),
         volume: 0.5,
       });
 
       player.addListener("ready", ({ device_id }) => {
         setPlayer(player);
-        transferPlayback(device_id, spotifyToken);
+        transferPlayback(device_id, spotifyToken ?? "");
       });
 
       player.addListener("initialization_error", ({ message }) =>

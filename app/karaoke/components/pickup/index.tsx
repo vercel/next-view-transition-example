@@ -12,7 +12,7 @@ export default function Pickup({
   spotifyToken,
   song,
 }: {
-  spotifyToken: string;
+  spotifyToken: string | undefined;
   song: Song;
 }) {
   const [needleRotated, setNeedleRotated] = useState(false);
@@ -20,7 +20,7 @@ export default function Pickup({
   const [spinning, setSpinning] = useState(false);
   const [showReverseRotation, setShowReverseRotation] = useState(false);
   const [playingSong, setPlayingSong] = useState(song);
-  const { play, pauseToggle, stop, login } = useSpotify(song, spotifyToken);
+  const { play, pauseToggle, stop } = useSpotify(song, spotifyToken);
 
   const onPlaying = useCallback(async () => {
     setSpinning(true);
