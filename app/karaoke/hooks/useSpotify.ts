@@ -76,6 +76,7 @@ export default function useSpotify(
   }
 
   useEffect(() => {
+    if (!spotifyToken) return;
     // Load Spotify Web Playback SDK
     const script = document.createElement("script");
     script.src = "https://sdk.scdn.co/spotify-player.js";
