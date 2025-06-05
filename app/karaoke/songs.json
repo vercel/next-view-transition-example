@@ -3,24 +3,28 @@
     "name": "Basul si cu toba mare",
     "artist": "Vița de Vie",
     "album": "Fenomental",
-    "songImage": "/karaoke/basul-si-cu-toba-mare.png"
+    "songImage": "/karaoke/basul-si-cu-toba-mare.png",
+    "spotifyUri": "spotify:track:6SaIBQzv80zITZvVU7oX3Y"
   },
   {
     "name": "L-O-V-E",
     "artist": "Nat King Cole",
     "album": "L-O-V-E",
-    "songImage": "/karaoke/l-o-v-e.png"
+    "songImage": "/karaoke/l-o-v-e.png",
+    "spotifyUri": "spotify:track:4QxDOjgpYtQDxxbWPuEJOy"
   },
   {
     "name": "Sixteen Tons",
     "artist": "Tennessee Ernie Ford",
     "album": "Sixteen Tons",
-    "songImage": "/karaoke/sixteen-tons.png"
+    "songImage": "/karaoke/sixteen-tons.png",
+    "spotifyUri": "spotify:track:1JVPMzVjeAgQ4s3VC0zhxl"
   },
   {
     "name": "Wicked Game",
     "artist": "Stone Sour",
     "album": "Come What(ever) May [10th Anniversary Edition]",
-    "songImage": "/karaoke/wicked-game.png"
+    "songImage": "/karaoke/wicked-game.png",
+    "spotifyUri": "spotify:track:0sw8SMM4zJAXBMmCPllQVI"
   }
 ]
