@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
     return new NextResponse("Token exchange failed", { status: 500 });
   }
 
-  const res = NextResponse.redirect(baseUrl + "/karaoke");
+  const res = NextResponse.redirect(baseUrl + "/karaoke#pickup");
   res.cookies.set("spotify_token", data.access_token, {
     path: "/",
     httpOnly: true,

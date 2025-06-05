@@ -110,8 +110,6 @@ export default function useSpotify(
     };
   }, []);
 
-  const login = () => router.push("/api/spotify/auth/login");
-
   const logout = () => {
     deleteCookie("spotify_token");
     if (player) {
@@ -119,5 +117,5 @@ export default function useSpotify(
     }
   };
 
-  return { play, pauseToggle, stop, login, logout, player };
+  return { play, pauseToggle, stop, logout, player };
 }

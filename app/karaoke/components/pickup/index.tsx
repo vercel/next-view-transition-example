@@ -3,6 +3,7 @@
 import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import useSpotify from "../../hooks/useSpotify";
 import { Song } from "../../types";
@@ -15,6 +16,8 @@ export default function Pickup({
   spotifyToken: string | undefined;
   song: Song;
 }) {
+  const [lidOpen, setLidOpen] = useState(false);
+  const [tooltipShown, setTooltipShown] = useState(false);
   const [needleRotated, setNeedleRotated] = useState(false);
   const [needleLifted, setNeedleLifted] = useState(false);
   const [spinning, setSpinning] = useState(false);
@@ -68,7 +71,7 @@ export default function Pickup({
   }, [song]);
 
   return (
-    <div className="scene">
+    <div className="scene" id="pickup">
       <div className="box base">
         <div className="side top" />
         <div className="side bottom" />
@@ -103,11 +106,32 @@ export default function Pickup({
             className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
           />
         </div>
-        <div className="box lid open">
+        <div
+          className={cn("box lid", lidOpen ? "open" : undefined)}
+          onClick={() => setLidOpen((prev) => !prev)}
+        >
           <div className="side top" />
           <div className="side left" />
           <div className="side right" />
-          <div className="side front" />
+          <div className="side front">
+            {!spotifyToken && (
+              <Link
+                href="/api/spotify/auth/login"
+                onClick={(e) => e.stopPropagation()}
+                className="absolute inset-0 h-fit transform cursor-pointer self-center justify-self-center rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+              >
+                Login with Spotify to play music
+              </Link>
+            )}
+            {!tooltipShown && spotifyToken && (
+              <button
+                onClick={() => setTooltipShown(true)}
+                className="absolute inset-0 h-fit transform cursor-pointer self-center justify-self-center rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+              >
+                Click here to open/close
+              </button>
+            )}
+          </div>
           <div className="side back" />
         </div>
         <div
