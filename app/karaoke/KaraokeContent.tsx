@@ -7,9 +7,13 @@ import { Song } from "./types";
 
 interface KaraokeContentProps {
   spotifyToken: string | undefined;
+  tooltipShown: boolean;
 }
 
-export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
+export default function KaraokeContent({
+  spotifyToken,
+  tooltipShown,
+}: KaraokeContentProps) {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
 
   return (
@@ -38,7 +42,11 @@ export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
           <p className="text-lg">{activeSong.artist}</p>
         </div>
         <div className="relative mt-20 flex w-1/2 items-center justify-center lg:my-0">
-          <Pickup song={activeSong} spotifyToken={spotifyToken} />
+          <Pickup
+            song={activeSong}
+            spotifyToken={spotifyToken}
+            tooltipShown={tooltipShown}
+          />
         </div>
       </div>
     </div>

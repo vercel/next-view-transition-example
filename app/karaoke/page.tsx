@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { cookies as nextCookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
@@ -7,7 +7,9 @@ import ScrollArrow from "../components/ScrollArrow";
 import KaraokeContent from "./KaraokeContent";
 
 export default async function KaraokePage() {
-  const spotifyToken = (await cookies()).get("spotify_token")?.value;
+  const cookies = await nextCookies();
+  const spotifyToken = cookies.get("spotify_token")?.value;
+  const tooltipShown = !!cookies.get("click-tooltip-shown")?.value;
 
   return (
     <>
@@ -79,7 +81,7 @@ export default async function KaraokePage() {
         </div>
         <ScrollArrow />
       </div>
-      <KaraokeContent spotifyToken={spotifyToken} />
+      <KaraokeContent spotifyToken={spotifyToken} tooltipShown={tooltipShown} />
     </>
   );
 }

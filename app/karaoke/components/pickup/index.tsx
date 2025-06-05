@@ -2,6 +2,7 @@
 
 import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
+import { setCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -12,12 +13,13 @@ import "./style.scss";
 export default function Pickup({
   spotifyToken,
   song,
+  tooltipShown,
 }: {
   spotifyToken: string | undefined;
   song: Song;
+  tooltipShown: boolean;
 }) {
   const [lidOpen, setLidOpen] = useState(false);
-  const [tooltipShown, setTooltipShown] = useState(false);
   const [needleRotated, setNeedleRotated] = useState(false);
   const [needleLifted, setNeedleLifted] = useState(false);
   const [spinning, setSpinning] = useState(false);
@@ -125,7 +127,7 @@ export default function Pickup({
             )}
             {!tooltipShown && spotifyToken && (
               <button
-                onClick={() => setTooltipShown(true)}
+                onClick={() => setCookie("click-tooltip-shown", true)}
                 className="absolute inset-0 h-fit transform cursor-pointer self-center justify-self-center rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
               >
                 Click here to open/close
