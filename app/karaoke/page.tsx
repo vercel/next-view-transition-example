@@ -6,7 +6,7 @@ import { useState, unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
 import Pickup from "./components/pickup";
-import { SpotifyProvider } from "./context/SpotifyContext";
+import { SpotifyProvider, useSpotifyContext } from "./context/SpotifyContext";
 import useSpotify from "./hooks/useSpotify";
 import songs from "./songs.json";
 import { Song } from "./types";
@@ -14,6 +14,7 @@ import { Song } from "./types";
 function KaraokeContent() {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
   const { play, pause, stop } = useSpotify(activeSong);
+  const { isAuthenticated, login } = useSpotifyContext();
 
   return (
     <>
@@ -104,7 +105,19 @@ function KaraokeContent() {
             <p className="text-2xl font-bold">{activeSong.name}</p>
             <p className="text-lg">{activeSong.artist}</p>
           </div>
-          <div className="flex w-1/2 items-center justify-center">
+          <div className="relative flex w-1/2 items-center justify-center">
+            {!isAuthenticated && (
+              <>
+                <div className="absolute -top-20 right-10 -bottom-0 -left-10 z-10 flex items-center justify-center bg-black/30">
+                  <button
+                    onClick={login}
+                    className="transform cursor-pointer rounded-full bg-[#1DB954] px-2 py-4 font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+                  >
+                    Login with Spotify to play music
+                  </button>
+                </div>
+              </>
+            )}
             <Pickup onPlay={play} onPause={pause} onStop={stop} />
           </div>
         </div>
