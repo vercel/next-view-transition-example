@@ -122,18 +122,22 @@
   background-image: repeating-radial-gradient(circle, #727377, #727377 50%, #000000 50%);
 }
 
-.recordSupport {
+.recordSupport, .record {
   position: absolute;
   width: 17.5em;
   height: 17.5em;
   background-image: linear-gradient(to right, #2F2F2F, #363636 50%, #252525);
   border-radius: 50%;
-  transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(90deg);
+  transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(0deg);
   mask-image: radial-gradient(circle at center, transparent 4%, black 5%);
 }
 
-.recordSupport.spinning {
-  animation: spinning 3s linear infinite;
+.record {
+  transform: rotateX(91deg) translateX(2.5em) translateZ(9.4em) rotateZ(0deg);
+}
+
+.recordSupport.spinning, .record.spinning {
+  animation: spinning 6s linear infinite;
 }
 
 // The lid of the pickup
@@ -173,14 +177,10 @@
 
 @keyframes spinning {
   0% {
-    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(90deg);
-  }
-
-  50% {
-    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(180deg);
+    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(0deg);
   }
 
   100% {
-    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(90deg);
+    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(360deg);
   }
 }

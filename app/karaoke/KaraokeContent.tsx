@@ -131,7 +131,12 @@ export default function KaraokeContent({
                 </div>
               </>
             )}
-            <Pickup onPlay={play} onPauseToggle={pauseToggle} onStop={stop} />
+            <Pickup
+              onPlay={play}
+              onPauseToggle={pauseToggle}
+              onStop={stop}
+              song={activeSong}
+            />
           </div>
         </div>
       </div>

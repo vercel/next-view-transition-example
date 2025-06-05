@@ -2,17 +2,21 @@
 
 import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { Song } from "../../types";
 import "./style.scss";
 
 export default function Pickup({
   onPlay,
   onPauseToggle,
   onStop,
+  song,
 }: {
   onPlay: () => void;
   onPauseToggle: () => void;
   onStop: () => void;
+  song: Song;
 }) {
   const [needleRotated, setNeedleRotated] = useState(false);
   const [needleLifted, setNeedleLifted] = useState(false);
@@ -86,6 +90,15 @@ export default function Pickup({
         <div className="side back" />
         <div className={cn("plate", spinning ? "spinning" : "")} />
         <div className={cn("recordSupport", spinning ? "spinning" : "")} />
+        <div className={cn("record", spinning ? "spinning" : "")}>
+          <Image
+            src={song.songImage}
+            alt={song.name}
+            fill
+            key={song.name}
+            className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
+          />
+        </div>
         <div className="box lid">
           <div className="side top" />
           <div className="side left" />
@@ -102,7 +115,6 @@ export default function Pickup({
           )}
         />
       </div>
-      {/* <div className="record" /> */}
     </div>
   );
 }
