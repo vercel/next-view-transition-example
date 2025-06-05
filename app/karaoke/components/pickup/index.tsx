@@ -22,6 +22,7 @@ export default function Pickup({
   const [needleLifted, setNeedleLifted] = useState(false);
   const [spinning, setSpinning] = useState(false);
   const [showReverseRotation, setShowReverseRotation] = useState(false);
+  const [playingSong, setPlayingSong] = useState(song);
 
   const onPlaying = useCallback(async () => {
     setSpinning(true);
@@ -57,12 +58,15 @@ export default function Pickup({
   }, [onStop]);
 
   useEffect(() => {
-    addEventListener("pickupStop", onStopped);
+    addEventListener("pickupStop", async () => {
+      await onStopped();
+      setPlayingSong(song);
+    });
 
     return () => {
       removeEventListener("pickupStop", onStopped);
     };
-  }, []);
+  }, [song]);
 
   return (
     <div className="scene">
@@ -92,10 +96,10 @@ export default function Pickup({
         <div className={cn("recordSupport", spinning ? "spinning" : "")} />
         <div className={cn("record", spinning ? "spinning" : "")}>
           <Image
-            src={song.songImage}
-            alt={song.name}
+            src={playingSong.songImage}
+            alt={playingSong.name}
             fill
-            key={song.name}
+            key={playingSong.name}
             className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
           />
         </div>
