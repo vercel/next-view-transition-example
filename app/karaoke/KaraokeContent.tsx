@@ -118,7 +118,7 @@ export default function KaraokeContent({
             <p className="text-2xl font-bold">{activeSong.name}</p>
             <p className="text-lg">{activeSong.artist}</p>
           </div>
-          <div className="relative flex w-1/2 items-center justify-center">
+          <div className="relative mt-20 flex w-1/2 items-center justify-center lg:my-0">
             {!isAuthenticated && (
               <>
                 <div className="absolute -top-20 right-10 -bottom-0 -left-10 z-10 flex items-center justify-center bg-black/30">
