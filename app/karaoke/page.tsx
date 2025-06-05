@@ -9,7 +9,6 @@ import KaraokeContent from "./KaraokeContent";
 export default async function KaraokePage() {
   const cookies = await nextCookies();
   const spotifyToken = cookies.get("spotify_token")?.value;
-  const tooltipShown = !!cookies.get("click-tooltip-shown")?.value;
 
   return (
     <>
@@ -81,7 +80,7 @@ export default async function KaraokePage() {
         </div>
         <ScrollArrow />
       </div>
-      <KaraokeContent spotifyToken={spotifyToken} tooltipShown={tooltipShown} />
+      <KaraokeContent spotifyToken={spotifyToken} />
     </>
   );
 }
