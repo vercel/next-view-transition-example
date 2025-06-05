@@ -7,11 +7,11 @@ import "./style.scss";
 
 export default function Pickup({
   onPlay,
-  onPause,
+  onPauseToggle,
   onStop,
 }: {
   onPlay: () => void;
-  onPause: () => void;
+  onPauseToggle: () => void;
   onStop: () => void;
 }) {
   const [needleRotated, setNeedleRotated] = useState(false);
@@ -32,14 +32,12 @@ export default function Pickup({
     onPlay();
   }, [onPlay]);
 
-  const onPaused = useCallback(() => {
+  const onPaused = useCallback(async () => {
     setNeedleLifted((prev) => !prev);
-    if (needleLifted) {
-      onPlay();
-    } else {
-      onPause();
-    }
-  }, [onPause, needleLifted]);
+    // wait so the needle goes back down
+    if (needleLifted) await waitSeconds(1);
+    onPauseToggle();
+  }, [onPauseToggle, needleLifted]);
 
   const onStopped = useCallback(async () => {
     setNeedleLifted(true);

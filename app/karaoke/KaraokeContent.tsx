@@ -19,7 +19,7 @@ export default function KaraokeContent({
   spotifyToken?: string;
 }) {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
-  const { play, pause, stop, isAuthenticated, login } = useSpotify(
+  const { play, pauseToggle, stop, isAuthenticated, login } = useSpotify(
     activeSong,
     spotifyToken,
   );
@@ -131,7 +131,7 @@ export default function KaraokeContent({
                 </div>
               </>
             )}
-            <Pickup onPlay={play} onPause={pause} onStop={stop} />
+            <Pickup onPlay={play} onPauseToggle={pauseToggle} onStop={stop} />
           </div>
         </div>
       </div>

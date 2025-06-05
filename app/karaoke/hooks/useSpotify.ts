@@ -38,10 +38,15 @@ export default function useSpotify(song: Song, spotifyToken: string) {
     }
   };
 
-  const pause = async () => {
+  const pauseToggle = async () => {
     if (!player) return;
     try {
-      await player.pause();
+      const playerState = await player.getCurrentState();
+      if (playerState?.paused) {
+        await player.resume();
+      } else {
+        await player.pause();
+      }
     } catch (error) {
       console.error("Error pausing song:", error);
     }
@@ -129,5 +134,5 @@ export default function useSpotify(song: Song, spotifyToken: string) {
     }
   }, []);
 
-  return { play, pause, stop, isAuthenticated, login, logout, player };
+  return { play, pauseToggle, stop, isAuthenticated, login, logout, player };
 }
