@@ -45,6 +45,10 @@ export default function Pickup({
   }, [onPauseToggle, needleLifted]);
 
   const onStopped = useCallback(async () => {
+    if (!needleRotated) {
+      onStop();
+      return;
+    }
     setNeedleLifted(true);
     onStop();
     await waitSeconds(1);
@@ -55,7 +59,7 @@ export default function Pickup({
     setShowReverseRotation(false);
     await waitSeconds(1);
     setSpinning(false);
-  }, [onStop]);
+  }, [onStop, needleRotated]);
 
   useEffect(() => {
     addEventListener("pickupStop", async () => {
