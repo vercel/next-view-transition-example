@@ -102,15 +102,19 @@ export default function KaraokeContent({
       <div className="min-h-screen bg-[#E09E8E]">
         <div className="flex items-center justify-center gap-0 py-12 lg:gap-4">
           {songs.map((song) => (
-            <Image
-              src={song.songImage}
-              alt={song.name}
-              width={200}
-              height={200}
-              key={song.name}
-              className="-mx-10 rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
+            <button
               onClick={() => setActiveSong(song)}
-            />
+              className="-mx-10 lg:mx-0"
+            >
+              <Image
+                src={song.songImage}
+                alt={song.name}
+                width={200}
+                height={200}
+                key={song.name}
+                className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10"
+              />
+            </button>
           ))}
         </div>
         <div className="flex min-h-[calc(100vh-200px-48px-48px)] flex-col items-center justify-around gap-4 lg:flex-row">
