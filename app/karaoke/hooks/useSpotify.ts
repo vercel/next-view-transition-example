@@ -6,16 +6,10 @@ import { useEffect, useState } from "react";
 import { Song } from "../types";
 
 export default function useSpotify(song: Song, spotifyToken: string) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const router = useRouter();
 
   const play = async () => {
-    if (!isAuthenticated) {
-      login();
-      return;
-    }
-
     if (!player) {
       console.error("Spotify player not initialized");
       return;
@@ -117,17 +111,10 @@ export default function useSpotify(song: Song, spotifyToken: string) {
 
   const logout = () => {
     deleteCookie("spotify_token");
-    setIsAuthenticated(false);
     if (player) {
       player.disconnect();
     }
   };
 
-  useEffect(() => {
-    if (spotifyToken) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-
-  return { play, pauseToggle, stop, isAuthenticated, login, logout, player };
+  return { play, pauseToggle, stop, login, logout, player };
 }

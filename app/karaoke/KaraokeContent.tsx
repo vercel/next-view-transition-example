@@ -19,7 +19,7 @@ export default function KaraokeContent({
   spotifyToken?: string;
 }) {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
-  const { play, pauseToggle, stop, isAuthenticated, login } = useSpotify(
+  const { play, pauseToggle, stop, login } = useSpotify(
     activeSong,
     spotifyToken,
   );
@@ -124,7 +124,7 @@ export default function KaraokeContent({
             <p className="text-lg">{activeSong.artist}</p>
           </div>
           <div className="relative mt-20 flex w-1/2 items-center justify-center lg:my-0">
-            {!isAuthenticated && (
+            {!spotifyToken && (
               <>
                 <div className="absolute -top-20 right-10 -bottom-0 -left-10 z-10 flex items-center justify-center bg-black/30">
                   <button
