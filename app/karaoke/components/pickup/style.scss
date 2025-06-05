@@ -140,13 +140,18 @@
   animation: spinning 6s linear infinite;
 }
 
-// The lid of the pickup
 .lid {
-  transform: rotateX(45deg)translateY(-13.75em)translateX(-1.25em)scale(1.06);
+  transition: all 1s linear;
+  transform: translateY(-2.5em);
 
   & > .side {
     background-color: #0005;
   }
+}
+
+// The lid of the pickup
+.lid.open {
+  transform: rotateX(45deg)translateY(-13.75em)translateX(-1.25em)scale(1.06);
 }
 
 .needle {

@@ -108,7 +108,7 @@ export default function Pickup({
             className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
           />
         </div>
-        <div className="box lid">
+        <div className="box lid open">
           <div className="side top" />
           <div className="side left" />
           <div className="side right" />
