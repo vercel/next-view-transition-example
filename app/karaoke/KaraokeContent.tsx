@@ -18,7 +18,7 @@ export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
         {songs.map((song) => (
           <button
             onClick={() => setActiveSong(song)}
-            className="-mx-10 lg:mx-0"
+            className="-mx-16 sm:-mx-10 lg:mx-0"
             key={song.name}
           >
             <Image
@@ -33,11 +33,11 @@ export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
         ))}
       </div>
       <div className="flex min-h-[calc(100vh-200px-48px-48px)] flex-col items-center justify-around gap-4 lg:flex-row">
-        <div className="flex w-1/2 flex-col items-center justify-center gap-4">
+        <div className="flex w-1/2 flex-col items-center justify-center gap-4 text-center">
           <p className="text-2xl font-bold">{activeSong.name}</p>
           <p className="text-lg">{activeSong.artist}</p>
         </div>
-        <div className="relative mt-20 flex w-1/2 items-center justify-center lg:my-0">
+        <div className="relative mt-10 flex w-1/2 items-center justify-center lg:mt-0">
           <Pickup song={activeSong} spotifyToken={spotifyToken} />
         </div>
       </div>
