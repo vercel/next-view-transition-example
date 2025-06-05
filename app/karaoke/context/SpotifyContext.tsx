@@ -1,3 +1,5 @@
+import { CookieValueTypes, deleteCookie, getCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 interface SpotifyContextType {
@@ -12,6 +14,7 @@ const SpotifyContext = createContext<SpotifyContextType | null>(null);
 export function SpotifyProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     // Load Spotify Web Playback SDK
@@ -24,7 +27,8 @@ export function SpotifyProvider({ children }: { children: React.ReactNode }) {
       const player = new window.Spotify.Player({
         name: "Karaoke Player",
         getOAuthToken: (cb) => {
-          cb(localStorage.getItem("spotify_token") || "");
+          const spotifyToken = getCookie("spotify_token") as CookieValueTypes;
+          cb(spotifyToken ?? "");
         },
         volume: 0.5,
       });
@@ -46,21 +50,10 @@ export function SpotifyProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const login = () => {
-    const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-    alert(`clientId: ${clientId}`);
-    const redirectUri = window.location.origin + "/karaoke/callback";
-    const scope = "streaming user-read-email user-read-private";
-
-    const url = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(
-      redirectUri,
-    )}&scope=${encodeURIComponent(scope)}`;
-
-    window.location.href = url;
-  };
+  const login = () => router.push("/api/spotify/auth/login");
 
   const logout = () => {
-    localStorage.removeItem("spotify_token");
+    deleteCookie("spotify_token");
     setIsAuthenticated(false);
     if (player) {
       player.disconnect();
@@ -68,7 +61,7 @@ export function SpotifyProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("spotify_token");
+    const token = getCookie("spotify_token");
     if (token) {
       setIsAuthenticated(true);
     }
