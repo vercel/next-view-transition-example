@@ -95,6 +95,16 @@ export default function useSpotify(song: Song, spotifyToken: string) {
         console.log("Device ID has gone offline", device_id);
       });
 
+      player.addListener("initialization_error", ({ message }) =>
+        console.error("Init error", message),
+      );
+      player.addListener("authentication_error", ({ message }) =>
+        console.error("Auth error", message),
+      );
+      player.addListener("account_error", ({ message }) =>
+        console.error("Account error", message),
+      );
+
       player.connect();
     };
 
