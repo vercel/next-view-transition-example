@@ -1,3 +1,5 @@
+"use client";
+
 import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
 import { useCallback, useState } from "react";

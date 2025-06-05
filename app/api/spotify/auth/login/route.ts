@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
     ? "http://127.0.0.1:3000"
     : req.nextUrl.origin;
 
-  const scope = "user-read-email user-read-private";
+  const scope = "streaming user-read-email user-read-private";
   const params = new URLSearchParams({
     response_type: "code",
     client_id: process.env.SPOTIFY_CLIENT_ID,
