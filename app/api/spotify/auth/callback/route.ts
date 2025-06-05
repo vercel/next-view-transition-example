@@ -7,17 +7,16 @@ export async function GET(req: NextRequest) {
     return new NextResponse("No code in callback", { status: 400 });
   }
 
-  if (
-    !process.env.SPOTIFY_CLIENT_ID ||
-    !process.env.SPOTIFY_CLIENT_SECRET ||
-    !process.env.BASE_URL
-  ) {
+  if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
     return new NextResponse("Missing Spotify credentials", { status: 500 });
   }
 
   const basicAuth = Buffer.from(
     `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`,
   ).toString("base64");
+  const baseUrl = req.nextUrl.origin.includes("localhost")
+    ? "http://127.0.0.1:3000"
+    : req.nextUrl.origin;
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -28,7 +27,7 @@ export async function GET(req: NextRequest) {
     body: new URLSearchParams({
       grant_type: "authorization_code",
       code,
-      redirect_uri: process.env.BASE_URL + "/api/spotify/auth/callback",
+      redirect_uri: baseUrl + "/api/spotify/auth/callback",
     }),
   });
 
@@ -39,7 +38,7 @@ export async function GET(req: NextRequest) {
     return new NextResponse("Token exchange failed", { status: 500 });
   }
 
-  const res = NextResponse.redirect(process.env.BASE_URL + "/karaoke");
+  const res = NextResponse.redirect(baseUrl + "/karaoke");
   res.cookies.set("spotify_token", data.access_token, {
     path: "/",
     httpOnly: true,
