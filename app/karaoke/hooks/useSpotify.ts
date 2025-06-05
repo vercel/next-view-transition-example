@@ -1,7 +1,6 @@
 "use client";
 
 import { deleteCookie } from "cookies-next/client";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Song } from "../types";
 
@@ -10,7 +9,6 @@ export default function useSpotify(
   spotifyToken: string | undefined,
 ) {
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
-  const router = useRouter();
 
   const play = async () => {
     if (!player) {
@@ -30,6 +28,10 @@ export default function useSpotify(
           uris: [song.spotifyUri],
         }),
       });
+      const playerState = await player.getCurrentState();
+      if (playerState?.paused) {
+        await player.resume();
+      }
     } catch (error) {
       console.error("Error playing song:", error);
     }
