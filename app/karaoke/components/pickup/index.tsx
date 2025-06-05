@@ -2,7 +2,7 @@
 
 import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./style.scss";
 
 export default function Pickup({
@@ -53,6 +53,14 @@ export default function Pickup({
     await waitSeconds(1);
     setSpinning(false);
   }, [onStop]);
+
+  useEffect(() => {
+    addEventListener("pickupStop", onStopped);
+
+    return () => {
+      removeEventListener("pickupStop", onStopped);
+    };
+  }, []);
 
   return (
     <div className="scene">

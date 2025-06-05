@@ -1,7 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import {
+  useEffect,
+  useState,
+  unstable_ViewTransition as ViewTransition,
+} from "react";
 import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
 import Pickup from "./components/pickup";
@@ -19,6 +23,11 @@ export default function KaraokeContent({
     activeSong,
     spotifyToken,
   );
+
+  useEffect(() => {
+    dispatchEvent(new Event("pickupStop"));
+    stop();
+  }, [activeSong]);
 
   return (
     <>
