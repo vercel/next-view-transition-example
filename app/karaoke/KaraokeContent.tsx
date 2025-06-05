@@ -10,7 +10,7 @@ import songs from "./songs.json";
 import { Song } from "./types";
 
 export default function KaraokeContent({
-  spotifyToken,
+  spotifyToken = "",
 }: {
   spotifyToken?: string;
 }) {

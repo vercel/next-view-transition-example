@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Song } from "../types";
 
-export default function useSpotify(song: Song, spotifyToken?: string) {
+export default function useSpotify(song: Song, spotifyToken: string) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const router = useRouter();
@@ -18,9 +18,7 @@ export default function useSpotify(song: Song, spotifyToken?: string) {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: "Karaoke Player",
-        getOAuthToken: (cb) => {
-          cb(spotifyToken ?? "");
-        },
+        getOAuthToken: (cb) => cb(spotifyToken),
         volume: 0.5,
       });
 
