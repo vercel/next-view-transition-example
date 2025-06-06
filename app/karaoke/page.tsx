@@ -1,5 +1,4 @@
 import { cookies as nextCookies } from "next/headers";
-import Image from "next/image";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
@@ -41,20 +40,13 @@ export default async function KaraokePage() {
             </div>
           </div>
 
-          <ViewTransition name="karaoke-photo">
-            <div className="relative order-1 flex-1 bg-[#E09E8E] px-8 pt-8 pb-0 lg:order-2">
-              <div className="relative h-[100vh] w-full">
-                <Image
-                  src="/karaoke.png"
-                  alt="Karaoke"
-                  fill
-                  className="object-contain"
-                  sizes="33vw"
-                  priority
-                />
-              </div>
-            </div>
-          </ViewTransition>
+          <div className="relative order-1 min-h-screen flex-1 lg:order-2">
+            <ViewTransition name="karaoke-photo">
+              <div
+                className={`absolute inset-0 bg-[#E09E8E] bg-[url(/karaoke.png)] bg-contain bg-position-[center_top_1rem] bg-no-repeat lg:bg-contain`}
+              />
+            </ViewTransition>
+          </div>
 
           <div
             className={`flex-1 ${styles.viewTransitionWrapper} order-3 lg:order-3`}

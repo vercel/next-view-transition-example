@@ -6,19 +6,17 @@ import { convertToPascalCase } from "./utils/convertToPascalCase";
 
 export default function Page() {
   return (
-    <div className="grid h-screen grid-rows-3 sm:grid-cols-3 sm:grid-rows-1">
+    <div className="grid h-screen grid-rows-3 md:grid-cols-3 md:grid-rows-1">
       {(hobbies as Hobby[]).map((hobby) => (
-        <Link href={`/${hobby.id}`} className="relative h-full" key={hobby.id}>
+        <Link href={`/${hobby.id}`} className="relative" key={hobby.id}>
           <ViewTransition name={`${hobby.id}-photo`}>
             <div
-              className={`absolute inset-0 bg-[${hobby.color}] bg-size-[40%] bg-position-[center_top_1rem] bg-no-repeat sm:bg-cover lg:bg-contain`}
+              className={`absolute inset-0 bg-[${hobby.color}] bg-size-[40%] bg-position-[center_top_1rem] bg-no-repeat md:bg-cover lg:bg-contain`}
               style={{ backgroundImage: `url(/${hobby.id}.png)` }}
             />
           </ViewTransition>
-          {/* Overlay */}
           <div className="absolute inset-0 transition-colors duration-300 hover:bg-black/30" />
-          {/* Title */}
-          <div className="absolute bottom-0 w-full bg-black/50 p-4 text-center text-3xl font-bold text-white sm:bottom-20 sm:p-8">
+          <div className="absolute bottom-0 w-full bg-black/50 p-2 text-center text-2xl font-bold text-white md:bottom-20 md:p-8 md:text-4xl">
             <ViewTransition name={`${hobby.id}-title`}>
               <h2>{convertToPascalCase(hobby.id)}</h2>
             </ViewTransition>
