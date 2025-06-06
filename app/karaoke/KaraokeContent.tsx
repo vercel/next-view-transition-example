@@ -33,7 +33,7 @@ export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
           </button>
         ))}
       </div>
-      <div className="flex min-h-[calc(100vh-200px-48px-48px)] flex-col items-center justify-around gap-4 lg:flex-row">
+      <div className="flex min-h-[calc(100dvh-200px-48px-48px)] flex-col items-center justify-around gap-4 lg:flex-row">
         <div className="flex w-1/2 flex-col items-center justify-center gap-4 text-center">
           <p className="text-2xl font-bold">{activeSong.name}</p>
           <p className="text-lg">{activeSong.artist}</p>

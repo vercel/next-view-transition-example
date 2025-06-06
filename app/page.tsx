@@ -6,7 +6,7 @@ import { convertToPascalCase } from "./utils/convertToPascalCase";
 
 export default function Page() {
   return (
-    <div className="grid h-screen grid-rows-3 md:grid-cols-3 md:grid-rows-1">
+    <div className="grid h-[100dvh] grid-rows-3 md:grid-cols-3 md:grid-rows-1">
       {(hobbies as Hobby[]).map((hobby) => (
         <Link href={`/${hobby.id}`} className="relative" key={hobby.id}>
           <ViewTransition name={`${hobby.id}-photo`}>
