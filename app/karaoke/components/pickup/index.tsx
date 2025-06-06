@@ -23,11 +23,11 @@ export default function Pickup({
   const [spinning, setSpinning] = useState(false);
   const [showReverseRotation, setShowReverseRotation] = useState(false);
   const [playingSong, setPlayingSong] = useState(song);
-  const { play, pauseToggle, stop } = useSpotify(song, spotifyToken);
   const [tooltipShown, setTooltipShown] = useLocalStorage(
     "click-tooltip-shown",
     false,
   );
+  const { play, pauseToggle, stop } = useSpotify(song, spotifyToken);
 
   const onPlaying = useCallback(async () => {
     setSpinning(true);

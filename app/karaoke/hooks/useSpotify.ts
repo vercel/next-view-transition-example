@@ -9,6 +9,7 @@ export default function useSpotify(
   spotifyToken: string | undefined,
 ) {
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
+  const [deviceId, setDeviceId] = useState();
 
   const play = async () => {
     if (!player) {
@@ -18,20 +19,19 @@ export default function useSpotify(
 
     try {
       // Start playback
-      await fetch("https://api.spotify.com/v1/me/player/play", {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${spotifyToken}`,
-          "Content-Type": "application/json",
+      await fetch(
+        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${spotifyToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uris: [song.spotifyUri],
+          }),
         },
-        body: JSON.stringify({
-          uris: [song.spotifyUri],
-        }),
-      });
-      const playerState = await player.getCurrentState();
-      if (playerState?.paused) {
-        await player.resume();
-      }
+      );
     } catch (error) {
       console.error("Error playing song:", error);
     }
@@ -61,20 +61,6 @@ export default function useSpotify(
     }
   };
 
-  async function transferPlayback(deviceId: string, token: string) {
-    await fetch("https://api.spotify.com/v1/me/player", {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        device_ids: [deviceId],
-        play: false, // change to true if you want it to auto-play
-      }),
-    });
-  }
-
   useEffect(() => {
     if (!spotifyToken) return;
     // Load Spotify Web Playback SDK
@@ -92,7 +78,7 @@ export default function useSpotify(
 
       player.addListener("ready", ({ device_id }) => {
         setPlayer(player);
-        transferPlayback(device_id, spotifyToken ?? "");
+        setDeviceId(device_id);
       });
 
       player.addListener("initialization_error", ({ message }) =>
