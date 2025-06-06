@@ -1,26 +1,26 @@
 .scene {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
-  width: 25em;
-  height: 25em;
-  position: relative;
   perspective: 80em;
   perspective-origin: 140% -30%;
+  width: 25em;
+  height: 25em;
 }
 
 // Common styles for boxes
 .box {
   position: absolute;
+  transform-style: preserve-3d;
   width: 25em;
   height: 2.5em;
-  transform-style: preserve-3d;
 
   .side {
     position: absolute;
+    border: 2px solid black;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
 
     &.front {
       transform: translateZ(12.5em);
@@ -39,13 +39,13 @@
     }
 
     &.top {
-      height: 25em !important;
       transform: rotateX(90deg) translateZ(12.5em);
+      height: 25em !important;
     }
 
     &.bottom {
-      height: 25em !important;
       transform: rotateX(-90deg) translateZ(-10em);
+      height: 25em !important;
     }
   }
 }
@@ -57,20 +57,25 @@
   bottom: 30%;
 
   & > .side {
-    background-color: #000b;
     box-shadow: inset 0 0 1.125em 0.5em #00000080;
+    background-color: #000b;
 
     &.front {
-      background-image: linear-gradient(to right, #47494C, #36383C 50%, #1F1F1F);
+      background-image: linear-gradient(
+        to right,
+        #47494c,
+        #36383c 50%,
+        #1f1f1f
+      );
     }
   }
 }
 
 .controls {
-  position: absolute;
-  bottom: 0;
-  right: 0.625em;
   display: flex;
+  position: absolute;
+  right: 0.625em;
+  bottom: 0;
 
   .control {
     display: flex;
@@ -79,34 +84,34 @@
     gap: 2px;
 
     .label {
-      color: #7F7F7F;
-      font-size: 6px;
-      letter-spacing: 1px;
-      font-family: monospace;
-      text-transform: uppercase;
+      color: #7f7f7f;
       font-weight: 600;
+      font-size: 6px;
+      font-family: monospace;
+      letter-spacing: 1px;
       user-select: none;
+      text-transform: uppercase;
     }
 
     button {
+      position: relative;
+      cursor: pointer;
+      box-shadow: inset 1px 1px 1px #00000055;
       background-color: #181818;
       width: 3.75em;
       height: 0.75em;
-      cursor: pointer;
-      position: relative;
-      box-shadow: inset 1px 1px 1px #00000055;
 
       &::after {
-        content: '';
         display: block;
-        width: 0.75em;
-        height: 0.125em;
-        background: #444;
         position: absolute;
-        left: 50%;
         bottom: 0;
+        left: 50%;
         transform: translateX(-50%);
         border-radius: 1px;
+        background: #444;
+        width: 0.75em;
+        height: 0.125em;
+        content: "";
       }
     }
   }
@@ -114,35 +119,42 @@
 
 .plate {
   position: absolute;
+  transform: rotateX(90deg) translateX(2.5em) translateZ(7.625em);
+  border-radius: 50%;
+  background-image: repeating-radial-gradient(
+    circle,
+    #727377,
+    #727377 50%,
+    #000000 50%
+  );
+  background-color: #727377;
   width: 17.5em;
   height: 15em;
-  background-color: #727377;
-  border-radius: 50%;
-  transform: rotateX(90deg) translateX(2.5em) translateZ(7.625em);
-  background-image: repeating-radial-gradient(circle, #727377, #727377 50%, #000000 50%);
 }
 
-.recordSupport, .record {
+.recordSupport,
+.record {
   position: absolute;
-  width: 17.5em;
-  height: 17.5em;
-  background-image: linear-gradient(to right, #2F2F2F, #363636 50%, #252525);
-  border-radius: 50%;
   transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(0deg);
   mask-image: radial-gradient(circle at center, transparent 4%, black 5%);
+  border-radius: 50%;
+  background-image: linear-gradient(to right, #2f2f2f, #363636 50%, #252525);
+  width: 17.5em;
+  height: 17.5em;
 }
 
 .record {
   transform: rotateX(91deg) translateX(2.5em) translateZ(9.4em) rotateZ(0deg);
 }
 
-.recordSupport.spinning, .record.spinning {
+.recordSupport.spinning,
+.record.spinning {
   animation: spinning 6s linear infinite;
 }
 
 .lid {
-  transition: all 1s linear;
   transform: translateY(-2.5em);
+  transition: all 1s linear;
 
   & > .side {
     background-color: #0005;
@@ -151,29 +163,29 @@
 
 // The lid of the pickup
 .lid.open {
-  transform: rotateX(45deg)translateY(-13.75em)translateX(-1.25em)scale(1.06);
+  transform: rotateX(45deg) translateY(-13.75em) translateX(-1.25em) scale(1.06);
 }
 
 .needle {
   position: absolute;
   top: -1.5625em;
   right: -6.875em;
-  width: 18.75em;
-  height: 0.375em;
-  background-color: white;
-  border-radius: 6.25em;
   transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
   transition: all 1s linear;
+  border-radius: 6.25em;
+  background-color: white;
+  width: 18.75em;
+  height: 0.375em;
 }
 
 .needle.rotated {
-  transform: rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
   right: -3.125em;
+  transform: rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
 }
 
 .needle.reverseRotation {
-  transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
   right: -6.875em;
+  transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
 }
 
 .needle.lifted {
@@ -182,10 +194,12 @@
 
 @keyframes spinning {
   0% {
-    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(0deg);
+    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
+      rotateZ(0deg);
   }
 
   100% {
-    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em) rotateZ(360deg);
+    transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
+      rotateZ(360deg);
   }
 }

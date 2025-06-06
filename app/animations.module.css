@@ -55,6 +55,6 @@
 .viewTransitionWrapper :global(::view-transition-new(karaoke-title)),
 .viewTransitionWrapper :global(::view-transition-old(cocktails-title)),
 .viewTransitionWrapper :global(::view-transition-new(cocktails-title)) {
-  animation: none;
   mix-blend-mode: normal;
+  animation: none;
 }
