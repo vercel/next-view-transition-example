@@ -13,6 +13,25 @@ export default function useSpotify(
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const [deviceId, setDeviceId] = useState();
   const [playerState, setPlayerState] = useState<PlayerState>("idle");
+  const [token, setToken] = useState(spotifyToken);
+
+  const refreshToken = async () => {
+    try {
+      const response = await fetch("/api/spotify/auth/refresh", {
+        method: "POST",
+      });
+      const data = await response.json();
+      if (response.ok && data.access_token) {
+        setToken(data.access_token);
+        return data.access_token;
+      }
+      throw new Error("Failed to refresh token");
+    } catch (error) {
+      console.error("Error refreshing token:", error);
+      logout();
+      return null;
+    }
+  };
 
   const play = async () => {
     if (!player) {
@@ -24,12 +43,12 @@ export default function useSpotify(
 
     try {
       // Start playback
-      await fetch(
+      const response = await fetch(
         `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
         {
           method: "PUT",
           headers: {
-            Authorization: `Bearer ${spotifyToken}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -37,6 +56,27 @@ export default function useSpotify(
           }),
         },
       );
+
+      if (response.status === 401) {
+        // Token expired, try to refresh
+        const newToken = await refreshToken();
+        if (newToken) {
+          // Retry with new token
+          await fetch(
+            `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+            {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${newToken}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                uris: [song.spotifyUri],
+              }),
+            },
+          );
+        }
+      }
       setPlayerState("playing");
     } catch (error) {
       console.error("Error playing song:", error);
@@ -70,17 +110,31 @@ export default function useSpotify(
   };
 
   useEffect(() => {
-    if (!spotifyToken) return;
-    // Load Spotify Web Playback SDK
-    const script = document.createElement("script");
-    script.src = "https://sdk.scdn.co/spotify-player.js";
-    script.async = true;
-    document.body.appendChild(script);
-
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: "Karaoke Player",
-        getOAuthToken: (cb) => cb(spotifyToken ?? ""),
+        getOAuthToken: async (cb) => {
+          try {
+            const response = await fetch("https://api.spotify.com/v1/me", {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+
+            if (response.status === 401) {
+              const newToken = await refreshToken();
+              if (newToken) {
+                setToken(newToken);
+                cb(newToken);
+                return;
+              }
+            }
+            cb(token ?? "");
+          } catch (error) {
+            console.error("Error checking token:", error);
+            cb(token ?? "");
+          }
+        },
         volume: 0.5,
       });
 
@@ -102,18 +156,16 @@ export default function useSpotify(
 
       player.connect();
     };
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  }, [token]);
 
   const logout = () => {
     deleteCookie("spotify_token");
+    deleteCookie("spotify_refresh_token");
     if (player) {
       player.disconnect();
     }
     setPlayerState("idle");
+    setToken(undefined);
   };
 
   return { play, pauseToggle, stop, logout, player, playerState };

@@ -45,6 +45,12 @@ export async function GET(req: NextRequest) {
     secure: process.env.NODE_ENV === "production",
     maxAge: data.expires_in,
   });
+  res.cookies.set("spotify_refresh_token", data.refresh_token, {
+    path: "/",
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 3600, // 1 hour
+  });
 
   return res;
 }
