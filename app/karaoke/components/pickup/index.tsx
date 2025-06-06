@@ -27,7 +27,10 @@ export default function Pickup({
     "click-tooltip-shown",
     false,
   );
-  const { play, pauseToggle, stop } = useSpotify(song, spotifyToken);
+  const { play, pauseToggle, stop, playerState } = useSpotify(
+    song,
+    spotifyToken,
+  );
 
   const onPlaying = useCallback(async () => {
     setSpinning(true);
@@ -85,7 +88,10 @@ export default function Pickup({
           <div className="controls">
             <div className="control">
               <span className="label">Play</span>
-              <button onClick={onPlaying} />
+              <button
+                onClick={onPlaying}
+                disabled={playerState === "playing"}
+              />
             </div>
             <div className="control">
               <span className="label">Pause</span>
@@ -93,7 +99,10 @@ export default function Pickup({
             </div>
             <div className="control">
               <span className="label">Stop</span>
-              <button onClick={onStopped} />
+              <button
+                onClick={onStopped}
+                disabled={playerState === "stopped"}
+              />
             </div>
           </div>
         </div>

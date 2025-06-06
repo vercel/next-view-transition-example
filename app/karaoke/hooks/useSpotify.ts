@@ -4,18 +4,23 @@ import { Song } from "@/app/types";
 import { deleteCookie } from "cookies-next/client";
 import { useEffect, useState } from "react";
 
+type PlayerState = "idle" | "playing" | "paused" | "stopped";
+
 export default function useSpotify(
   song: Song,
   spotifyToken: string | undefined,
 ) {
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const [deviceId, setDeviceId] = useState();
+  const [playerState, setPlayerState] = useState<PlayerState>("idle");
 
   const play = async () => {
     if (!player) {
       console.error("Spotify player not initialized");
       return;
     }
+
+    if (playerState === "playing") return;
 
     try {
       // Start playback
@@ -32,6 +37,7 @@ export default function useSpotify(
           }),
         },
       );
+      setPlayerState("playing");
     } catch (error) {
       console.error("Error playing song:", error);
     }
@@ -40,11 +46,12 @@ export default function useSpotify(
   const pauseToggle = async () => {
     if (!player) return;
     try {
-      const playerState = await player.getCurrentState();
-      if (playerState?.paused) {
+      if (playerState === "paused") {
         await player.resume();
+        setPlayerState("playing");
       } else {
         await player.pause();
+        setPlayerState("paused");
       }
     } catch (error) {
       console.error("Error pausing song:", error);
@@ -56,6 +63,7 @@ export default function useSpotify(
     try {
       await player.pause();
       await player.seek(0);
+      setPlayerState("stopped");
     } catch (error) {
       console.error("Error stopping song:", error);
     }
@@ -79,6 +87,7 @@ export default function useSpotify(
       player.addListener("ready", ({ device_id }) => {
         setPlayer(player);
         setDeviceId(device_id);
+        setPlayerState("idle");
       });
 
       player.addListener("initialization_error", ({ message }) =>
@@ -104,7 +113,8 @@ export default function useSpotify(
     if (player) {
       player.disconnect();
     }
+    setPlayerState("idle");
   };
 
-  return { play, pauseToggle, stop, logout, player };
+  return { play, pauseToggle, stop, logout, player, playerState };
 }
