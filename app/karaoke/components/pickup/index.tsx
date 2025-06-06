@@ -85,6 +85,17 @@ export default function Pickup({
         <div className="side left" />
         <div className="side right" />
         <div className="side front">
+          <p className="absolute bottom-1 left-1 flex gap-1 text-[10px] text-white">
+            Powered by
+            <Image
+              src="/spotify-logo.svg"
+              className="inline"
+              width={10}
+              height={10}
+              alt="Spotify"
+            />
+            <span className="color-[#1CD760]">Spotify</span>
+          </p>
           <div className="controls">
             <div className="control">
               <span className="label">Play</span>
