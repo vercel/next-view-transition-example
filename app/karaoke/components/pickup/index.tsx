@@ -89,12 +89,17 @@ export default function Pickup({
             Powered by
             <Image
               src="/spotify-logo.svg"
-              className="inline"
+              className="inline h-[10px] w-[10px]"
               width={10}
               height={10}
               alt="Spotify"
+              priority
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = "none";
+              }}
             />
-            <span className="color-[#1CD760]">Spotify</span>
+            <span className="text-[#1CD760]">Spotify</span>
           </p>
           <div className="controls">
             <div className="control">
@@ -139,13 +144,15 @@ export default function Pickup({
           <div className="side right" />
           <div className="side front">
             {!spotifyToken && (
-              <Link
-                href="/api/spotify/auth/login"
-                onClick={(e) => e.stopPropagation()}
-                className="absolute inset-0 h-fit transform cursor-pointer self-center justify-self-center rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
-              >
-                Login with Spotify to play music
-              </Link>
+              <div className="align-center absolute inset-0 flex justify-center">
+                <Link
+                  href="/api/spotify/auth/login"
+                  onClick={(e) => e.stopPropagation()}
+                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+                >
+                  Login with Spotify to play music
+                </Link>
+              </div>
             )}
             {!tooltipShown && spotifyToken && (
               <button
