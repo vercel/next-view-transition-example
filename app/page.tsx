@@ -11,7 +11,8 @@ export default function Page() {
         <Link href={`/${hobby.id}`} className="relative h-full">
           <ViewTransition name={`${hobby.id}-photo`}>
             <div
-              className={`absolute inset-0 bg-[${hobby.color}] bg-[url(/${hobby.id}.png)] bg-size-[40%] bg-position-[center_top_1rem] bg-no-repeat sm:bg-cover lg:bg-contain`}
+              className={`absolute inset-0 bg-[${hobby.color}] bg-size-[40%] bg-position-[center_top_1rem] bg-no-repeat sm:bg-cover lg:bg-contain`}
+              style={{ backgroundImage: `url(/${hobby.id}.png)` }}
             />
           </ViewTransition>
           {/* Overlay */}
