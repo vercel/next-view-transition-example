@@ -7,6 +7,13 @@
   perspective-origin: 140% -30%;
   width: 25em;
   height: 25em;
+
+  @media screen and (max-width: 1024px) {
+    transform: translateX(2em);
+    perspective-origin: 150% -20%;
+    width: 20em;
+    height: 20em;
+  }
 }
 
 // Common styles for boxes
@@ -16,6 +23,11 @@
   width: 25em;
   height: 2.5em;
 
+  @media screen and (max-width: 1024px) {
+    width: 20em;
+    height: 2em;
+  }
+
   .side {
     position: absolute;
     border: 2px solid black;
@@ -24,28 +36,54 @@
 
     &.front {
       transform: translateZ(12.5em);
+
+      @media screen and (max-width: 1024px) {
+        transform: translateZ(10em);
+      }
     }
 
     &.back {
       transform: translateZ(-12.5em);
+
+      @media screen and (max-width: 1024px) {
+        transform: translateZ(-10em);
+      }
     }
 
     &.left {
       transform: rotateY(-90deg) translateZ(12.5em);
+
+      @media screen and (max-width: 1024px) {
+        transform: rotateY(-90deg) translateZ(10em);
+      }
     }
 
     &.right {
       transform: rotateY(90deg) translateZ(12.5em);
+
+      @media screen and (max-width: 1024px) {
+        transform: rotateY(90deg) translateZ(10em);
+      }
     }
 
     &.top {
       transform: rotateX(90deg) translateZ(12.5em);
       height: 25em !important;
+
+      @media screen and (max-width: 1024px) {
+        transform: rotateX(90deg) translateZ(10em);
+        height: 20em !important;
+      }
     }
 
     &.bottom {
       transform: rotateX(-90deg) translateZ(-10em);
       height: 25em !important;
+
+      @media screen and (max-width: 1024px) {
+        transform: rotateX(-90deg) translateZ(-8em);
+        height: 20em !important;
+      }
     }
   }
 }
@@ -130,6 +168,12 @@
   background-color: #727377;
   width: 17.5em;
   height: 15em;
+
+  @media screen and (max-width: 1024px) {
+    transform: rotateX(90deg) translateX(2em) translateZ(6.1em);
+    width: 14em;
+    height: 12em;
+  }
 }
 
 .recordSupport,
@@ -141,10 +185,20 @@
   background-image: linear-gradient(to right, #2f2f2f, #363636 50%, #252525);
   width: 17.5em;
   height: 17.5em;
+
+  @media screen and (max-width: 1024px) {
+    transform: rotateX(91deg) translateX(2em) translateZ(7.3em) rotateZ(0deg);
+    width: 14em;
+    height: 14em;
+  }
 }
 
 .record {
   transform: rotateX(91deg) translateX(2.5em) translateZ(9.4em) rotateZ(0deg);
+
+  @media screen and (max-width: 1024px) {
+    transform: rotateX(91deg) translateX(2em) translateZ(7.52em) rotateZ(0deg);
+  }
 }
 
 .recordSupport.spinning,
@@ -156,6 +210,10 @@
   transform: translateY(-2.5em);
   transition: all 1s linear;
 
+  @media screen and (max-width: 1024px) {
+    transform: translateY(-2em);
+  }
+
   & > .side {
     background-color: #0005;
   }
@@ -164,6 +222,16 @@
 // The lid of the pickup
 .lid.open {
   transform: rotateX(45deg) translateY(-13.75em) translateX(-1.25em) scale(1.06);
+
+  @media screen and (max-width: 1024px) {
+    transform: rotateX(45deg) translateY(-11.25em) translateX(-1.1em)
+      scale(1.06);
+  }
+
+  @media screen and (max-width: 600px) {
+    transform: rotateX(45deg) translateY(-11.25em) translateX(-0.75em)
+      scale(1.06);
+  }
 }
 
 .needle {
@@ -176,16 +244,32 @@
   background-color: white;
   width: 18.75em;
   height: 0.375em;
+
+  @media screen and (max-width: 1024px) {
+    top: -1.25em;
+    right: -5.5em;
+    width: 15em;
+    height: 0.3em;
+  }
 }
 
 .needle.rotated {
   right: -3.125em;
   transform: rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.6);
+
+  @media screen and (max-width: 1024px) {
+    right: -2.5em;
+    transform: rotateX(10deg) rotateY(30deg) rotateZ(170deg) scale(0.5);
+  }
 }
 
 .needle.reverseRotation {
   right: -6.875em;
   transform: rotateX(10deg) rotateY(90deg) rotateZ(170deg);
+
+  @media screen and (max-width: 1024px) {
+    right: -5.5em;
+  }
 }
 
 .needle.lifted {
@@ -196,10 +280,19 @@
   0% {
     transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
       rotateZ(0deg);
+
+    @media screen and (max-width: 1024px) {
+      transform: rotateX(91deg) translateX(2em) translateZ(7.3em) rotateZ(0deg);
+    }
   }
 
   100% {
     transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
       rotateZ(360deg);
+
+    @media screen and (max-width: 1024px) {
+      transform: rotateX(91deg) translateX(2em) translateZ(7.3em)
+        rotateZ(360deg);
+    }
   }
 }
