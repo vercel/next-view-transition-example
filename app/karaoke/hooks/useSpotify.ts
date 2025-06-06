@@ -1,8 +1,8 @@
 "use client";
 
+import { Song } from "@/app/types";
 import { deleteCookie } from "cookies-next/client";
 import { useEffect, useState } from "react";
-import { Song } from "../types";
 
 export default function useSpotify(
   song: Song,

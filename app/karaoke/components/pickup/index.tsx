@@ -1,13 +1,13 @@
 "use client";
 
 import { useLocalStorage } from "@/app/hooks/useLocalStorage";
+import { Song } from "@/app/types";
 import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import useSpotify from "../../hooks/useSpotify";
-import { Song } from "../../types";
 import "./style.scss";
 
 export default function Pickup({

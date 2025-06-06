@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LaptopModel from "../components/LaptopModel";
-import projects from "./projects.json";
-import { Project } from "./types";
+import { projects } from "../data";
+import { Project } from "../types";
 
 export default function CodeView() {
   const [selectedProject, setSelectedProject] = useState<Project>(projects[0]);

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import FloatingBall from "../components/FloatingBall";
-import cocktails from "./cocktails.json";
-import { Cocktail } from "./types";
+import { cocktails } from "../data";
+import { Cocktail } from "../types";
 
 export default function CocktailsView() {
   const [selectedCocktail, setSelectedCocktail] = useState<Cocktail>(
