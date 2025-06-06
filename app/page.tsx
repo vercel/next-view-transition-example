@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <div className="grid h-screen grid-rows-3 sm:grid-cols-3 sm:grid-rows-1">
       {(hobbies as Hobby[]).map((hobby) => (
-        <Link href={`/${hobby.id}`} className="relative h-full">
+        <Link href={`/${hobby.id}`} className="relative h-full" key={hobby.id}>
           <ViewTransition name={`${hobby.id}-photo`}>
             <div
               className={`absolute inset-0 bg-[${hobby.color}] bg-size-[40%] bg-position-[center_top_1rem] bg-no-repeat sm:bg-cover lg:bg-contain`}
