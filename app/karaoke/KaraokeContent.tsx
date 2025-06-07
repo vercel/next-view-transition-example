@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Script from "next/script";
 import { useState } from "react";
 import { songs } from "../data";
 import { Song } from "../types";
@@ -42,7 +41,7 @@ export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
           <Pickup song={activeSong} spotifyToken={spotifyToken} />
         </div>
       </div>
-      <Script src="https://sdk.scdn.co/spotify-player.js" />
+      {/* <Script src="https://sdk.scdn.co/spotify-player.js" /> */}
     </div>
   );
 }
