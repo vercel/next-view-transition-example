@@ -27,10 +27,9 @@ export default function Pickup({
     "click-tooltip-shown",
     false,
   );
-  const { play, pauseToggle, stop, playerState } = useSpotify(
+  const { play, pauseToggle, stop, playerState, seek } = useSpotify(
     song,
     spotifyToken,
-    () => stopAnimation(),
   );
 
   const playAnimation = useCallback(async () => {
@@ -62,6 +61,7 @@ export default function Pickup({
   }, [pauseToggle, needleLifted]);
 
   const stopAnimation = useCallback(async () => {
+    console.log("stop animation called");
     setNeedleLifted(true);
     await waitSeconds(1);
     setNeedleRotated(false);
@@ -74,7 +74,12 @@ export default function Pickup({
   }, []);
 
   const onStopped = useCallback(async () => {
-    if (needleRotated) stop();
+    console.log("on stopped called");
+    if (!needleRotated) {
+      stop();
+      return;
+    }
+    stop();
     await stopAnimation();
   }, [stop, needleRotated]);
 
@@ -108,7 +113,9 @@ export default function Pickup({
                 target.style.display = "none";
               }}
             />
-            <span className="text-[#1CD760]">Spotify</span>
+            <span className="text-[#1CD760]" onClick={() => seek(199)}>
+              Spotify
+            </span>
           </p>
           <div className="controls">
             <div className="control">

@@ -9,7 +9,6 @@ type PlayerState = "idle" | "playing" | "paused" | "stopped";
 export default function useSpotify(
   song: Song,
   spotifyToken: string | undefined,
-  onSongEnd?: () => void,
 ) {
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const [deviceId, setDeviceId] = useState();
@@ -115,6 +114,30 @@ export default function useSpotify(
     }
   };
 
+  const seek = async (seconds: number) => {
+    if (!player) {
+      console.error("Spotify player not initialized");
+      return;
+    }
+
+    try {
+      await player.seek(seconds * 1000);
+      console.log(`Seeked to ${seconds} seconds`);
+    } catch (error) {
+      console.error("Error seeking:", error);
+    }
+  };
+
+  const logout = () => {
+    deleteCookie("spotify_token");
+    deleteCookie("spotify_refresh_token");
+    if (player) {
+      player.disconnect();
+    }
+    setPlayerState("idle");
+    setToken(undefined);
+  };
+
   useEffect(() => {
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
@@ -160,41 +183,9 @@ export default function useSpotify(
         console.error("Account error", message),
       );
 
-      player.addListener("player_state_changed", async (state) => {
-        if (state.paused && state.position === 0) {
-          onSongEnd?.();
-          setPlayerState("stopped");
-          return;
-        }
-      });
-
       player.connect();
     };
-  }, [token, onSongEnd]);
-
-  const seek = async (seconds: number) => {
-    if (!player) {
-      console.error("Spotify player not initialized");
-      return;
-    }
-
-    try {
-      await player.seek(seconds * 1000);
-      console.log(`Seeked to ${seconds} seconds`);
-    } catch (error) {
-      console.error("Error seeking:", error);
-    }
-  };
-
-  const logout = () => {
-    deleteCookie("spotify_token");
-    deleteCookie("spotify_refresh_token");
-    if (player) {
-      player.disconnect();
-    }
-    setPlayerState("idle");
-    setToken(undefined);
-  };
+  }, [token]);
 
   return { play, pauseToggle, stop, logout, seek, player, playerState };
 }
