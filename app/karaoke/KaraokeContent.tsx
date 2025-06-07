@@ -15,7 +15,7 @@ export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
 
   return (
     <div className="min-h-screen bg-[#E09E8E]">
-      <div className="flex items-center justify-center gap-0 py-12 lg:gap-4">
+      <div className="flex items-center justify-center gap-0 overflow-hidden py-12 lg:gap-4">
         {songs.map((song) => (
           <button
             onClick={() => setActiveSong(song)}
