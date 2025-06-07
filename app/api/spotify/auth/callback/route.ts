@@ -49,7 +49,8 @@ export async function GET(req: NextRequest) {
     path: "/",
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    maxAge: 3600, // 1 hour
+    // Refresh tokens don't expire unless revoked
+    maxAge: 365 * 24 * 60 * 60, // 1 year
   });
 
   return res;
