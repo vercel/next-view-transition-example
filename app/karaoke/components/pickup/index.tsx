@@ -94,11 +94,11 @@ export default function Pickup({
         <div className="side left" />
         <div className="side right" />
         <div className="side front">
-          <p className="absolute bottom-1 left-1 flex gap-1 text-[10px] text-white">
+          <p className="absolute bottom-1 left-1 flex items-center gap-1 text-[10px] text-white">
             Powered by
             <Image
               src="/spotify-logo.svg"
-              className="inline h-[10px] w-[10px]"
+              className="inline h-[10px] w-[10px] align-middle"
               width={10}
               height={10}
               alt="Spotify"
