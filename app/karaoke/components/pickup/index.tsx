@@ -30,9 +30,10 @@ export default function Pickup({
   const { play, pauseToggle, stop, playerState } = useSpotify(
     song,
     spotifyToken,
+    () => stopAnimation(),
   );
 
-  const onPlaying = useCallback(async () => {
+  const playAnimation = useCallback(async () => {
     setSpinning(true);
     if (!needleLifted) {
       setNeedleLifted(true);
@@ -42,23 +43,26 @@ export default function Pickup({
     await waitSeconds(1);
     setNeedleLifted(false);
     await waitSeconds(1);
+  }, []);
+
+  const onPlaying = useCallback(async () => {
+    await playAnimation();
     play();
   }, [play]);
 
-  const onPaused = useCallback(async () => {
+  const pauseAnimation = useCallback(async () => {
     setNeedleLifted((prev) => !prev);
     // wait so the needle goes back down
     if (needleLifted) await waitSeconds(1);
+  }, []);
+
+  const onPaused = useCallback(async () => {
+    await pauseAnimation();
     pauseToggle();
   }, [pauseToggle, needleLifted]);
 
-  const onStopped = useCallback(async () => {
-    if (!needleRotated) {
-      stop();
-      return;
-    }
+  const stopAnimation = useCallback(async () => {
     setNeedleLifted(true);
-    stop();
     await waitSeconds(1);
     setNeedleRotated(false);
     setShowReverseRotation(true);
@@ -67,6 +71,11 @@ export default function Pickup({
     setShowReverseRotation(false);
     await waitSeconds(1);
     setSpinning(false);
+  }, []);
+
+  const onStopped = useCallback(async () => {
+    if (needleRotated) stop();
+    await stopAnimation();
   }, [stop, needleRotated]);
 
   useEffect(() => {

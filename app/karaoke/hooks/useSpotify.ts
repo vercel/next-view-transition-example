@@ -9,6 +9,7 @@ type PlayerState = "idle" | "playing" | "paused" | "stopped";
 export default function useSpotify(
   song: Song,
   spotifyToken: string | undefined,
+  onSongEnd?: () => void,
 ) {
   const [player, setPlayer] = useState<Spotify.Player | null>(null);
   const [deviceId, setDeviceId] = useState();
@@ -159,9 +160,31 @@ export default function useSpotify(
         console.error("Account error", message),
       );
 
+      player.addListener("player_state_changed", async (state) => {
+        if (state.paused && state.position === 0) {
+          onSongEnd?.();
+          setPlayerState("stopped");
+          return;
+        }
+      });
+
       player.connect();
     };
-  }, [token]);
+  }, [token, onSongEnd]);
+
+  const seek = async (seconds: number) => {
+    if (!player) {
+      console.error("Spotify player not initialized");
+      return;
+    }
+
+    try {
+      await player.seek(seconds * 1000);
+      console.log(`Seeked to ${seconds} seconds`);
+    } catch (error) {
+      console.error("Error seeking:", error);
+    }
+  };
 
   const logout = () => {
     deleteCookie("spotify_token");
@@ -173,5 +196,5 @@ export default function useSpotify(
     setToken(undefined);
   };
 
-  return { play, pauseToggle, stop, logout, player, playerState };
+  return { play, pauseToggle, stop, logout, seek, player, playerState };
 }
