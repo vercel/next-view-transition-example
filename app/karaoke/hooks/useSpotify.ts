@@ -34,6 +34,11 @@ export default function useSpotify(
   };
 
   const play = async () => {
+    if (!token) {
+      console.warn("User not logged in. Will not play spotify track");
+      return;
+    }
+
     if (!player) {
       console.error("Spotify player not initialized");
       return;
