@@ -2,8 +2,7 @@
 
 import { Song } from "@/app/types";
 import { deleteCookie } from "cookies-next/client";
-import { useCallback, useEffect, useState } from "react";
-import { getTrack, loadSpotifyPlayer, play as playSpotify } from "./spotify";
+import { useEffect, useState } from "react";
 
 type PlayerState = "idle" | "playing" | "paused" | "stopped";
 
@@ -139,121 +138,54 @@ export default function useSpotify(
     setToken(undefined);
   };
 
-  const [isInitialized, setInitialized] = useState(false);
-  const [isSDKLoaded, setSDKLoaded] = useState(false);
-  const [track, setTrack] = useState<Spotify.Track>();
+  useEffect(() => {
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      const player = new window.Spotify.Player({
+        name: "Karaoke Player",
+        getOAuthToken: async (cb) => {
+          try {
+            const response = await fetch("https://api.spotify.com/v1/me", {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
 
-  const initPlayer = useCallback(async () => {
-    console.log("initPlayer");
-
-    const spotifyPlayer = new window.Spotify.Player({
-      name: "Karaoke Player",
-      getOAuthToken: async (cb) => {
-        try {
-          const response = await fetch("https://api.spotify.com/v1/me", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-
-          if (response.status === 401) {
-            const newToken = await refreshToken();
-            if (newToken) {
-              setToken(newToken);
-              cb(newToken);
-              return;
+            if (response.status === 401) {
+              const newToken = await refreshToken();
+              if (newToken) {
+                setToken(newToken);
+                cb(newToken);
+                return;
+              }
             }
+            cb(token ?? "");
+          } catch (error) {
+            console.error("Error checking token:", error);
+            cb(token ?? "");
           }
-          cb(token ?? "");
-        } catch (error) {
-          console.error("Error checking token:", error);
-          cb(token ?? "");
-        }
-      },
-      volume: 0.5,
-    });
-
-    // Ready
-    spotifyPlayer.addListener("ready", async ({ device_id }: any) => {
-      console.log(`Ready with Device ID: ${device_id}`);
-      setDeviceId(device_id);
-    });
-
-    // Not Ready
-    spotifyPlayer.addListener("not_ready", ({ device_id }: any) => {
-      console.log("Device ID has gone offline", device_id);
-    });
-
-    spotifyPlayer.addListener("initialization_error", ({ message }: any) => {
-      console.error(message);
-    });
-
-    spotifyPlayer.addListener("authentication_error", ({ message }: any) => {
-      console.error(message);
-    });
-
-    spotifyPlayer.addListener("account_error", ({ message }: any) => {
-      console.error(message);
-    });
-
-    spotifyPlayer.addListener("autoplay_failed", async () => {
-      // eslint-disable-next-line no-console
-      console.log("Autoplay is not allowed by the browser autoplay rules");
-    });
-
-    setPlayer(spotifyPlayer);
-
-    await spotifyPlayer.connect();
-    setInitialized(true);
-  }, [setDeviceId, setPlayer, token]);
-
-  useEffect(() => {
-    if (!isSDKLoaded) {
-      window.onSpotifyWebPlaybackSDKReady = () => {
-        console.log("onSpotifyWebPlaybackSDKReady");
-        setSDKLoaded(true);
-      };
-
-      loadSpotifyPlayer();
-    }
-  }, [isSDKLoaded]);
-
-  useEffect(() => {
-    if (isSDKLoaded && !!token && !isInitialized) {
-      initPlayer();
-    }
-  }, [initPlayer, isInitialized, isSDKLoaded, token]);
-
-  useEffect(() => {
-    if (token) {
-      getTrack(token, "7x76oRCpBsLnEOjMyZr0Gh").then((response) => {
-        setTrack(response);
+        },
+        volume: 0.5,
       });
-    }
+
+      player.addListener("ready", ({ device_id }) => {
+        setPlayer(player);
+        setDeviceId(device_id);
+        setPlayerState("idle");
+      });
+
+      player.addListener("initialization_error", ({ message }) =>
+        console.error("Init error", message),
+      );
+      player.addListener("authentication_error", ({ message }) =>
+        console.error("Auth error", message),
+      );
+      player.addListener("account_error", ({ message }) =>
+        console.error("Account error", message),
+      );
+
+      player.connect();
+    };
   }, [token]);
 
-  const handleClickToggle = async () => {
-    console.log("BOOOOO");
-    if (playerState === "playing") {
-      player?.pause();
-    } else {
-      await playSpotify(token ?? "", {
-        deviceId: deviceId ?? "",
-        uris: ["spotify:track:7x76oRCpBsLnEOjMyZr0Gh"],
-      });
-    }
-  };
-
-  return {
-    play,
-    pauseToggle,
-    stop,
-    logout,
-    seek,
-    player,
-    track,
-    playerState,
-    deviceId,
-    handleClickToggle,
-  };
+  return { play, pauseToggle, stop, logout, seek, player, playerState };
 }

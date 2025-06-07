@@ -3,6 +3,9 @@
 import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import { Song } from "@/app/types";
 import { waitSeconds } from "@/app/utils/waitSeconds";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import useSpotify from "../../hooks/useSpotify";
 import "./style.scss";
@@ -24,17 +27,10 @@ export default function Pickup({
     "click-tooltip-shown",
     false,
   );
-  const {
-    play,
-    pauseToggle,
-    stop,
-    playerState,
-    seek,
-    track,
-    player,
-    deviceId,
-    handleClickToggle,
-  } = useSpotify(song, spotifyToken);
+  const { play, pauseToggle, stop, playerState, seek } = useSpotify(
+    song,
+    spotifyToken,
+  );
 
   const playAnimation = useCallback(async () => {
     setSpinning(true);
@@ -96,124 +92,104 @@ export default function Pickup({
   }, [song]);
 
   return (
-    <>
-      {/* <div className="scene" id="pickup">
-        <div className="box base">
+    <div className="scene" id="pickup">
+      <div className="box base">
+        <div className="side top" />
+        <div className="side bottom" />
+        <div className="side left" />
+        <div className="side right" />
+        <div className="side front">
+          <p className="absolute bottom-1 left-1 flex items-center gap-1 text-[10px] text-white">
+            Powered by
+            <Image
+              src="/spotify-logo.svg"
+              className="inline h-[10px] w-[10px] align-middle"
+              width={10}
+              height={10}
+              alt="Spotify"
+              priority
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = "none";
+              }}
+            />
+            <span className="text-[#1CD760]" onClick={() => seek(199)}>
+              Spotify
+            </span>
+          </p>
+          <div className="controls">
+            <div className="control">
+              <span className="label">Play</span>
+              <button
+                onClick={onPlaying}
+                disabled={playerState === "playing"}
+              />
+            </div>
+            <div className="control">
+              <span className="label">Pause</span>
+              <button onClick={onPaused} />
+            </div>
+            <div className="control">
+              <span className="label">Stop</span>
+              <button
+                onClick={onStopped}
+                disabled={playerState === "stopped"}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="side back" />
+        <div className={cn("plate", spinning ? "spinning" : "")} />
+        <div className={cn("recordSupport", spinning ? "spinning" : "")} />
+        <div className={cn("record", spinning ? "spinning" : "")}>
+          <Image
+            src={playingSong.songImage}
+            alt={playingSong.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            key={playingSong.name}
+            className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
+          />
+        </div>
+        <div
+          className={cn("box lid", lidOpen ? "open" : undefined)}
+          onClick={() => setLidOpen((prev) => !prev)}
+        >
           <div className="side top" />
-          <div className="side bottom" />
           <div className="side left" />
           <div className="side right" />
           <div className="side front">
-            <p className="absolute bottom-1 left-1 flex items-center gap-1 text-[10px] text-white">
-              Powered by
-              <Image
-                src="/spotify-logo.svg"
-                className="inline h-[10px] w-[10px] align-middle"
-                width={10}
-                height={10}
-                alt="Spotify"
-                priority
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = "none";
-                }}
-              />
-              <span className="text-[#1CD760]" onClick={() => seek(199)}>
-                Spotify
-              </span>
-            </p>
-            <div className="controls">
-              <div className="control">
-                <span className="label">Play</span>
+            <div className="align-center absolute inset-0 flex justify-center">
+              {!spotifyToken && (
+                <Link
+                  href="/api/spotify/auth/login"
+                  onClick={(e) => e.stopPropagation()}
+                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+                >
+                  Login with Spotify to play music
+                </Link>
+              )}
+              {!tooltipShown && spotifyToken && (
                 <button
-                  onClick={onPlaying}
-                  disabled={playerState === "playing"}
-                />
-              </div>
-              <div className="control">
-                <span className="label">Pause</span>
-                <button onClick={onPaused} />
-              </div>
-              <div className="control">
-                <span className="label">Stop</span>
-                <button
-                  onClick={onStopped}
-                  disabled={playerState === "stopped"}
-                />
-              </div>
+                  onClick={() => setTooltipShown(true)}
+                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+                >
+                  Click here to open/close
+                </button>
+              )}
             </div>
           </div>
           <div className="side back" />
-          <div className={cn("plate", spinning ? "spinning" : "")} />
-          <div className={cn("recordSupport", spinning ? "spinning" : "")} />
-          <div className={cn("record", spinning ? "spinning" : "")}>
-            <Image
-              src={playingSong.songImage}
-              alt={playingSong.name}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              key={playingSong.name}
-              className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
-            />
-          </div>
-          <div
-            className={cn("box lid", lidOpen ? "open" : undefined)}
-            onClick={() => setLidOpen((prev) => !prev)}
-          >
-            <div className="side top" />
-            <div className="side left" />
-            <div className="side right" />
-            <div className="side front">
-              <div className="align-center absolute inset-0 flex justify-center">
-                {!spotifyToken && (
-                  <Link
-                    href="/api/spotify/auth/login"
-                    onClick={(e) => e.stopPropagation()}
-                    className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
-                  >
-                    Login with Spotify to play music
-                  </Link>
-                )}
-                {!tooltipShown && spotifyToken && (
-                  <button
-                    onClick={() => setTooltipShown(true)}
-                    className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
-                  >
-                    Click here to open/close
-                  </button>
-                )}
-              </div>
-            </div>
-            <div className="side back" />
-          </div>
-          <div
-            className={cn(
-              "needle",
-              needleRotated ? "rotated" : undefined,
-              needleLifted ? "lifted" : undefined,
-              showReverseRotation ? "reverseRotation" : undefined,
-            )}
-          />
         </div>
-      </div> */}
-      {deviceId}
-      {!!deviceId && !!player && (
-        <>
-          <div className="mb-xl">Device ID: {deviceId}</div>
-          {track && (
-            <div className="mb-xl">
-              <img
-                alt={track.name}
-                src={track.album.images[0].url}
-                width={128}
-              />
-              <div>{track.name}</div>
-              <div>{track.artists[0].name}</div>
-            </div>
+        <div
+          className={cn(
+            "needle",
+            needleRotated ? "rotated" : undefined,
+            needleLifted ? "lifted" : undefined,
+            showReverseRotation ? "reverseRotation" : undefined,
           )}
-          <button onClick={() => handleClickToggle()}>Play</button>
-        </>
-      )}
-    </>
+        />
+      </div>
+    </div>
   );
 }
