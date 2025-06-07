@@ -143,8 +143,8 @@ export default function Pickup({
           <div className="side left" />
           <div className="side right" />
           <div className="side front">
-            {!spotifyToken && (
-              <div className="align-center absolute inset-0 flex justify-center">
+            <div className="align-center absolute inset-0 flex justify-center">
+              {!spotifyToken && (
                 <Link
                   href="/api/spotify/auth/login"
                   onClick={(e) => e.stopPropagation()}
@@ -152,16 +152,16 @@ export default function Pickup({
                 >
                   Login with Spotify to play music
                 </Link>
-              </div>
-            )}
-            {!tooltipShown && spotifyToken && (
-              <button
-                onClick={() => setTooltipShown(true)}
-                className="absolute inset-0 h-fit transform cursor-pointer self-center justify-self-center rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
-              >
-                Click here to open/close
-              </button>
-            )}
+              )}
+              {!tooltipShown && spotifyToken && (
+                <button
+                  onClick={() => setTooltipShown(true)}
+                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+                >
+                  Click here to open/close
+                </button>
+              )}
+            </div>
           </div>
           <div className="side back" />
         </div>
