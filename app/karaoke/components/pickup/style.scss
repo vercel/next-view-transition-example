@@ -203,7 +203,11 @@
 
 .recordSupport.spinning,
 .record.spinning {
-  animation: spinning 6s linear infinite;
+  animation: spinningDesktop 6s linear infinite;
+
+  @media screen and (max-width: 1024px) {
+    animation: spinningMobile 6s linear infinite;
+  }
 }
 
 .lid {
@@ -280,23 +284,31 @@
   }
 }
 
-@keyframes spinning {
+@keyframes spinningDesktop {
   0% {
+    -webkit-transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
+      rotateZ(0deg);
     transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
       rotateZ(0deg);
-
-    @media screen and (max-width: 1024px) {
-      transform: rotateX(91deg) translateX(2em) translateZ(7.3em) rotateZ(0deg);
-    }
   }
 
   100% {
+    -webkit-transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
+      rotateZ(360deg);
     transform: rotateX(91deg) translateX(2.5em) translateZ(9.125em)
       rotateZ(360deg);
+  }
+}
 
-    @media screen and (max-width: 1024px) {
-      transform: rotateX(91deg) translateX(2em) translateZ(7.3em)
-        rotateZ(360deg);
-    }
+@keyframes spinningMobile {
+  0% {
+    -webkit-transform: rotateX(91deg) translateX(2em) translateZ(7.3em)
+      rotateZ(0deg);
+    transform: rotateX(91deg) translateX(2em) translateZ(7.3em) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(91deg) translateX(2em) translateZ(7.3em)
+      rotateZ(360deg);
+    transform: rotateX(91deg) translateX(2em) translateZ(7.3em) rotateZ(360deg);
   }
 }
