@@ -183,6 +183,10 @@ export default function useSpotify(
         console.error("Account error", message),
       );
 
+      player.addListener("autoplay_failed", async () => {
+        alert("Autoplay is not allowed by the browser autoplay rules");
+      });
+
       player.connect();
     };
   }, [token]);
