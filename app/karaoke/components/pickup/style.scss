@@ -274,6 +274,10 @@
 
 .needle.lifted {
   top: -2.5em;
+
+  @media screen and (max-width: 1024px) {
+    top: -2em;
+  }
 }
 
 @keyframes spinning {
