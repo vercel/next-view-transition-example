@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
@@ -17,25 +16,20 @@ export default function CodePage() {
         >
           ← Back
         </Link>
-        <div className="grid h-screen grid-cols-3">
-          <ViewTransition name="code-photo">
-            <div className="relative flex h-full items-center justify-center bg-[#64A2BA] px-8 pt-8 pb-0">
-              <div className="relative h-full w-full">
-                <Image
-                  src="/code.png"
-                  alt="Code"
-                  fill
-                  className="object-contain"
-                  sizes="33vw"
-                  priority
-                />
-              </div>
-            </div>
-          </ViewTransition>
+        <div className="flex flex-col lg:flex-row">
+          <div className="relative order-2 min-h-screen flex-1 lg:order-1">
+            <ViewTransition name="code-photo">
+              <div
+                className={`absolute inset-0 bg-[#64A2BA] bg-[url(/code.png)] bg-contain bg-position-[center_top_1rem] bg-no-repeat lg:bg-contain`}
+              />
+            </ViewTransition>
+          </div>
 
-          <div className={`col-span-2 ${styles.viewTransitionWrapper}`}>
+          <div
+            className={`flex-2 ${styles.viewTransitionWrapper} order-2 lg:order-1`}
+          >
             <div
-              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-left"]}`}
+              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-right"]}`}
             >
               <ViewTransition name="code-title">
                 <h1 className="mb-6 text-4xl font-bold text-white">Code</h1>
