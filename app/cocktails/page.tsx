@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
@@ -17,8 +16,10 @@ export default function CocktailsPage() {
         >
           ← Back
         </Link>
-        <div className="grid h-screen grid-cols-3">
-          <div className={`col-span-2 ${styles.viewTransitionWrapper}`}>
+        <div className="flex flex-col lg:flex-row">
+          <div
+            className={`flex-2 ${styles.viewTransitionWrapper} order-2 lg:order-1`}
+          >
             <div
               className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-left"]}`}
             >
@@ -37,7 +38,7 @@ export default function CocktailsPage() {
                   I love diving deep into the history of classic cocktails while
                   also pushing the boundaries with modern techniques and
                   unexpected ingredient combinations. The precision required in
-                  measuring, the timing of preparation, and the final garnish –
+                  measuring, the timing of preparation, and the final garnish -
                   every detail matters.
                 </p>
                 <p>
@@ -49,20 +50,13 @@ export default function CocktailsPage() {
             </div>
           </div>
 
-          <ViewTransition name="cocktails-photo">
-            <div className="relative flex h-full items-center justify-center bg-[#556D43] px-8 pt-8 pb-0">
-              <div className="relative h-full w-full">
-                <Image
-                  src="/cocktails.png"
-                  alt="Cocktails"
-                  fill
-                  className="object-contain"
-                  sizes="33vw"
-                  priority
-                />
-              </div>
-            </div>
-          </ViewTransition>
+          <div className="relative order-1 min-h-screen flex-1 lg:order-2">
+            <ViewTransition name="cocktails-photo">
+              <div
+                className={`absolute inset-0 bg-[#556D43] bg-[url(/cocktails.png)] bg-contain bg-position-[center_top_1rem] bg-no-repeat lg:bg-contain`}
+              />
+            </ViewTransition>
+          </div>
         </div>
         <ScrollArrow />
       </div>

@@ -62,7 +62,7 @@ export default async function KaraokePage() {
                   regardless of skill level, is unmatched.
                 </p>
                 <p>
-                  It's not just about singing – it's about creating memories,
+                  It's not just about singing - it's about creating memories,
                   building confidence, and connecting with people through the
                   universal language of music.
                 </p>
