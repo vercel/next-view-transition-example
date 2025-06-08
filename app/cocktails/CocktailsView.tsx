@@ -34,35 +34,39 @@ export default function CocktailsView() {
       </div>
 
       <div className="container mx-auto" style={{ color: "#ffffff" }}>
-        {/* Title and Description */}
-        <div className="mb-10 text-center">
+        {/* Title */}
+        <div className="mb-8 text-center">
           <h1 className="font-serif text-[80px]">{selectedCocktail.name}</h1>
-          <p className="mx-auto max-w-3xl text-2xl">
-            {selectedCocktail.description}
-          </p>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid grid-cols-2 gap-16">
-          {/* Ingredients */}
-          <div className="flex flex-col items-center justify-center gap-4">
-            <h2 className="mb-4 text-4xl font-bold">INGREDIENTS</h2>
-            <ul className="space-y-4 text-xl">
-              {selectedCocktail.ingredients.map((ingredient) => (
-                <li key={ingredient}>{ingredient}</li>
-              ))}
-            </ul>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
+          {/* Left Column - Content */}
+          <div className="flex flex-col justify-center">
+            {/* Description */}
+            <div className="mb-8 text-center">
+              <p className="mx-auto max-w-3xl text-2xl">
+                {selectedCocktail.description}
+              </p>
+            </div>
+
+            {/* Ingredients */}
+            <div className="text-center">
+              <h2 className="mb-4 text-4xl font-bold">INGREDIENTS</h2>
+              <p className="text-xl">
+                {selectedCocktail.ingredients.join(" • ")}
+              </p>
+            </div>
           </div>
 
-          {/* Cocktail Image */}
-          <div className="flex items-center justify-center">
-            <div className="relative aspect-[2/3] w-[300px] rounded-3xl">
+          {/* Right Column - Image */}
+          <div className="flex items-center justify-center md:justify-end">
+            <div className="relative aspect-[2/3] w-full max-w-[400px] rounded-3xl">
               <Image
                 src={selectedCocktail.cocktailImage}
                 alt={selectedCocktail.cocktailImageAlt}
                 fill
                 className="object-contain"
-                sizes="(max-width: 768px) 100vw, 300px"
+                sizes="(max-width: 768px) 100vw, 400px"
                 loading="lazy"
               />
             </div>
