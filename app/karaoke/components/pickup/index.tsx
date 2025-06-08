@@ -27,7 +27,7 @@ export default function Pickup({
     "click-tooltip-shown",
     false,
   );
-  const { play, pauseToggle, stop, playerState, seek } = useSpotify(
+  const { play, pauseToggle, stop, playerState, seek, player } = useSpotify(
     song,
     spotifyToken,
   );
@@ -45,6 +45,7 @@ export default function Pickup({
   }, []);
 
   const onPlaying = useCallback(async () => {
+    await player?.activateElement();
     await playAnimation();
     play();
   }, [play]);
