@@ -46,6 +46,8 @@ export default function useSpotify(
 
     if (playerState === "playing") return;
 
+    player.activateElement();
+
     try {
       // Start playback
       const response = await fetch(
