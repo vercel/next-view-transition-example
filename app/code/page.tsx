@@ -1,10 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
-import CodeView from "./CodeView";
+
+const CodeView = dynamic(() => import("./CodeView"), { ssr: false });
 
 export default function CodePage() {
   return (
