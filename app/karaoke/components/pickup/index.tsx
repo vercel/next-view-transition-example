@@ -1,6 +1,5 @@
 "use client";
 
-import { useLocalStorage } from "@/app/hooks/useLocalStorage";
 import { Song } from "@/app/types";
 import { waitSeconds } from "@/app/utils/waitSeconds";
 import { cn } from "@/lib/utils";
@@ -23,14 +22,18 @@ export default function Pickup({
   const [spinning, setSpinning] = useState(false);
   const [showReverseRotation, setShowReverseRotation] = useState(false);
   const [playingSong, setPlayingSong] = useState(song);
-  const [tooltipShown, setTooltipShown] = useLocalStorage(
-    "click-tooltip-shown",
-    false,
-  );
+  const [tooltipShown, setTooltipShown] = useState<boolean | null>(null);
   const { play, pauseToggle, stop, playerState, seek, player } = useSpotify(
     song,
     spotifyToken,
   );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const item = localStorage.getItem("click-tooltip-shown");
+      setTooltipShown(item ? JSON.parse(item) : false);
+    }
+  }, []);
 
   const playAnimation = useCallback(async () => {
     setSpinning(true);
@@ -91,6 +94,14 @@ export default function Pickup({
     };
     onTrackChange();
   }, [song]);
+
+  const onTooltipClick = useCallback(() => {
+    setTooltipShown(true);
+    localStorage.setItem("click-tooltip-shown", "true");
+  }, []);
+
+  const shouldShowTooltip =
+    tooltipShown !== null && tooltipShown === false && spotifyToken;
 
   return (
     <div className="scene" id="pickup">
@@ -170,9 +181,9 @@ export default function Pickup({
                   Login with Spotify to play music
                 </Link>
               )}
-              {!tooltipShown && spotifyToken && (
+              {shouldShowTooltip && (
                 <button
-                  onClick={() => setTooltipShown(true)}
+                  onClick={onTooltipClick}
                   className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
                 >
                   Click here to open/close
