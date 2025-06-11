@@ -27,16 +27,14 @@ export default function CodePage() {
             </ViewTransition>
           </div>
 
-          <div
-            className={`flex-2 ${styles.viewTransitionWrapper} order-2 lg:order-1`}
-          >
-            <div
-              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-right"]}`}
-            >
+          <div className="order-2 flex-2 lg:order-1">
+            <div className="flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <ViewTransition name="code-title">
                 <h1 className="mb-6 text-4xl font-bold text-white">Code</h1>
               </ViewTransition>
-              <div className="space-y-4 text-lg text-white/90">
+              <div
+                className={`space-y-4 text-lg text-white/90 ${styles["open-right"]}`}
+              >
                 <p>
                   Coding is more than just a skill for me - it's a passion that
                   drives my creativity and problem-solving abilities. I love the

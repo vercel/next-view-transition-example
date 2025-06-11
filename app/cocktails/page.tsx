@@ -17,18 +17,16 @@ export default function CocktailsPage() {
           ← Back
         </Link>
         <div className="flex flex-col lg:flex-row">
-          <div
-            className={`flex-2 ${styles.viewTransitionWrapper} order-2 lg:order-1`}
-          >
-            <div
-              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-left"]}`}
-            >
+          <div className="order-2 flex-2 lg:order-1">
+            <div className="flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <ViewTransition name="cocktails-title">
                 <h1 className="mb-6 text-4xl font-bold text-white">
                   Cocktails
                 </h1>
               </ViewTransition>
-              <div className="space-y-4 text-lg text-white/90">
+              <div
+                className={`space-y-4 text-lg text-white/90 ${styles["open-left"]}`}
+              >
                 <p>
                   Crafting cocktails is where science meets artistry. Each drink
                   is an opportunity to experiment with flavors, textures, and

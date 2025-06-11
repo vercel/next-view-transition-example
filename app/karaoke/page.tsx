@@ -19,18 +19,16 @@ export default async function KaraokePage() {
           ← Back
         </Link>
         <div className="flex flex-col lg:flex-row">
-          <div
-            className={`flex-1 ${styles.viewTransitionWrapper} order-2 lg:order-1`}
-          >
-            <div
-              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
-            >
+          <div className="order-2 flex-1 lg:order-1">
+            <div className="flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <ViewTransition name="karaoke-title">
-                <h1 className="z-10 mb-6 text-4xl font-bold text-white">
+                <h1 className={`z-10 mb-6 text-4xl font-bold text-white`}>
                   Karaoke
                 </h1>
               </ViewTransition>
-              <div className="space-y-4 text-lg text-white/90">
+              <div
+                className={`space-y-4 text-lg text-white/90 ${styles["open-left"]}`}
+              >
                 <p>
                   Karaoke is my ultimate form of self-expression and joy.
                   There's something magical about letting loose with a
@@ -48,11 +46,9 @@ export default async function KaraokePage() {
             </ViewTransition>
           </div>
 
-          <div
-            className={`flex-1 ${styles.viewTransitionWrapper} order-3 lg:order-3`}
-          >
+          <div className="order-3 flex-1 lg:order-3">
             <div
-              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-middle"]}`}
+              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-right"]}`}
             >
               <div className="space-y-4 text-lg text-white/90">
                 <p>
