@@ -1,5 +1,4 @@
 import { useState } from "react";
-import LaptopModel from "../components/LaptopModel";
 import { projects } from "../data";
 import { Project } from "../types";
 
@@ -13,14 +12,24 @@ export default function CodeView() {
     >
       {/* Floating projects row */}
       <div className="mb-4 flex flex-wrap justify-center gap-8">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <div
             key={project.name}
             className="h-[150px] w-[200px] cursor-pointer"
             onClick={() => setSelectedProject(project)}
           >
             <p className="p-2 text-center">{project.name}</p>
-            <LaptopModel imageSrc={project.projectImage} />
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              onMouseEnter={(e) => e.currentTarget.pause()}
+              onMouseLeave={(e) => e.currentTarget.play()}
+            >
+              <source src={project.projectImage} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         ))}
       </div>

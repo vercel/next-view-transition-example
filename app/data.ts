@@ -104,7 +104,7 @@ export const cocktails: Cocktail[] = [
 export const projects: Project[] = [
   {
     name: "Vertical Timeline",
-    projectImage: "/code/vertical-timeline.glb",
+    projectImage: "/code/vertical-timeline.webm",
     projectLink: "https://v0-vertical-timeline.vercel.app/",
     description:
       "Lately, I felt like my memory is decaying so I created this project as a way to store memories and position myself better in time",
@@ -120,7 +120,7 @@ export const projects: Project[] = [
   },
   {
     name: "Upgrade T3 App",
-    projectImage: "/code/upgrade-t3-app.glb",
+    projectImage: "/code/upgrade-t3-app.webm",
     projectLink: "https://t3-upgrade-web.vercel.app/",
     description:
       "A framework I was using (T3) wasn't giving a clear way to upgrade from one version to another. Using basic Git diffing, I created a way to generate all diffs between versions so that upgrading can become easier",
@@ -128,7 +128,7 @@ export const projects: Project[] = [
   },
   {
     name: "Matryoshka Tic Tac Toe",
-    projectImage: "/code/matryoshka-tic-tac-toe.glb",
+    projectImage: "/code/matryoshka-tic-tac-toe.webm",
     projectLink: "https://matryoshka-tic-tac-toe.vercel.app/",
     description:
       "Tic Tac Toe with an interesting twist. The goal is still to do 3 in a row on rows/columns/diagonals but the twist is that your pieces can take smaller pieces.",

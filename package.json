@@ -8,8 +8,6 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@react-three/drei": "^10.1.2",
-    "@react-three/fiber": "^9.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cookies-next": "^6.0.0",
@@ -18,15 +16,13 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss-animate": "^1.0.7",
-    "three": "^0.177.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.8",
     "@types/node": "^24.0.0",
     "@types/react": "^19.1.7",
     "@types/react-dom": "^19.1.6",
-    "@types/three": "^0.177.0",
     "postcss": "^8.5.4",
     "prettier": "^3.5.3",
     "prettier-plugin-css-order": "^2.1.2",
