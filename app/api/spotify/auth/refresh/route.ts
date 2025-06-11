@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -51,6 +52,7 @@ export async function POST(req: NextRequest) {
       secure: process.env.NODE_ENV === "production",
       maxAge: data.expires_in,
     });
+    revalidatePath("/karaoke");
 
     // If a new refresh token is provided, update it
     if (data.refresh_token) {

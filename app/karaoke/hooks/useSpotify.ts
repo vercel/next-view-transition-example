@@ -2,6 +2,7 @@
 
 import { Song } from "@/app/types";
 import { deleteCookie } from "cookies-next/client";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type PlayerState = "idle" | "playing" | "paused" | "stopped";
@@ -14,6 +15,7 @@ export default function useSpotify(
   const [deviceId, setDeviceId] = useState();
   const [playerState, setPlayerState] = useState<PlayerState>("idle");
   const [token, setToken] = useState(spotifyToken);
+  const router = useRouter();
 
   const refreshToken = async () => {
     try {
@@ -23,6 +25,7 @@ export default function useSpotify(
       const data = await response.json();
       if (response.ok && data.access_token) {
         setToken(data.access_token);
+        router.refresh();
         return data.access_token;
       }
       throw new Error("Failed to refresh token");
