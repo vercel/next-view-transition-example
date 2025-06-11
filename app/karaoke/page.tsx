@@ -1,7 +1,7 @@
+import ScrollArrow from "@/components/ScrollArrow";
 import { cookies as nextCookies } from "next/headers";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
-import ScrollArrow from "../components/ScrollArrow";
 import KaraokeClient from "./KaraokeClient";
 
 export default async function KaraokePage() {

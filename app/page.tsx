@@ -1,8 +1,8 @@
+import { convertToPascalCase } from "@/lib/utils";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
-import hobbies from "./hobbies.json";
+import { hobbies } from "./data";
 import { Hobby } from "./types";
-import { convertToPascalCase } from "./utils/convertToPascalCase";
 
 export default function Page() {
   return (

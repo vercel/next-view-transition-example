@@ -1,8 +1,7 @@
 "use client";
 
 import { Song } from "@/app/types";
-import { waitSeconds } from "@/app/utils/waitSeconds";
-import { cn } from "@/lib/utils";
+import { cn, waitSeconds } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";

@@ -1,6 +1,6 @@
+import FloatingBall from "@/components/FloatingBall";
 import Image from "next/image";
 import { useState } from "react";
-import FloatingBall from "../components/FloatingBall";
 import { cocktails } from "../data";
 import { Cocktail } from "../types";
 

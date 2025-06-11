@@ -1,8 +1,8 @@
 "use client";
 
+import ScrollArrow from "@/components/ScrollArrow";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
-import ScrollArrow from "../components/ScrollArrow";
 import CocktailsClient from "./CocktailsClient";
 
 export default function CocktailsPage() {
