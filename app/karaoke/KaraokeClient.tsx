@@ -1,10 +1,10 @@
 "use client";
+import { songs } from "@/app/data";
+import { Song } from "@/app/types";
 import Pickup from "@/components/pickup";
 import Image from "next/image";
 import Script from "next/script";
 import { useState } from "react";
-import { songs } from "../data";
-import { Song } from "../types";
 
 interface KaraokeClientProps {
   spotifyToken: string | undefined;

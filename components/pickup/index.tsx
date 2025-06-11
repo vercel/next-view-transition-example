@@ -1,11 +1,11 @@
 "use client";
 
 import { Song } from "@/app/types";
+import useSpotify from "@/hooks/useSpotify";
 import { cn, waitSeconds } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import useSpotify from "../../hooks/useSpotify";
 import "./style.scss";
 
 export default function Pickup({
