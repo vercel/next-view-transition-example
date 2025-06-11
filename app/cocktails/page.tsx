@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
-import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
 import CocktailsView from "./CocktailsView";
 
@@ -24,9 +23,7 @@ export default function CocktailsPage() {
                   Cocktails
                 </h1>
               </ViewTransition>
-              <div
-                className={`space-y-4 text-lg text-white/90 ${styles["open-left"]}`}
-              >
+              <div className="open-left space-y-4 text-lg text-white/90">
                 <p>
                   Crafting cocktails is where science meets artistry. Each drink
                   is an opportunity to experiment with flavors, textures, and

@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
-import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
 
 const CodeView = dynamic(() => import("./CodeView"), { ssr: false });
@@ -32,9 +31,7 @@ export default function CodePage() {
               <ViewTransition name="code-title">
                 <h1 className="mb-6 text-4xl font-bold text-white">Code</h1>
               </ViewTransition>
-              <div
-                className={`space-y-4 text-lg text-white/90 ${styles["open-right"]}`}
-              >
+              <div className="open-right space-y-4 text-lg text-white/90">
                 <p>
                   Coding is more than just a skill for me - it's a passion that
                   drives my creativity and problem-solving abilities. I love the

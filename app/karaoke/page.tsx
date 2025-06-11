@@ -1,7 +1,6 @@
 import { cookies as nextCookies } from "next/headers";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
-import styles from "../animations.module.css";
 import ScrollArrow from "../components/ScrollArrow";
 import KaraokeContent from "./KaraokeContent";
 
@@ -26,9 +25,7 @@ export default async function KaraokePage() {
                   Karaoke
                 </h1>
               </ViewTransition>
-              <div
-                className={`space-y-4 text-lg text-white/90 ${styles["open-left"]}`}
-              >
+              <div className="open-left space-y-4 text-lg text-white/90">
                 <p>
                   Karaoke is my ultimate form of self-expression and joy.
                   There's something magical about letting loose with a
@@ -47,9 +44,7 @@ export default async function KaraokePage() {
           </div>
 
           <div className="order-3 flex-1 lg:order-3">
-            <div
-              className={`flex h-full flex-col justify-center p-12 backdrop-blur-sm ${styles["open-right"]}`}
-            >
+            <div className="open-right flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <div className="space-y-4 text-lg text-white/90">
                 <p>
                   From classic rock anthems to modern pop hits, I love exploring
