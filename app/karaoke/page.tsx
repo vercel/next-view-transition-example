@@ -2,7 +2,7 @@ import { cookies as nextCookies } from "next/headers";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import ScrollArrow from "../components/ScrollArrow";
-import KaraokeContent from "./KaraokeContent";
+import KaraokeClient from "./KaraokeClient";
 
 export default async function KaraokePage() {
   const cookies = await nextCookies();
@@ -63,7 +63,7 @@ export default async function KaraokePage() {
         </div>
         <ScrollArrow />
       </div>
-      <KaraokeContent spotifyToken={spotifyToken} />
+      <KaraokeClient spotifyToken={spotifyToken} />
     </>
   );
 }

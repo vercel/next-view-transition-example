@@ -2,7 +2,7 @@ import { useState } from "react";
 import { projects } from "../data";
 import { Project } from "../types";
 
-export default function CodeView() {
+export default function CodeClient() {
   const [selectedProject, setSelectedProject] = useState<Project>(projects[0]);
 
   return (

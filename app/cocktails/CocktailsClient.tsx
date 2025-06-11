@@ -4,7 +4,7 @@ import FloatingBall from "../components/FloatingBall";
 import { cocktails } from "../data";
 import { Cocktail } from "../types";
 
-export default function CocktailsView() {
+export default function CocktailsClient() {
   const [selectedCocktail, setSelectedCocktail] = useState<Cocktail>(
     cocktails[0],
   );

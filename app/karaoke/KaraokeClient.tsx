@@ -6,11 +6,11 @@ import { songs } from "../data";
 import { Song } from "../types";
 import Pickup from "./components/pickup";
 
-interface KaraokeContentProps {
+interface KaraokeClientProps {
   spotifyToken: string | undefined;
 }
 
-export default function KaraokeContent({ spotifyToken }: KaraokeContentProps) {
+export default function KaraokeClient({ spotifyToken }: KaraokeClientProps) {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
 
   return (

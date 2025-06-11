@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import ScrollArrow from "../components/ScrollArrow";
-import CocktailsView from "./CocktailsView";
+import CocktailsClient from "./CocktailsClient";
 
 export default function CocktailsPage() {
   return (
@@ -55,7 +55,7 @@ export default function CocktailsPage() {
         </div>
         <ScrollArrow />
       </div>
-      <CocktailsView />
+      <CocktailsClient />
     </>
   );
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import ScrollArrow from "../components/ScrollArrow";
 
-const CodeView = dynamic(() => import("./CodeView"), { ssr: false });
+const CodeClient = dynamic(() => import("./CodeClient"), { ssr: false });
 
 export default function CodePage() {
   return (
@@ -56,7 +56,7 @@ export default function CodePage() {
         </div>
         <ScrollArrow />
       </div>
-      <CodeView />
+      <CodeClient />
     </>
   );
 }
