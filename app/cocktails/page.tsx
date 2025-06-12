@@ -25,21 +25,22 @@ export default function CocktailsPage() {
               </ViewTransition>
               <div className="open-left space-y-4 text-lg text-white/90">
                 <p>
-                  Crafting cocktails is where science meets artistry. Each drink
-                  is an opportunity to experiment with flavors, textures, and
-                  presentations, creating unique experiences for every glass.
+                  I got into cocktails in my late 20s. It all started during a
+                  night out in Canada, when a friend ordered an Old Fashioned. I
+                  had no idea what it was, but I ordered one too - and instantly
+                  got hooked. When I got back home, I tried making one... then
+                  made another... and another.
                 </p>
                 <p>
-                  I love diving deep into the history of classic cocktails while
-                  also pushing the boundaries with modern techniques and
-                  unexpected ingredient combinations. The precision required in
-                  measuring, the timing of preparation, and the final garnish -
-                  every detail matters.
+                  It began with a basic bottle of whiskey, but you know how
+                  these things go - one thing led to another, and now I've got
+                  over 20 different spirits. Add in syrups, a shaker, strainer,
+                  crushed ice bag, wooden mallet - yeah, it escalated quickly.
                 </p>
                 <p>
-                  Whether I'm perfecting a traditional Manhattan or inventing
-                  something new, the joy of sharing these creations with friends
-                  and seeing their reactions makes every experiment worthwhile.
+                  I love exploring new flavors, experimenting with techniques,
+                  and chasing that perfect balance between boozy, sweet, and
+                  bitter.
                 </p>
               </div>
             </div>
