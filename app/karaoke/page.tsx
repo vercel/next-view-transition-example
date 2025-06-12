@@ -27,9 +27,10 @@ export default async function KaraokePage() {
               </ViewTransition>
               <div className="open-left space-y-4 text-lg text-white/90">
                 <p>
-                  Karaoke is my ultimate form of self-expression and joy.
-                  There's something magical about letting loose with a
-                  microphone and sharing music with others.
+                  Karaoke became a real passion during my college years (though
+                  I've been singing long before that). When I'm on stage, I feel
+                  energized and alive - there's something electric about letting
+                  loose with a mic and sharing music with others.
                 </p>
               </div>
             </div>
@@ -47,15 +48,15 @@ export default async function KaraokePage() {
             <div className="open-right flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <div className="space-y-4 text-lg text-white/90">
                 <p>
-                  From classic rock anthems to modern pop hits, I love exploring
-                  different genres and challenging myself with new songs. The
-                  energy of a karaoke night, where everyone supports each other
-                  regardless of skill level, is unmatched.
+                  From classic rock anthems to modern pop hits, I love diving
+                  into different genres and pushing myself with new songs. The
+                  vibe at a karaoke night - where everyone's cheering each other
+                  on, no matter their skill - is unbeatable.
                 </p>
                 <p>
-                  It's not just about singing - it's about creating memories,
-                  building confidence, and connecting with people through the
-                  universal language of music.
+                  For me, it's not just about singing. It's about having fun,
+                  connecting with people, and making unforgettable memories
+                  through the universal language of music.
                 </p>
               </div>
             </div>
