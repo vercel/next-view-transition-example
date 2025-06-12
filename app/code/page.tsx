@@ -32,24 +32,73 @@ export default function CodePage() {
                 <h1 className="mb-6 text-4xl font-bold text-white">Code</h1>
               </ViewTransition>
               <div className="open-right space-y-4 text-lg text-white/90">
+                <h2 className="text-2xl font-bold">How I got into code</h2>
                 <p>
-                  Coding is more than just a skill for me - it's a passion that
-                  drives my creativity and problem-solving abilities. I love the
-                  process of turning ideas into reality through clean, efficient
-                  code.
+                  Coding came into my life as a normal extension to my
+                  curiosity. It all began when I tried to figure out how to set
+                  up a private MMORPG server. After that, I stumbled into the
+                  .tk boom and, at 17, launched my own site:
+                  phpandhtmllearning.tk. Realistically, I was the one doing the
+                  learning, not the teaching - but it got me hooked.
                 </p>
                 <p>
-                  Whether I'm building web applications, exploring new
-                  technologies, or contributing to open-source projects, I'm
-                  constantly learning and growing as a developer. The ability to
-                  create something from nothing and see it come to life is
-                  incredibly rewarding.
+                  I was lucky enough to have a teacher who reignited my passion
+                  for coding at a time I let it fade. Without her, there's a
+                  good chance I'd be doing something entirely different today.
                 </p>
                 <p>
-                  I'm particularly interested in modern web development,
-                  focusing on creating responsive, accessible, and performant
-                  applications that provide great user experiences.
+                  Now, coding is both how I earn a living and what I love doing.
+                  I try to stay in the loop by watching tech YouTubers and
+                  occasionally scrolling the tech side of Twitter (X).
                 </p>
+                <h2 className="text-2xl font-bold">About this website</h2>
+                This site is my little masterpiece - a playground where I've
+                learned and built a bunch of things I'd been meaning to explore:
+                <ul className="list-disc ps-6">
+                  <li>
+                    The new{" "}
+                    <Link
+                      href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API"
+                      target="_blank"
+                      className="font-medium text-cyan-300 hover:underline"
+                    >
+                      View Transition API
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://www.youtube.com/watch?v=NdftnCDwKaU"
+                      target="_blank"
+                      className="font-medium text-cyan-300 hover:underline"
+                    >
+                      3D CSS
+                    </Link>
+                    , especially on the karaoke page with the vinyl player
+                    (fully built with css)
+                  </li>
+                  <li>
+                    Spotify{" "}
+                    <Link
+                      href="https://developer.spotify.com/documentation/web-playback-sdk/howtos/web-app-player"
+                      target="_blank"
+                      className="font-medium text-cyan-300 hover:underline"
+                    >
+                      integration
+                    </Link>
+                  </li>
+                  <li>
+                    Some light Blender modeling for the spinning laptops on the
+                    code page
+                  </li>
+                  <li>
+                    A full-on dive into TailwindCSS (finally understood what the
+                    hype was about)
+                  </li>
+                  <li>
+                    And a shift in mindset: thinking in the new Next.js App
+                    Router paradigm
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
