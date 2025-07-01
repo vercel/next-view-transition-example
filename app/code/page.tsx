@@ -76,16 +76,7 @@ export default function CodePage() {
                     , especially on the karaoke page with the vinyl player
                     (fully built with css)
                   </li>
-                  <li>
-                    Spotify{" "}
-                    <Link
-                      href="https://developer.spotify.com/documentation/web-playback-sdk/howtos/web-app-player"
-                      target="_blank"
-                      className="font-medium text-cyan-300 hover:underline"
-                    >
-                      integration
-                    </Link>
-                  </li>
+                  <li>Youtube API integration for the karaoke page</li>
                   <li>
                     Some light Blender modeling for the spinning laptops on the
                     code page

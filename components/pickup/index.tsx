@@ -4,17 +4,10 @@ import { Song } from "@/app/types";
 import useYoutube from "@/hooks/useYoutube";
 import { cn, waitSeconds } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import "./style.scss";
 
-export default function Pickup({
-  spotifyToken,
-  song,
-}: {
-  spotifyToken: string | undefined;
-  song: Song;
-}) {
+export default function Pickup({ song }: { song: Song }) {
   const [lidOpen, setLidOpen] = useState(false);
   const [needleRotated, setNeedleRotated] = useState(false);
   const [needleLifted, setNeedleLifted] = useState(false);
@@ -22,7 +15,7 @@ export default function Pickup({
   const [showReverseRotation, setShowReverseRotation] = useState(false);
   const [playingSong, setPlayingSong] = useState(song);
   const [tooltipShown, setTooltipShown] = useState<boolean | null>(null);
-  const { play, pauseToggle, stop, playerState, seek, iframeRef, playerReady } =
+  const { play, pauseToggle, stop, playerState, iframeRef, playerReady } =
     useYoutube(song.youtubeId);
 
   useEffect(() => {
@@ -45,8 +38,7 @@ export default function Pickup({
   }, []);
 
   const onPlaying = useCallback(async () => {
-    // await player?.activateElement();
-    // await playAnimation();
+    await playAnimation();
     play();
   }, [play]);
 
@@ -97,8 +89,7 @@ export default function Pickup({
     localStorage.setItem("click-tooltip-shown", "true");
   }, []);
 
-  const shouldShowTooltip =
-    tooltipShown !== null && tooltipShown === false && spotifyToken;
+  const shouldShowTooltip = tooltipShown !== null && tooltipShown === false;
 
   return (
     <div className="scene" id="pickup">
@@ -111,20 +102,18 @@ export default function Pickup({
           <p className="absolute bottom-1 left-1 flex items-center gap-1 text-[10px] text-white">
             Powered by
             <Image
-              src="/spotify-logo.svg"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
               className="inline h-[10px] w-[10px] align-middle"
               width={10}
               height={10}
-              alt="Spotify"
+              alt="Youtube"
               priority
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = "none";
               }}
             />
-            <span className="text-[#1CD760]" onClick={() => seek(199)}>
-              Spotify
-            </span>
+            Youtube
           </p>
           <div className="controls">
             <div className="control">
@@ -169,19 +158,10 @@ export default function Pickup({
           <div className="side right" />
           <div className="side front">
             <div className="align-center absolute inset-0 flex justify-center">
-              {!spotifyToken && (
-                <Link
-                  href="/api/spotify/auth/login"
-                  onClick={(e) => e.stopPropagation()}
-                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
-                >
-                  Login with Spotify to play music
-                </Link>
-              )}
               {shouldShowTooltip && (
                 <button
                   onClick={onTooltipClick}
-                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#1DB954] p-1 text-[8px] font-bold text-white transition-all hover:scale-105 hover:bg-[#1ed760]"
+                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 text-[8px] font-bold text-white transition-all hover:scale-105"
                 >
                   Click here to open/close
                 </button>

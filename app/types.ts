@@ -27,6 +27,5 @@ export type Song = {
   artist: string;
   album: string;
   songImage: string;
-  spotifyUri: string;
   youtubeId: string;
 };

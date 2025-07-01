@@ -6,11 +6,7 @@ import Image from "next/image";
 import Script from "next/script";
 import { useState } from "react";
 
-interface KaraokeClientProps {
-  spotifyToken: string | undefined;
-}
-
-export default function KaraokeClient({ spotifyToken }: KaraokeClientProps) {
+export default function KaraokeClient() {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
 
   return (
@@ -39,10 +35,9 @@ export default function KaraokeClient({ spotifyToken }: KaraokeClientProps) {
           <p className="text-lg">{activeSong.artist}</p>
         </div>
         <div className="relative mt-10 flex w-1/2 items-center justify-center lg:mt-0">
-          <Pickup song={activeSong} spotifyToken={spotifyToken} />
+          <Pickup song={activeSong} />
         </div>
       </div>
-      <Script src="https://sdk.scdn.co/spotify-player.js" />
       <Script src="https://www.youtube.com/iframe_api" />
     </div>
   );

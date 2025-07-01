@@ -1,13 +1,9 @@
 import ScrollArrow from "@/components/ScrollArrow";
-import { cookies as nextCookies } from "next/headers";
 import Link from "next/link";
 import { unstable_ViewTransition as ViewTransition } from "react";
 import KaraokeClient from "./KaraokeClient";
 
 export default async function KaraokePage() {
-  const cookies = await nextCookies();
-  const spotifyToken = cookies.get("spotify_token")?.value;
-
   return (
     <>
       <div className="min-h-screen bg-[#E09E8E]">
@@ -64,7 +60,7 @@ export default async function KaraokePage() {
         </div>
         <ScrollArrow />
       </div>
-      <KaraokeClient spotifyToken={spotifyToken} />
+      <KaraokeClient />
     </>
   );
 }

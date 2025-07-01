@@ -142,7 +142,6 @@ export const songs: Song[] = [
     artist: "Vița de Vie",
     album: "Fenomental",
     songImage: "/karaoke/basul-si-cu-toba-mare.png",
-    spotifyUri: "spotify:track:6SaIBQzv80zITZvVU7oX3Y",
     youtubeId: "cV6eges3USQ",
   },
   {
@@ -150,7 +149,6 @@ export const songs: Song[] = [
     artist: "Nat King Cole",
     album: "L-O-V-E",
     songImage: "/karaoke/l-o-v-e.png",
-    spotifyUri: "spotify:track:4QxDOjgpYtQDxxbWPuEJOy",
     youtubeId: "gZYtes1RO_w",
   },
   {
@@ -158,7 +156,6 @@ export const songs: Song[] = [
     artist: "Tennessee Ernie Ford",
     album: "Sixteen Tons",
     songImage: "/karaoke/sixteen-tons.png",
-    spotifyUri: "spotify:track:4KM77RUl2IKdXGhtOBbKIS",
     youtubeId: "B9j91-18Kb4",
   },
   {
@@ -166,7 +163,6 @@ export const songs: Song[] = [
     artist: "Stone Sour",
     album: "Come What(ever) May [10th Anniversary Edition]",
     songImage: "/karaoke/wicked-game.png",
-    spotifyUri: "spotify:track:3V1H6liHwCDcWeqdPJabOM",
     youtubeId: "N0kDuZ2mcyg",
   },
 ];
