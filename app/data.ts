@@ -143,6 +143,7 @@ export const songs: Song[] = [
     album: "Fenomental",
     songImage: "/karaoke/basul-si-cu-toba-mare.png",
     spotifyUri: "spotify:track:6SaIBQzv80zITZvVU7oX3Y",
+    youtubeId: "cV6eges3USQ",
   },
   {
     name: "L-O-V-E",
@@ -150,6 +151,7 @@ export const songs: Song[] = [
     album: "L-O-V-E",
     songImage: "/karaoke/l-o-v-e.png",
     spotifyUri: "spotify:track:4QxDOjgpYtQDxxbWPuEJOy",
+    youtubeId: "gZYtes1RO_w",
   },
   {
     name: "Sixteen Tons",
@@ -157,6 +159,7 @@ export const songs: Song[] = [
     album: "Sixteen Tons",
     songImage: "/karaoke/sixteen-tons.png",
     spotifyUri: "spotify:track:4KM77RUl2IKdXGhtOBbKIS",
+    youtubeId: "B9j91-18Kb4",
   },
   {
     name: "Wicked Game",
@@ -164,5 +167,6 @@ export const songs: Song[] = [
     album: "Come What(ever) May [10th Anniversary Edition]",
     songImage: "/karaoke/wicked-game.png",
     spotifyUri: "spotify:track:3V1H6liHwCDcWeqdPJabOM",
+    youtubeId: "N0kDuZ2mcyg",
   },
 ];

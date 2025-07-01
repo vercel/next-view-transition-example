@@ -43,6 +43,7 @@ export default function KaraokeClient({ spotifyToken }: KaraokeClientProps) {
         </div>
       </div>
       <Script src="https://sdk.scdn.co/spotify-player.js" />
+      <Script src="https://www.youtube.com/iframe_api" />
     </div>
   );
 }

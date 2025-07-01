@@ -1,7 +1,7 @@
 "use client";
 
 import { Song } from "@/app/types";
-import useSpotify from "@/hooks/useSpotify";
+import useYoutube from "@/hooks/useYoutube";
 import { cn, waitSeconds } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,10 +22,8 @@ export default function Pickup({
   const [showReverseRotation, setShowReverseRotation] = useState(false);
   const [playingSong, setPlayingSong] = useState(song);
   const [tooltipShown, setTooltipShown] = useState<boolean | null>(null);
-  const { play, pauseToggle, stop, playerState, seek, player } = useSpotify(
-    song,
-    spotifyToken,
-  );
+  const { play, pauseToggle, stop, playerState, seek, iframeRef, playerReady } =
+    useYoutube(song.youtubeId);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -47,8 +45,8 @@ export default function Pickup({
   }, []);
 
   const onPlaying = useCallback(async () => {
-    await player?.activateElement();
-    await playAnimation();
+    // await player?.activateElement();
+    // await playAnimation();
     play();
   }, [play]);
 
@@ -133,18 +131,18 @@ export default function Pickup({
               <span className="label">Play</span>
               <button
                 onClick={onPlaying}
-                disabled={playerState === "playing"}
+                disabled={!playerReady || playerState === "playing"}
               />
             </div>
             <div className="control">
               <span className="label">Pause</span>
-              <button onClick={onPaused} />
+              <button onClick={onPaused} disabled={!playerReady} />
             </div>
             <div className="control">
               <span className="label">Stop</span>
               <button
                 onClick={onStopped}
-                disabled={playerState === "stopped"}
+                disabled={!playerReady || playerState === "stopped"}
               />
             </div>
           </div>
@@ -201,6 +199,7 @@ export default function Pickup({
           )}
         />
       </div>
+      <div ref={iframeRef} style={{ display: "none" }} />
     </div>
   );
 }
