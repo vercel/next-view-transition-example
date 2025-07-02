@@ -15,8 +15,16 @@ export default function Pickup({ song }: { song: Song }) {
   const [showReverseRotation, setShowReverseRotation] = useState(false);
   const [playingSong, setPlayingSong] = useState(song);
   const [tooltipShown, setTooltipShown] = useState<boolean | null>(null);
-  const { play, pauseToggle, stop, playerState, iframeRef, playerReady } =
-    useYoutube(song.youtubeId);
+  const {
+    playerReady,
+    play,
+    stop,
+    mute,
+    muteToggle,
+    pauseToggle,
+    playerState,
+    iframeRef,
+  } = useYoutube(song.youtubeId);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -37,10 +45,11 @@ export default function Pickup({ song }: { song: Song }) {
     await waitSeconds(1);
   }, []);
 
-  const onPlaying = useCallback(async () => {
+  const onPlaying = async () => {
+    mute();
     await playAnimation();
     play();
-  }, [play]);
+  };
 
   const pauseAnimation = useCallback(async () => {
     setNeedleLifted((prev) => !prev);
@@ -115,24 +124,28 @@ export default function Pickup({ song }: { song: Song }) {
             />
             Youtube
           </p>
-          <div className="controls">
+          <div className={cn("controls", !playerReady && "disabled")}>
             <div className="control">
               <span className="label">Play</span>
               <button
                 onClick={onPlaying}
-                disabled={!playerReady || playerState === "playing"}
+                disabled={playerState === "playing"}
               />
             </div>
             <div className="control">
               <span className="label">Pause</span>
-              <button onClick={onPaused} disabled={!playerReady} />
+              <button onClick={onPaused} />
             </div>
             <div className="control">
               <span className="label">Stop</span>
               <button
                 onClick={onStopped}
-                disabled={!playerReady || playerState === "stopped"}
+                disabled={playerState === "stopped"}
               />
+            </div>
+            <div className="control">
+              <span className="label">Mute</span>
+              <button onClick={muteToggle} />
             </div>
           </div>
         </div>

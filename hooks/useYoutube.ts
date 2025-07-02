@@ -13,9 +13,12 @@ export type YoutubePlayerState = "idle" | "playing" | "paused" | "stopped";
 
 interface UseYoutubeReturn {
   play: () => void;
+  player: YT.Player | null;
   stop: () => void;
   seek: (seconds: number) => void;
+  mute: () => void;
   pauseToggle: () => void;
+  muteToggle: () => void;
   playerState: YoutubePlayerState;
   iframeRef: React.RefObject<HTMLDivElement | null>;
   playerReady: boolean;
@@ -40,6 +43,11 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
         height: "0",
         width: "0",
         videoId,
+        playerVars: {
+          playsinline: 1,
+          modestbranding: 1,
+          rel: 0,
+        },
         events: {
           onReady: () => {
             setPlayerState("idle");
@@ -83,6 +91,10 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
     setPlayerState("stopped");
   };
 
+  const mute = () => {
+    if (player && playerReady) player.mute();
+  };
+
   const seek = (seconds: number) => {
     if (player && playerReady) player.seekTo(seconds, true);
   };
@@ -95,13 +107,25 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
     }
   };
 
+  const muteToggle = () => {
+    if (!playerReady || !player) return;
+    if (player.isMuted()) {
+      player.unMute();
+    } else {
+      player.mute();
+    }
+  };
+
   return {
     play,
     stop,
     seek,
+    mute,
     pauseToggle,
+    muteToggle,
     playerState,
     iframeRef,
     playerReady,
+    player,
   };
 }
