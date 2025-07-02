@@ -61,6 +61,7 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
             setAutoplayBlocked(true);
           },
           onStateChange: (event: YT.OnStateChangeEvent) => {
+            console.log("onStateChange", event.data);
             switch (event.data) {
               case window.YT.PlayerState.PLAYING:
                 setPlayerState("playing");
