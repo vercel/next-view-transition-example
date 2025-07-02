@@ -19,8 +19,6 @@ export default function Pickup({ song }: { song: Song }) {
     playerReady,
     play,
     stop,
-    mute,
-    muteToggle,
     pauseToggle,
     playerState,
     iframeRef,
