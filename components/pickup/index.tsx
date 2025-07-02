@@ -62,7 +62,6 @@ export default function Pickup({ song }: { song: Song }) {
   }, [pauseToggle, needleLifted]);
 
   const stopAnimation = useCallback(async () => {
-    console.log("stop animation called");
     setNeedleLifted(true);
     await waitSeconds(1);
     setNeedleRotated(false);
@@ -75,7 +74,6 @@ export default function Pickup({ song }: { song: Song }) {
   }, []);
 
   const onStopped = useCallback(async () => {
-    console.log("on stopped called");
     if (!needleRotated) {
       stop();
       return;

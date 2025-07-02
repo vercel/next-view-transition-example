@@ -118,7 +118,11 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
   const stop = () => {
     if (!player || !playerReady || typeof player.stopVideo !== "function")
       return;
-    player.stopVideo();
+    try {
+      player.stopVideo();
+    } catch (e) {
+      // Player might have been destroyed, ignore error
+    }
     setPlayerState("stopped");
   };
 
