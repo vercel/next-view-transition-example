@@ -102,9 +102,9 @@ export default function Pickup({ song }: { song: Song }) {
   const shouldShowTooltip = tooltipShown !== null && tooltipShown === false;
 
   const onAutoplayButtonClick = useCallback(() => {
-    setAutoplayBlocked(false);
     play();
-  }, []);
+    setAutoplayBlocked(false);
+  }, [play, setAutoplayBlocked]);
 
   return (
     <>
