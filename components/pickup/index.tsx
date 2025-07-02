@@ -161,10 +161,6 @@ export default function Pickup({ song }: { song: Song }) {
                   disabled={playerState === "stopped"}
                 />
               </div>
-              <div className="control">
-                <span className="label">Mute</span>
-                <button onClick={muteToggle} />
-              </div>
             </div>
           </div>
           <div className="side back" />
