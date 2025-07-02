@@ -24,6 +24,8 @@ export default function Pickup({ song }: { song: Song }) {
     pauseToggle,
     playerState,
     iframeRef,
+    autoplayBlocked,
+    setAutoplayBlocked,
   } = useYoutube(song.youtubeId);
 
   useEffect(() => {
@@ -46,7 +48,6 @@ export default function Pickup({ song }: { song: Song }) {
   }, []);
 
   const onPlaying = async () => {
-    mute();
     await playAnimation();
     play();
   };
@@ -100,99 +101,117 @@ export default function Pickup({ song }: { song: Song }) {
 
   const shouldShowTooltip = tooltipShown !== null && tooltipShown === false;
 
+  const onAutoplayButtonClick = useCallback(() => {
+    setAutoplayBlocked(false);
+    play();
+  }, []);
+
   return (
-    <div className="scene" id="pickup">
-      <div className="box base">
-        <div className="side top" />
-        <div className="side bottom" />
-        <div className="side left" />
-        <div className="side right" />
-        <div className="side front">
-          <p className="absolute bottom-1 left-1 flex items-center gap-1 text-[10px] text-white">
-            Powered by
-            <Image
-              src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
-              className="inline h-[10px] w-[10px] align-middle"
-              width={10}
-              height={10}
-              alt="Youtube"
-              priority
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = "none";
-              }}
-            />
-            Youtube
-          </p>
-          <div className={cn("controls", !playerReady && "disabled")}>
-            <div className="control">
-              <span className="label">Play</span>
-              <button
-                onClick={onPlaying}
-                disabled={playerState === "playing"}
-              />
-            </div>
-            <div className="control">
-              <span className="label">Pause</span>
-              <button onClick={onPaused} />
-            </div>
-            <div className="control">
-              <span className="label">Stop</span>
-              <button
-                onClick={onStopped}
-                disabled={playerState === "stopped"}
-              />
-            </div>
-            <div className="control">
-              <span className="label">Mute</span>
-              <button onClick={muteToggle} />
-            </div>
-          </div>
+    <>
+      {autoplayBlocked && (
+        <div className="absolute top-0 -right-24 bottom-10 -left-24 z-10 flex flex-col items-center justify-center bg-black/50">
+          <p className="text-center text-sm text-white">Autoplay blocked</p>
+          <button
+            onClick={onAutoplayButtonClick}
+            className="mt-2 h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 text-sm font-bold text-white transition-all hover:scale-105"
+          >
+            Try again
+          </button>
         </div>
-        <div className="side back" />
-        <div className={cn("plate", spinning ? "spinning" : "")} />
-        <div className={cn("recordSupport", spinning ? "spinning" : "")} />
-        <div className={cn("record", spinning ? "spinning" : "")}>
-          <Image
-            src={playingSong.songImage}
-            alt={playingSong.name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            key={playingSong.name}
-            className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
-          />
-        </div>
-        <div
-          className={cn("box lid", lidOpen ? "open" : undefined)}
-          onClick={() => setLidOpen((prev) => !prev)}
-        >
+      )}
+      <div className="scene" id="pickup">
+        <div className="box base">
           <div className="side top" />
+          <div className="side bottom" />
           <div className="side left" />
           <div className="side right" />
           <div className="side front">
-            <div className="align-center absolute inset-0 flex justify-center">
-              {shouldShowTooltip && (
+            <p className="absolute bottom-1 left-1 flex items-center gap-1 text-[10px] text-white">
+              Powered by
+              <Image
+                src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
+                className="inline h-[10px] w-[10px] align-middle"
+                width={10}
+                height={10}
+                alt="Youtube"
+                priority
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = "none";
+                }}
+              />
+              Youtube
+            </p>
+            <div className={cn("controls", !playerReady && "disabled")}>
+              <div className="control">
+                <span className="label">Play</span>
                 <button
-                  onClick={onTooltipClick}
-                  className="h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 text-[8px] font-bold text-white transition-all hover:scale-105"
-                >
-                  Click here to open/close
-                </button>
-              )}
+                  onClick={onPlaying}
+                  disabled={playerState === "playing"}
+                />
+              </div>
+              <div className="control">
+                <span className="label">Pause</span>
+                <button onClick={onPaused} />
+              </div>
+              <div className="control">
+                <span className="label">Stop</span>
+                <button
+                  onClick={onStopped}
+                  disabled={playerState === "stopped"}
+                />
+              </div>
+              <div className="control">
+                <span className="label">Mute</span>
+                <button onClick={muteToggle} />
+              </div>
             </div>
           </div>
           <div className="side back" />
+          <div className={cn("plate", spinning ? "spinning" : "")} />
+          <div className={cn("recordSupport", spinning ? "spinning" : "")} />
+          <div className={cn("record", spinning ? "spinning" : "")}>
+            <Image
+              src={playingSong.songImage}
+              alt={playingSong.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              key={playingSong.name}
+              className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
+            />
+          </div>
+          <div
+            className={cn("box lid", lidOpen ? "open" : undefined)}
+            onClick={() => setLidOpen((prev) => !prev)}
+          >
+            <div className="side top" />
+            <div className="side left" />
+            <div className="side right" />
+            <div className="side front">
+              <div className="align-center absolute inset-0 flex justify-center">
+                {shouldShowTooltip && (
+                  <button
+                    onClick={onTooltipClick}
+                    className="h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 text-[8px] font-bold text-white transition-all hover:scale-105"
+                  >
+                    Click here to open/close
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="side back" />
+          </div>
+          <div
+            className={cn(
+              "needle",
+              needleRotated ? "rotated" : undefined,
+              needleLifted ? "lifted" : undefined,
+              showReverseRotation ? "reverseRotation" : undefined,
+            )}
+          />
         </div>
-        <div
-          className={cn(
-            "needle",
-            needleRotated ? "rotated" : undefined,
-            needleLifted ? "lifted" : undefined,
-            showReverseRotation ? "reverseRotation" : undefined,
-          )}
-        />
+        <div ref={iframeRef} style={{ display: "none" }} />
       </div>
-      <div ref={iframeRef} style={{ display: "none" }} />
-    </div>
+    </>
   );
 }

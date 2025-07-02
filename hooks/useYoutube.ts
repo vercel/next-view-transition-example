@@ -21,6 +21,8 @@ interface UseYoutubeReturn {
   muteToggle: () => void;
   playerState: YoutubePlayerState;
   iframeRef: React.RefObject<HTMLDivElement | null>;
+  autoplayBlocked: boolean;
+  setAutoplayBlocked: (value: boolean) => void;
   playerReady: boolean;
 }
 
@@ -28,6 +30,7 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
   const [player, setPlayer] = useState<YT.Player | null>(null);
   const [playerState, setPlayerState] = useState<YoutubePlayerState>("idle");
   const [playerReady, setPlayerReady] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const iframeRef = useRef<HTMLDivElement | null>(null);
 
   // Create player when API is ready
@@ -52,6 +55,10 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
           onReady: () => {
             setPlayerState("idle");
             setPlayerReady(true);
+          },
+          onAutoplayBlocked: () => {
+            console.log("onAutoplayBlocked");
+            setAutoplayBlocked(true);
           },
           onStateChange: (event: YT.OnStateChangeEvent) => {
             switch (event.data) {
@@ -125,6 +132,8 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
     muteToggle,
     playerState,
     iframeRef,
+    autoplayBlocked,
+    setAutoplayBlocked,
     playerReady,
     player,
   };
