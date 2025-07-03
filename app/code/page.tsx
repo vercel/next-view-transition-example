@@ -29,10 +29,10 @@ export default function CodePage() {
           <div className="order-2 flex-2 lg:order-1">
             <div className="flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <ViewTransition name="code-title">
-                <h1 className="mb-6 text-4xl font-bold text-white">Code</h1>
+                <h1 className="mb-6 font-bold text-4xl text-white">Code</h1>
               </ViewTransition>
               <div className="open-right space-y-4 text-lg text-white/90">
-                <h2 className="text-2xl font-bold">How I got into code</h2>
+                <h2 className="font-bold text-2xl">How I got into code</h2>
                 <p>
                   Coding came into my life as a normal extension to my
                   curiosity. It all began when I tried to figure out how to set
@@ -51,7 +51,7 @@ export default function CodePage() {
                   I try to stay in the loop by watching tech YouTubers and
                   occasionally scrolling the tech side of Twitter (X).
                 </p>
-                <h2 className="text-2xl font-bold">About this website</h2>
+                <h2 className="font-bold text-2xl">About this website</h2>
                 This site is my little masterpiece - a playground where I've
                 learned and built a bunch of things I'd been meaning to explore:
                 <ul className="list-disc ps-6">

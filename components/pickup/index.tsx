@@ -43,7 +43,7 @@ export default function Pickup({ song }: { song: Song }) {
     await waitSeconds(1);
     setNeedleLifted(false);
     await waitSeconds(1);
-  }, []);
+  }, [needleLifted]);
 
   const onPlaying = async () => {
     await playAnimation();
@@ -54,12 +54,12 @@ export default function Pickup({ song }: { song: Song }) {
     setNeedleLifted((prev) => !prev);
     // wait so the needle goes back down
     if (needleLifted) await waitSeconds(1);
-  }, []);
+  }, [needleLifted]);
 
   const onPaused = useCallback(async () => {
     await pauseAnimation();
     pauseToggle();
-  }, [pauseToggle, needleLifted]);
+  }, [pauseToggle, pauseAnimation]);
 
   const stopAnimation = useCallback(async () => {
     setNeedleLifted(true);
@@ -80,7 +80,7 @@ export default function Pickup({ song }: { song: Song }) {
     }
     stop();
     await stopAnimation();
-  }, [stop, needleRotated]);
+  }, [stop, needleRotated, stopAnimation]);
 
   useEffect(() => {
     const onTrackChange = async () => {
@@ -88,7 +88,7 @@ export default function Pickup({ song }: { song: Song }) {
       setPlayingSong(song);
     };
     onTrackChange();
-  }, [song]);
+  }, [song, onStopped]);
 
   const onTooltipClick = useCallback(() => {
     setTooltipShown(true);
@@ -105,11 +105,12 @@ export default function Pickup({ song }: { song: Song }) {
   return (
     <>
       {autoplayBlocked && (
-        <div className="absolute top-0 -right-24 bottom-10 -left-24 z-10 flex flex-col items-center justify-center bg-black/50">
+        <div className="-right-24 -left-24 absolute top-0 bottom-10 z-10 flex flex-col items-center justify-center bg-black/50">
           <p className="text-center text-sm text-white">Autoplay blocked</p>
           <button
+            type="button"
             onClick={onAutoplayButtonClick}
-            className="mt-2 h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 text-sm font-bold text-white transition-all hover:scale-105"
+            className="mt-2 h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 font-bold text-sm text-white transition-all hover:scale-105"
           >
             Try again
           </button>
@@ -142,17 +143,19 @@ export default function Pickup({ song }: { song: Song }) {
               <div className="control">
                 <span className="label">Play</span>
                 <button
+                  type="button"
                   onClick={onPlaying}
                   disabled={playerState === "playing"}
                 />
               </div>
               <div className="control">
                 <span className="label">Pause</span>
-                <button onClick={onPaused} />
+                <button type="button" onClick={onPaused} />
               </div>
               <div className="control">
                 <span className="label">Stop</span>
                 <button
+                  type="button"
                   onClick={onStopped}
                   disabled={playerState === "stopped"}
                 />
@@ -172,19 +175,21 @@ export default function Pickup({ song }: { song: Song }) {
               className="rounded-full bg-[repeating-radial-gradient(#000_0px,#222_5px)] object-contain p-10 lg:mx-0"
             />
           </div>
-          <div
+          <button
             className={cn("box lid", lidOpen ? "open" : undefined)}
             onClick={() => setLidOpen((prev) => !prev)}
+            type="button"
           >
             <div className="side top" />
             <div className="side left" />
             <div className="side right" />
             <div className="side front">
-              <div className="align-center absolute inset-0 flex justify-center">
+              <div className="absolute inset-0 flex justify-center align-center">
                 {shouldShowTooltip && (
                   <button
+                    type="button"
                     onClick={onTooltipClick}
-                    className="h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 text-[8px] font-bold text-white transition-all hover:scale-105"
+                    className="h-fit w-fit transform cursor-pointer rounded-full bg-[#F00] p-1 font-bold text-[8px] text-white transition-all hover:scale-105"
                   >
                     Click here to open/close
                   </button>
@@ -192,7 +197,7 @@ export default function Pickup({ song }: { song: Song }) {
               </div>
             </div>
             <div className="side back" />
-          </div>
+          </button>
           <div
             className={cn(
               "needle",

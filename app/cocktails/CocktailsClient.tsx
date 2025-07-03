@@ -51,7 +51,7 @@ export default function CocktailsClient() {
 
             {/* Ingredients */}
             <div className="text-center">
-              <h2 className="mb-4 text-4xl font-bold">INGREDIENTS</h2>
+              <h2 className="mb-4 font-bold text-4xl">INGREDIENTS</h2>
               <p className="text-xl">
                 {selectedCocktail.ingredients.join(" • ")}
               </p>

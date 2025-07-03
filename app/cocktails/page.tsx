@@ -19,7 +19,7 @@ export default function CocktailsPage() {
           <div className="order-2 flex-2 lg:order-1">
             <div className="flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <ViewTransition name="cocktails-title">
-                <h1 className="mb-6 text-4xl font-bold text-white">
+                <h1 className="mb-6 font-bold text-4xl text-white">
                   Cocktails
                 </h1>
               </ViewTransition>

@@ -17,7 +17,7 @@ export default async function KaraokePage() {
           <div className="order-2 flex-1 lg:order-1">
             <div className="flex h-full flex-col justify-center p-12 backdrop-blur-sm">
               <ViewTransition name="karaoke-title">
-                <h1 className={`z-10 mb-6 text-4xl font-bold text-white`}>
+                <h1 className={`z-10 mb-6 font-bold text-4xl text-white`}>
                   Karaoke
                 </h1>
               </ViewTransition>

@@ -10,8 +10,9 @@ function ScrollArrow() {
 
   return (
     <button
+      type="button"
       onClick={scrollToNextSection}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 transform cursor-pointer text-white transition-colors hover:text-white/80"
+      className="-translate-x-1/2 absolute bottom-8 left-1/2 transform cursor-pointer text-white transition-colors hover:text-white/80"
       aria-label="Scroll to next section"
     >
       <svg
@@ -26,6 +27,7 @@ function ScrollArrow() {
         strokeLinejoin="round"
         className="animate-bounce"
       >
+        <title>Scroll to next section</title>
         <path d="M12 5v14M19 12l-7 7-7-7" />
       </svg>
     </button>

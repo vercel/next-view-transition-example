@@ -13,8 +13,9 @@ export default function CodeClient() {
       {/* Floating projects row */}
       <div className="mb-4 flex flex-wrap justify-center gap-8">
         {projects.map((project) => (
-          <div
+          <button
             key={project.name}
+            type="button"
             className="h-[150px] w-[200px] cursor-pointer"
             onClick={() => setSelectedProject(project)}
           >
@@ -30,7 +31,7 @@ export default function CodeClient() {
               <source src={project.projectImage} type="video/webm" />
               Your browser does not support the video tag.
             </video>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -47,7 +48,7 @@ export default function CodeClient() {
         <div className="flex justify-around gap-16">
           {/* Stack */}
           <div className="flex flex-col items-center justify-center gap-4">
-            <h2 className="mb-4 text-4xl font-bold">STACK</h2>
+            <h2 className="mb-4 font-bold text-4xl">STACK</h2>
             <ul className="space-y-4 text-xl">
               {selectedProject.stack.map((stack) => (
                 <li key={stack}>{stack}</li>
@@ -58,6 +59,7 @@ export default function CodeClient() {
           {/* Project Preview */}
           <div className="h-[460px] w-[800px]">
             <iframe
+              title={`Preview of ${selectedProject.name}`}
               src={selectedProject.projectLink}
               className="h-full w-full rounded-lg shadow-lg"
             />

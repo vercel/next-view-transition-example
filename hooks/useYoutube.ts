@@ -34,7 +34,7 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const iframeRef = useRef<HTMLDivElement | null>(null);
 
-  // Cleanup previous player when videoId changes
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Cleanup previous player when videoId changes
   useEffect(() => {
     setPlayerReady(false); // Reset ready state immediately
     return () => {
@@ -98,7 +98,7 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
       });
       playerRef.current = ytPlayer;
     };
-    if (window.YT && window.YT.Player) {
+    if (window.YT?.Player) {
       window.onYouTubeIframeAPIReady();
     }
   }, [videoId]);
@@ -120,7 +120,7 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
       return;
     try {
       player.stopVideo();
-    } catch (e) {
+    } catch (_e) {
       // Player might have been destroyed, ignore error
     }
     setPlayerState("stopped");
