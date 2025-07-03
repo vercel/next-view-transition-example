@@ -19,6 +19,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "complexity": {
+        "useOptionalChain": { "level": "warn", "fix": "unsafe" }
+      },
       "nursery": {
         "useSortedClasses": { "level": "warn", "fix": "unsafe", "options": {} }
       }
