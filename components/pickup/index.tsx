@@ -1,10 +1,10 @@
 "use client";
 
-import { Song } from "@/app/types";
-import useYoutube from "@/hooks/useYoutube";
-import { cn, waitSeconds } from "@/lib/utils";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import type { Song } from "@/app/types";
+import useYoutube from "@/hooks/useYoutube";
+import { cn, waitSeconds } from "@/lib/utils";
 import "./style.scss";
 
 export default function Pickup({ song }: { song: Song }) {

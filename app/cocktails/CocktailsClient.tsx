@@ -1,8 +1,8 @@
-import { cocktails } from "@/app/data";
-import { Cocktail } from "@/app/types";
-import FloatingBall from "@/components/FloatingBall";
 import Image from "next/image";
 import { useState } from "react";
+import { cocktails } from "@/app/data";
+import type { Cocktail } from "@/app/types";
+import FloatingBall from "@/components/FloatingBall";
 
 export default function CocktailsClient() {
   const [selectedCocktail, setSelectedCocktail] = useState<Cocktail>(

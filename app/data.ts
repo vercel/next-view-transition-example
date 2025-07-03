@@ -1,4 +1,4 @@
-import { Cocktail, Hobby, Project, Song } from "./types";
+import type { Cocktail, Hobby, Project, Song } from "./types";
 
 export const hobbies: Hobby[] = [
   {

@@ -1,6 +1,6 @@
-import { projects } from "@/app/data";
-import { Project } from "@/app/types";
 import { useState } from "react";
+import { projects } from "@/app/data";
+import type { Project } from "@/app/types";
 
 export default function CodeClient() {
   const [selectedProject, setSelectedProject] = useState<Project>(projects[0]);

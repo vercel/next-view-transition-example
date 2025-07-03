@@ -1,10 +1,10 @@
 "use client";
-import { songs } from "@/app/data";
-import { Song } from "@/app/types";
-import Pickup from "@/components/pickup";
 import Image from "next/image";
 import Script from "next/script";
 import { useState } from "react";
+import { songs } from "@/app/data";
+import type { Song } from "@/app/types";
+import Pickup from "@/components/pickup";
 
 export default function KaraokeClient() {
   const [activeSong, setActiveSong] = useState<Song>(songs[0]);
