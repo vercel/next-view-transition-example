@@ -25,6 +25,7 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.1.7",
     "@types/react-dom": "^19.1.6",
+    "@types/youtube": "^0.1.2",
     "postcss": "^8.5.4",
     "prettier": "^3.5.3",
     "prettier-plugin-css-order": "^2.1.2",
