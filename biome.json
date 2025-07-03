@@ -29,10 +29,10 @@
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
       "trailingCommas": "all",
-      "semicolons": "asNeeded",
+      "semicolons": "always",
       "arrowParentheses": "always",
       "bracketSameLine": false,
-      "quoteStyle": "single",
+      "quoteStyle": "double",
       "attributePosition": "auto",
       "bracketSpacing": true
     }
