@@ -220,7 +220,7 @@
   transition: all 1s linear;
 
   @media screen and (max-width: 1024px) {
-    transform: translateY(-2em);
+    transform: translateY(-3em);
   }
 
   & > .side {
@@ -233,7 +233,7 @@
   transform: rotateX(45deg) translateY(-13.75em) translateX(-1.25em) scale(1.06);
 
   @media screen and (max-width: 1024px) {
-    transform: rotateX(45deg) translateY(-11.25em) translateX(-1.1em)
+    transform: rotateX(45deg) translateY(-12.25em) translateX(-1.1em)
       scale(1.06);
   }
 
