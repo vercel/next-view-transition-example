@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export type YoutubePlayerState = "idle" | "playing" | "paused" | "stopped";
 
@@ -34,9 +34,61 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const iframeRef = useRef<HTMLDivElement | null>(null);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Cleanup previous player when videoId changes
+  const onYouTubeIframeAPIReady = useCallback(() => {
+    if (!iframeRef.current) {
+      console.warn(
+        "Youtube iframe not found. Please pass a ref to the iframe to use this hook",
+      );
+      return;
+    }
+    // Always clear the container before creating a new player
+    iframeRef.current.innerHTML = "";
+    const ytPlayer = new window.YT.Player(iframeRef.current, {
+      height: "0",
+      width: "0",
+      videoId,
+      playerVars: {
+        playsinline: 1,
+        modestbranding: 1,
+        rel: 0,
+      },
+      events: {
+        onReady: () => {
+          setPlayerState("idle");
+          setPlayerReady(true);
+        },
+        onAutoplayBlocked: () => {
+          setAutoplayBlocked(true);
+        },
+        onStateChange: (event: YT.OnStateChangeEvent) => {
+          switch (event.data) {
+            case window.YT.PlayerState.PLAYING:
+              setPlayerState("playing");
+              break;
+            case window.YT.PlayerState.PAUSED:
+              setPlayerState("paused");
+              break;
+            case window.YT.PlayerState.ENDED:
+              setPlayerState("stopped");
+              break;
+            default:
+              setPlayerState("idle");
+          }
+        },
+      },
+    });
+    playerRef.current = ytPlayer;
+  }, [videoId]);
+
+  // Create player when API is ready
   useEffect(() => {
     setPlayerReady(false); // Reset ready state immediately
+
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+    if (window.YT?.Player) {
+      onYouTubeIframeAPIReady();
+    }
+
     return () => {
       if (playerRef.current) {
         playerRef.current.destroy();
@@ -49,73 +101,21 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
         }
       }
     };
-  }, [videoId]);
+  }, [onYouTubeIframeAPIReady]);
 
-  // Create player when API is ready
-  useEffect(() => {
-    window.onYouTubeIframeAPIReady = () => {
-      if (!iframeRef.current) {
-        console.warn(
-          "Youtube iframe not found. Please pass a ref to the iframe to use this hook",
-        );
-        return;
-      }
-      // Always clear the container before creating a new player
-      iframeRef.current.innerHTML = "";
-      const ytPlayer = new window.YT.Player(iframeRef.current, {
-        height: "0",
-        width: "0",
-        videoId,
-        playerVars: {
-          playsinline: 1,
-          modestbranding: 1,
-          rel: 0,
-        },
-        events: {
-          onReady: () => {
-            setPlayerState("idle");
-            setPlayerReady(true);
-          },
-          onAutoplayBlocked: () => {
-            setAutoplayBlocked(true);
-          },
-          onStateChange: (event: YT.OnStateChangeEvent) => {
-            switch (event.data) {
-              case window.YT.PlayerState.PLAYING:
-                setPlayerState("playing");
-                break;
-              case window.YT.PlayerState.PAUSED:
-                setPlayerState("paused");
-                break;
-              case window.YT.PlayerState.ENDED:
-                setPlayerState("stopped");
-                break;
-              default:
-                setPlayerState("idle");
-            }
-          },
-        },
-      });
-      playerRef.current = ytPlayer;
-    };
-    if (window.YT?.Player) {
-      window.onYouTubeIframeAPIReady();
-    }
-  }, [videoId]);
-
-  const play = () => {
+  const play = useCallback(() => {
     if (!player || !playerReady || typeof player.playVideo !== "function")
       return;
     player.playVideo();
-  };
+  }, [player, playerReady]);
 
-  const pause = () => {
+  const pause = useCallback(() => {
     if (!player || !playerReady || typeof player.pauseVideo !== "function")
       return;
     player.pauseVideo();
-  };
+  }, [player, playerReady]);
 
-  const stop = () => {
+  const stop = useCallback(() => {
     if (!player || !playerReady || typeof player.stopVideo !== "function")
       return;
     try {
@@ -124,34 +124,38 @@ export default function useYoutube(videoId: string): UseYoutubeReturn {
       // Player might have been destroyed, ignore error
     }
     setPlayerState("stopped");
-  };
+  }, [player, playerReady]);
 
-  const mute = () => {
+  const mute = useCallback(() => {
     if (!player || !playerReady || typeof player.mute !== "function") return;
     player.mute();
-  };
+  }, [player, playerReady]);
 
-  const seek = (seconds: number) => {
-    if (!player || !playerReady || typeof player.seekTo !== "function") return;
-    player.seekTo(seconds, true);
-  };
+  const seek = useCallback(
+    (seconds: number) => {
+      if (!player || !playerReady || typeof player.seekTo !== "function")
+        return;
+      player.seekTo(seconds, true);
+    },
+    [player, playerReady],
+  );
 
-  const pauseToggle = () => {
+  const pauseToggle = useCallback(() => {
     if (playerState === "playing") {
       pause();
     } else if (playerState === "paused") {
       play();
     }
-  };
+  }, [playerState, pause, play]);
 
-  const muteToggle = () => {
+  const muteToggle = useCallback(() => {
     if (!player || !playerReady || typeof player.isMuted !== "function") return;
     if (player.isMuted()) {
       if (typeof player.unMute === "function") player.unMute();
     } else {
       if (typeof player.mute === "function") player.mute();
     }
-  };
+  }, [player, playerReady]);
 
   return {
     play,
