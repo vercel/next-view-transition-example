@@ -1,6 +1,6 @@
 'use client'
 
-import { unstable_ViewTransition as ViewTransition } from 'react'
+import { ViewTransition } from 'react'
 import Link from 'next/link'
 import { Avatar } from '@/components/ui/avatar'
 import { type Post } from '@/app/utils/constants'

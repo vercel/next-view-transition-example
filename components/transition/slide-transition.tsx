@@ -1,6 +1,6 @@
 'use client'
 
-import { unstable_ViewTransition as ViewTransition } from 'react'
+import { ViewTransition } from 'react'
 import { cx } from '@/app/utils/cx'
 
 export function SlideTransition({
@@ -56,8 +56,10 @@ export function SlideTransition({
           }
         `}
       </style>
-      <ViewTransition name={name} className={cx(`${name}-enter-slide-${startName}`, `${name}-exit-slide-${endName}`)}>
-        {children}
+      <ViewTransition name={name}>
+        <div className={cx(`${name}-enter-slide-${startName}`, `${name}-exit-slide-${endName}`)}>
+          {children}
+        </div>
       </ViewTransition>
     </>
   )
