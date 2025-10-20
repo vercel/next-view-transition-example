@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { unstable_ViewTransition as ViewTransition } from 'react'
+import { ViewTransition } from 'react'
 import { type Place } from '@/app/utils/constants'
 
 export default function Place({ place, places }: { place: Place; places: Place[] }) {
