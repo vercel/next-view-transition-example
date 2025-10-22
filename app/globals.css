@@ -75,7 +75,7 @@
 }
 
 
-@supports (view-transition-name: test) {
+@supports selector(:active-view-transition-type(test)) {
   [data-support] [data-support-yes] {
       display: flex;
   }
@@ -84,7 +84,7 @@
   }
 }
 
-@supports not (view-transition-name: test) {
+@supports not selector(:active-view-transition-type(test)) {
   [data-support] [data-support-yes] {
       display: none;
   }
