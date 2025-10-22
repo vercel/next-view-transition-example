@@ -36,7 +36,7 @@ export default function Page() {
                   ))}
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-4 pr-16 sm:pr-20">
                   <ViewTransition name={`date-${item.slug}`}>
                     <p className={cx('text-gray-600')}>{item.date}</p>
                   </ViewTransition>
